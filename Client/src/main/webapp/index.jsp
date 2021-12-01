@@ -10,9 +10,17 @@
         <link href="lib/css/tableau.css" rel="stylesheet" type="text/css"/>
         <title>JSP - Hello World</title>
     </head>
-    <body>
-        <h1><%= "Hello World!" %></h1>
-        <br/>
-        <a href="hello-servlet">Hello Servlet</a>
+    <body class="body">
+        <div class="container">
+            <c:import url="/menu.jsp"/>
+            <div>
+                <c:if test="${pageR != null}">
+                    <c:import url="${pageR}"/>
+                </c:if>
+                <c:if test="${erreurR != null}">
+                    <c:import url="/erreur.jsp"/>
+                </c:if>
+            </div>
+        </div>
     </body>
 </html>
