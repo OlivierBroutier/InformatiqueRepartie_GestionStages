@@ -30,4 +30,8 @@ public class EtudiantService {
         return oEtudiant.get();
     }
 
+    public Optional<Etudiant> findByLoginAndPassword(String login, String password) {
+        return etudiantRepository.findByLoginAndMdp(login, password);
+    }
+
 }
