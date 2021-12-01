@@ -8,6 +8,7 @@
         <link href="lib/css/bouton.css" rel="stylesheet" type="text/css"/>
         <link href="lib/css/formulaire.css" rel="stylesheet" type="text/css"/>
         <link href="lib/css/tableau.css" rel="stylesheet" type="text/css"/>
+        <link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <title>JSP - Hello World</title>
     </head>
     <body class="body">
