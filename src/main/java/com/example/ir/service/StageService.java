@@ -1,6 +1,6 @@
 package com.example.ir.service;
 
-import com.example.ir.bo.Stage;
+import com.example.ir.entity.Stage;
 import com.example.ir.config.ErrorEnum;
 import com.example.ir.repository.StageRepository;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.example.ir.bo;
+package com.example.ir.entity;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;

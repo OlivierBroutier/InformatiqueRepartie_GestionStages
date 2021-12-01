@@ -1,6 +1,6 @@
 package com.example.ir.rest;
 
-import com.example.ir.bo.Stage;
+import com.example.ir.entity.Stage;
 import com.example.ir.service.StageService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

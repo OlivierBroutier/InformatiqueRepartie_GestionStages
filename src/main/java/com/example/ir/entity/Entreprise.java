@@ -1,4 +1,4 @@
-package com.example.ir.bo;
+package com.example.ir.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
