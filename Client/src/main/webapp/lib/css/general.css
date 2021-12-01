@@ -53,6 +53,10 @@ nav  a:hover.actif
     background-color: #4060FF;
 }
 
+
+.col py-3 {
+
+}
 nav a::before
 {
     background-position: center center;
@@ -198,3 +202,6 @@ article h2
     text-align: center;
 }
 
+.main-container {
+    display: flex;
+}

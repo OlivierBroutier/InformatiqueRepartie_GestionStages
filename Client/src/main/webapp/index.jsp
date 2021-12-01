@@ -8,11 +8,12 @@
         <link href="lib/css/bouton.css" rel="stylesheet" type="text/css"/>
         <link href="lib/css/formulaire.css" rel="stylesheet" type="text/css"/>
         <link href="lib/css/tableau.css" rel="stylesheet" type="text/css"/>
-        <link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <title>JSP - Hello World</title>
     </head>
     <body class="body">
-        <div class="container">
+        <div class="main-container">
             <c:import url="/menu.jsp"/>
             <div>
                 <c:if test="${pageR != null}">
