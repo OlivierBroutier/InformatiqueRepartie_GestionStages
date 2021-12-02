@@ -6,12 +6,14 @@ public class LoginDTO implements Serializable {
 
     private String login;
     private String mdp;
+    private String statut;
 
     public LoginDTO() { }
 
-    public LoginDTO(String login, String mdp) {
+    public LoginDTO(String login, String mdp, String statut) {
         this.login = login;
         this.mdp = mdp;
+        this.statut= statut;
     }
 
     public String getLogin() {
@@ -27,6 +29,15 @@ public class LoginDTO implements Serializable {
     }
 
     public void setMdp(String mdp) {
+
         this.mdp = mdp;
+    }
+
+    public String getStatut() {
+        return statut;
+    }
+
+    public void setStatut(String statut) {
+        this.statut = statut;
     }
 }

@@ -21,13 +21,17 @@ public class LoginService {
     }
 
     public UtilisateurDTO login(LoginDTO loginDTO) throws Exception {
-        Optional<Etudiant> oEtudiant = etudiantService.findByLoginAndPassword(loginDTO.getLogin(), loginDTO.getMdp());
-        if (oEtudiant.isPresent()) {
+        if (loginDTO.getStatut().equals("E")) {
+            Optional<Etudiant> oEtudiant = etudiantService.findByLoginAndPassword(loginDTO.getLogin(), loginDTO.getMdp());
+            if (oEtudiant.isEmpty()) {
+                throw new Exception(ErrorEnum.ETUDIANT_WITH_LOGIN_NOT_FOUND.getMessage());
+            }
             return new UtilisateurDTO(oEtudiant.get());
-        }
-
-        Optional<Professeur> oProfesseur = professeurService.findByLoginAndPassword(loginDTO.getLogin(), loginDTO.getMdp());
-        if (oProfesseur.isPresent()) {
+        } else if (loginDTO.getStatut().equals("P")) {
+            Optional<Professeur> oProfesseur = professeurService.findByLoginAndPassword(loginDTO.getLogin(), loginDTO.getMdp());
+            if (oProfesseur.isEmpty()) {
+                throw new Exception(ErrorEnum.PROFESSEUR_WITH_LOGIN_NOT_FOUND.getMessage());
+            }
             return new UtilisateurDTO(oProfesseur.get());
         }
 

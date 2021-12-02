@@ -8,7 +8,7 @@
     Identifiez-vous pour poursuivre la navigation.
 </div>
 
-<form class="p-3 mb-2 bg-info text-white"; style="margin:50px;text-align: center" action="connecter.log">
+<form class="p-3 mb-2 bg-info text-white"; style="margin:50px;text-align: center" action="connecter.log" method="post">
     <div class="form-group row">
         <label for="inputEmail3" class="col-sm-2 col-form-label">Login</label>
         <div class="col-sm-10">
@@ -26,13 +26,13 @@
             <label class="col-form-label col-sm-2 pt-0">Vous êtes :</label>
             <div class="col-sm-10" style="text-align:left">
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                    <input class="form-check-input" type="radio" name="statut" id="gridRadios1" value="E" checked>
                     <label class="form-check-label" for="gridRadios1">
                         Etudiant
                     </label>
                 </div>
                 <div class="form-check" >
-                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                    <input class="form-check-input" type="radio" name="statut" id="gridRadios2" value="P">
                     <label class="form-check-label" for="gridRadios2">
                         Professeur
                     </label>

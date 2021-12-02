@@ -74,20 +74,21 @@ public class SrvlLogin extends HttpServlet {
 
     private String connecter(HttpServletRequest request) {
         String vueReponse = null;
-        LoginDTO loginDTO = new LoginDTO(request.getParameter("login"), request.getParameter("password"));
-
-        System.out.println(loginDTO);
+        LoginDTO loginDTO = new LoginDTO(request.getParameter("login"), request.getParameter("password"), request.getParameter("statut"));
         try {
             UtilisateurDTO utilisateurDTO = this.loginRest.login(loginDTO);
             if(utilisateurDTO.getEtudiant() != null) {
-                String login =utilisateurDTO.getEtudiant().getLogin();
                 request.getSession().setAttribute("Prenom", utilisateurDTO.getEtudiant().getPrenomEtudiant());
                 request.getSession().setAttribute("Nom", utilisateurDTO.getEtudiant().getNomEtudiant());
                 request.getSession().setAttribute("Id", utilisateurDTO.getEtudiant().getId());
+                request.getSession().setAttribute("Statut", "E");
             }
             else {
                 if (utilisateurDTO.getProfesseur() != null) {
-
+                    request.getSession().setAttribute("Prenom", utilisateurDTO.getProfesseur().getPrenomProf());
+                    request.getSession().setAttribute("Nom", utilisateurDTO.getProfesseur().getNomProf());
+                    request.getSession().setAttribute("Id", utilisateurDTO.getProfesseur().getId());
+                    request.getSession().setAttribute("Statut", "P");
                 }
             }
             vueReponse = "home.jsp";
