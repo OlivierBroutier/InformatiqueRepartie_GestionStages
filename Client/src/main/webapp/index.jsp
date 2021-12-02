@@ -15,7 +15,7 @@
     <body class="body">
         <div class="main-container">
             <c:import url="/menu.jsp"/>
-            <div>
+            <div style="flex : 1">
                 <c:if test="${pageR != null}">
                     <c:import url="${pageR}"/>
                 </c:if>

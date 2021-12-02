@@ -1,5 +1,9 @@
 package com.example.ir.controller;
 
+import com.example.ir.entity.dto.LoginDTO;
+import com.example.ir.entity.dto.UtilisateurDTO;
+import com.example.ir.rest.LoginRest;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,12 +15,21 @@ import java.io.IOException;
 @WebServlet(name = "SrvlLogin", value = "/login")
 public class SrvlLogin extends HttpServlet {
 
+    private final LoginRest loginRest;
+
     String erreur;
+
+    public SrvlLogin() {
+        this.loginRest = new LoginRest();
+    }
 
     private String getDemande(HttpServletRequest request) {
         String demande = "";
         demande = request.getRequestURI();
         demande = demande.substring(demande.lastIndexOf("/") + 1);
+        if (demande.contains("?")) {
+            demande = demande.substring(0, demande.lastIndexOf('?'));
+        }
         return demande;
     }
 
@@ -28,7 +41,7 @@ public class SrvlLogin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String demande;
-        String vueReponse = "";
+        String vueReponse = null;
         erreur = null;
 
         try {
@@ -48,7 +61,7 @@ public class SrvlLogin extends HttpServlet {
             req.setAttribute("erreurR", erreur);
             req.setAttribute("pageR", vueReponse);
             RequestDispatcher dsp = req.getRequestDispatcher("/index.jsp");
-            if (vueReponse.contains(".log")) {
+            if (vueReponse != null && vueReponse.contains(".log")) {
                 dsp = req.getRequestDispatcher(vueReponse);
             }
             dsp.forward(req, resp);
@@ -60,7 +73,29 @@ public class SrvlLogin extends HttpServlet {
     }
 
     private String connecter(HttpServletRequest request) {
-        return "home.jsp";
+        String vueReponse = null;
+        LoginDTO loginDTO = new LoginDTO(request.getParameter("login"), request.getParameter("password"));
+
+        System.out.println(loginDTO);
+        try {
+            UtilisateurDTO utilisateurDTO = this.loginRest.login(loginDTO);
+            if(utilisateurDTO.getEtudiant() != null) {
+                String login =utilisateurDTO.getEtudiant().getLogin();
+                request.getSession().setAttribute("Prenom", utilisateurDTO.getEtudiant().getPrenomEtudiant());
+                request.getSession().setAttribute("Nom", utilisateurDTO.getEtudiant().getNomEtudiant());
+                request.getSession().setAttribute("Id", utilisateurDTO.getEtudiant().getId());
+            }
+            else {
+                if (utilisateurDTO.getProfesseur() != null) {
+
+                }
+            }
+            vueReponse = "home.jsp";
+        } catch (Exception e) {
+            erreur = e.getMessage();
+        }
+
+        return vueReponse;
     }
 
     private String deconnecter(HttpServletRequest request) {

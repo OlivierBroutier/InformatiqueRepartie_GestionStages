@@ -34,5 +34,6 @@
             </li>
         </ul>
         <hr>
+        <%= session.getAttribute("Prenom")%> <%= session.getAttribute("Nom")%>
     </div>
 </div>
