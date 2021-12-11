@@ -15,6 +15,10 @@
                 <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                 </ul>
             </li>
+
+            <%
+                if(session.getAttribute("Statut")=="P")  {
+            %>
             <li>
                 <a href="#" class="nav-link px-0 align-middle">
                     <span class="glyphicon glyphicon-user"></span>
@@ -27,6 +31,9 @@
                 <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
                 </ul>
             </li>
+            <%
+                }
+            %>
             <li>
                 <a href="#" class="nav-link px-0 align-middle">
                     <span class="glyphicon glyphicon-question-sign"></span>
@@ -52,11 +59,7 @@
 
 
         <%
-            if(session.getAttribute("Prenom")==null)  {
-        %>
-
-        <%
-        } else {
+            if(session.getAttribute("Prenom")!=null)  {
         %>
         <%= session.getAttribute("Prenom")%> <%= session.getAttribute("Nom")%>
         <%
