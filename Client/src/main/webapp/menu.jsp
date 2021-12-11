@@ -32,8 +32,37 @@
                     <span class="glyphicon glyphicon-question-sign"></span>
                     <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Aide</span> </a>
             </li>
+
+
+        <%
+            if(session.getAttribute("Prenom")!=null)  {
+        %>
+        <li>
+            <a href="#" class="nav-link px-0 align-middle">
+                <span class="glyphicon glyphicon-log-out"></span>
+                <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Déconnexion</span> </a>
+        </li>
+        <%
+            }
+        %>
         </ul>
+
         <hr>
+
+
+
+        <%
+            if(session.getAttribute("Prenom")==null)  {
+        %>
+
+        <%
+        } else {
+        %>
         <%= session.getAttribute("Prenom")%> <%= session.getAttribute("Nom")%>
+        <%
+            }
+        %>
+
+
     </div>
 </div>
