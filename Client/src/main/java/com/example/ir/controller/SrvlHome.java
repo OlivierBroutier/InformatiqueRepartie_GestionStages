@@ -13,8 +13,15 @@ public class SrvlHome extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("pageR", "/home.jsp");
-        RequestDispatcher dsp = req.getRequestDispatcher("/index.jsp");
-        dsp.forward(req, resp);
+        if (req.getSession().getAttribute("Nom") != null) {
+            req.setAttribute("pageR", "/home.jsp");
+            RequestDispatcher dsp = req.getRequestDispatcher("/index.jsp");
+            dsp.forward(req, resp);
+        }
+        else {
+            req.setAttribute("pageR", "/login.jsp");
+            RequestDispatcher dsp = req.getRequestDispatcher("/index.jsp");
+            dsp.forward(req, resp);
+        }
     }
 }

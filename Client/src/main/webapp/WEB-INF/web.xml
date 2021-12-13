@@ -15,7 +15,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SrvlHome</servlet-name>
-        <url-pattern>*.home</url-pattern>
+        <url-pattern></url-pattern>
     </servlet-mapping>
 
      <welcome-file-list>
