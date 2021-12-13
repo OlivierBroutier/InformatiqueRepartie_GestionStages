@@ -3,7 +3,19 @@
     <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
             <li class="nav-item">
-                <a href="<%=request.getContextPath()%>" class="nav-link align-middle px-0">
+                <%
+                    if(session.getAttribute("Statut")!=null)  {
+                %>
+                <a href="home.jsp" class="nav-link align-middle px-0">
+                    <%
+                        }
+                    else {
+                        %>
+                        <a href="login.jsp" class="nav-link align-middle px-0">
+                            <%
+                                }
+                            %>
+
                     <span class="glyphicon glyphicon-home"></span>
                     <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline"> Accueil </span>
                 </a>

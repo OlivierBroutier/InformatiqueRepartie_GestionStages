@@ -52,8 +52,6 @@ public class SrvlLogin extends HttpServlet {
                 vueReponse = connecter(req);
             } else if (demande.equalsIgnoreCase("deconnecter.log")) {
                 vueReponse = deconnecter(req);
-            } else {
-                vueReponse = login(req);
             }
         } catch (Exception e) {
             erreur = e.getMessage();
