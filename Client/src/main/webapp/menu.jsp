@@ -9,7 +9,7 @@
                 </a>
             </li>
             <li>
-                <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                <a href="stagiaire.jsp" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
                     <span class="glyphicon glyphicon-list"></span>
                     <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Entreprise</span> </a>
                 <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
@@ -20,7 +20,7 @@
                 if(session.getAttribute("Statut")=="P")  {
             %>
             <li>
-                <a href="#" class="nav-link px-0 align-middle">
+                <a href="" class="nav-link px-0 align-middle">
                     <span class="glyphicon glyphicon-user"></span>
                     <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Stagiaire</span></a>
             </li>
