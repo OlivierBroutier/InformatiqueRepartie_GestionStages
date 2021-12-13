@@ -100,6 +100,10 @@ public class SrvlLogin extends HttpServlet {
     }
 
     private String deconnecter(HttpServletRequest request) {
+        request.getSession().removeAttribute("Prenom");
+        request.getSession().removeAttribute("Nom");
+        request.getSession().removeAttribute("Id");
+        request.getSession().removeAttribute("Statut");
         return "home.jsp";
     }
 }
