@@ -23,7 +23,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SrvlStagiaire</servlet-name>
-        <url-pattern></url-pattern>
+        <url-pattern>*.stg</url-pattern>
     </servlet-mapping>
      <welcome-file-list>
         <welcome-file>login.log</welcome-file>

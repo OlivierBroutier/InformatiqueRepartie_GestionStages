@@ -9,7 +9,7 @@
                 </a>
             </li>
             <li>
-                <a href="stagiaire.jsp" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                <a href="stagiaire.stg" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
                     <span class="glyphicon glyphicon-list"></span>
                     <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Entreprise</span> </a>
                 <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
