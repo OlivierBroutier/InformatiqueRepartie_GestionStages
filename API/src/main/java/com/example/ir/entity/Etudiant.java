@@ -17,7 +17,6 @@ import java.time.LocalDate;
 })
 @Entity
 public class Etudiant implements Serializable {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "num_etudiant", nullable = false)
