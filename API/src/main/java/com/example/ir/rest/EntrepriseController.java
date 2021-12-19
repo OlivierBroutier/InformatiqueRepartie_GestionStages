@@ -1,5 +1,6 @@
 package com.example.ir.rest;
 
+import com.example.ir.config.FonctionnelException;
 import com.example.ir.entity.Entreprise;
 import com.example.ir.service.EntrepriseService;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +31,7 @@ public class EntrepriseController {
     }
 
     @GetMapping(value="{id}")
-    public ResponseEntity<Entreprise> findById(@PathVariable(name="id") Integer id) throws Exception {
+    public ResponseEntity<Entreprise> findById(@PathVariable(name="id") Integer id) throws FonctionnelException {
         return ResponseEntity.ok().body(entrepriseService.findById(id));
     }
 
@@ -40,7 +41,7 @@ public class EntrepriseController {
     }
 
     @PutMapping(value = "{id}")
-    public ResponseEntity<Entreprise> update(@PathVariable(name = "id") Integer id, @RequestBody Entreprise entreprise) throws Exception {
+    public ResponseEntity<Entreprise> update(@PathVariable(name = "id") Integer id, @RequestBody Entreprise entreprise) throws FonctionnelException {
         if (!Objects.equals(id, entreprise.getId())) {
             return ResponseEntity.badRequest().build();
         }

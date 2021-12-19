@@ -1,0 +1,10 @@
+@import "../aux-alert-base";
+
+:host {
+    border-left: 1em #A83B3B solid;
+    background-color: white;
+
+    h4 {
+        color: #A83B3B;
+    }
+}

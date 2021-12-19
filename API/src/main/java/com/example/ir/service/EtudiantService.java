@@ -1,6 +1,7 @@
 package com.example.ir.service;
 
 import com.example.ir.config.ErrorEnum;
+import com.example.ir.config.FonctionnelException;
 import com.example.ir.entity.Etudiant;
 import com.example.ir.repository.EtudiantRepository;
 import org.springframework.stereotype.Service;
@@ -21,10 +22,10 @@ public class EtudiantService {
         return etudiantRepository.findAll();
     }
 
-    public Etudiant findById(Integer id) throws Exception {
+    public Etudiant findById(Integer id) throws FonctionnelException {
         Optional<Etudiant> oEtudiant = etudiantRepository.findById(id);
         if (oEtudiant.isEmpty()) {
-            throw new Exception(ErrorEnum.ETUDIANT_NOT_FOUND.getMessage());
+            throw new FonctionnelException(ErrorEnum.ETUDIANT_NOT_FOUND);
         }
 
         return oEtudiant.get();

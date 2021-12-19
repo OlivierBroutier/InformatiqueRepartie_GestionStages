@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class ExceptionHandlingController {
 
-    @ExceptionHandler(value = Exception.class)
-    public ResponseEntity<Object> exception(Exception exception) {
+    @ExceptionHandler(value = FonctionnelException.class)
+    public ResponseEntity<Object> exception(FonctionnelException exception) {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(exception.getMessage());
     }
 

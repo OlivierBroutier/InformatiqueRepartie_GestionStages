@@ -1,5 +1,7 @@
 package com.example.ir.config;
 
+import org.springframework.http.HttpStatus;
+
 public enum ErrorEnum {
 
     STAGE_NOT_FOUND("Le stage n'a pas été trouvé"),
@@ -9,13 +11,19 @@ public enum ErrorEnum {
     USER_WITH_LOGIN_NOT_FOUND("Aucun utilisateur trouvé avec ces identifiants"),
     ENTREPRISE_NOT_FOUND("L'entreprise n'a pas été trouvée");
 
-    private final String message;
+    private final String description;
+    private final HttpStatus status;
 
     ErrorEnum(String message) {
-        this.message = message;
+        this.description = message;
+        this.status = HttpStatus.INTERNAL_SERVER_ERROR;
     }
 
-    public String getMessage() {
-        return message;
+    public String getDescription() {
+        return description;
+    }
+
+    public HttpStatus getStatus() {
+        return status;
     }
 }

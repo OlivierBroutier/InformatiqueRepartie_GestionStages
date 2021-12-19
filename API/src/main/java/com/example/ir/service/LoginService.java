@@ -1,6 +1,7 @@
 package com.example.ir.service;
 
 import com.example.ir.config.ErrorEnum;
+import com.example.ir.config.FonctionnelException;
 import com.example.ir.entity.Etudiant;
 import com.example.ir.entity.Professeur;
 import com.example.ir.entity.dto.LoginDTO;
@@ -20,22 +21,22 @@ public class LoginService {
         this.professeurService = professeurService;
     }
 
-    public UtilisateurDTO login(LoginDTO loginDTO) throws Exception {
+    public UtilisateurDTO login(LoginDTO loginDTO) throws FonctionnelException {
         if (loginDTO.getStatut().equals("E")) {
             Optional<Etudiant> oEtudiant = etudiantService.findByLoginAndPassword(loginDTO.getLogin(), loginDTO.getMdp());
             if (oEtudiant.isEmpty()) {
-                throw new Exception(ErrorEnum.ETUDIANT_WITH_LOGIN_NOT_FOUND.getMessage());
+                throw new FonctionnelException(ErrorEnum.ETUDIANT_WITH_LOGIN_NOT_FOUND);
             }
             return new UtilisateurDTO(oEtudiant.get());
         } else if (loginDTO.getStatut().equals("P")) {
             Optional<Professeur> oProfesseur = professeurService.findByLoginAndPassword(loginDTO.getLogin(), loginDTO.getMdp());
             if (oProfesseur.isEmpty()) {
-                throw new Exception(ErrorEnum.PROFESSEUR_WITH_LOGIN_NOT_FOUND.getMessage());
+                throw new FonctionnelException(ErrorEnum.PROFESSEUR_WITH_LOGIN_NOT_FOUND);
             }
             return new UtilisateurDTO(oProfesseur.get());
         }
 
-        throw new Exception(ErrorEnum.USER_WITH_LOGIN_NOT_FOUND.getMessage());
+        throw new FonctionnelException(ErrorEnum.USER_WITH_LOGIN_NOT_FOUND);
     }
 
 }

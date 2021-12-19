@@ -1,5 +1,6 @@
 package com.example.ir.rest;
 
+import com.example.ir.config.FonctionnelException;
 import com.example.ir.entity.Stage;
 import com.example.ir.service.StageService;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +36,7 @@ public class StageController {
     }
 
     @PutMapping(value = "{id}")
-    public ResponseEntity<Stage> update(@PathVariable(name = "id") Integer id, @RequestBody Stage stage) throws Exception {
+    public ResponseEntity<Stage> update(@PathVariable(name = "id") Integer id, @RequestBody Stage stage) throws FonctionnelException {
         if (!Objects.equals(id, stage.getId())) {
             return ResponseEntity.badRequest().build();
         }

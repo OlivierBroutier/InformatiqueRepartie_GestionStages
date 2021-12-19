@@ -1,0 +1,58 @@
+:host {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    box-shadow: 0 16px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 12px 0 0 12px;
+    border-right: none;
+
+    & > .aux-alert-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        & > .title {
+            display: flex;
+            align-items: center;
+
+            img {
+                margin-right: 10px;
+            }
+        }
+
+        h4 {
+            margin: 0;
+            text-transform: capitalize;
+            font-weight: bold;
+        }
+
+        button {
+            padding: 5px 10px;
+            background-color: white;
+        }
+    }
+
+    & > .aux-alert-body {
+        margin-top: 10px;
+        margin-right: 16px;
+
+        span {
+            font-weight: bold;
+
+            &:after {
+                content: ' : ';
+            }
+        }
+
+        & > .sub-details {
+
+            * {
+                font-size: 11px;
+            }
+
+            p {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

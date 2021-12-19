@@ -1,5 +1,6 @@
 package com.example.ir.service;
 
+import com.example.ir.config.FonctionnelException;
 import com.example.ir.entity.Stage;
 import com.example.ir.config.ErrorEnum;
 import com.example.ir.repository.StageRepository;
@@ -25,10 +26,10 @@ public class StageService {
         return stageRepository.save(stage);
     }
 
-    public Stage update(Integer id, Stage stage) throws Exception {
+    public Stage update(Integer id, Stage stage) throws FonctionnelException {
         Optional<Stage> oStage = stageRepository.findById(id);
         if (oStage.isEmpty()) {
-            throw new Exception(ErrorEnum.STAGE_NOT_FOUND.getMessage());
+            throw new FonctionnelException(ErrorEnum.STAGE_NOT_FOUND);
         }
 
         return stageRepository.save(stage);

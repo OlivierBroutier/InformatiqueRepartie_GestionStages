@@ -1,0 +1,18 @@
+:host {
+    position: absolute;
+    bottom: 0;
+    z-index: 2000;
+    right: 0;
+    width: 30%;
+    margin-bottom: 16px;
+
+    display: flex;
+    flex-direction: column-reverse;
+
+    & > app-aux-alert {
+
+        &:nth-of-type(n + 2) {
+            margin-bottom: 16px;
+        }
+    }
+}

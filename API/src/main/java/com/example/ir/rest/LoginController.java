@@ -1,5 +1,6 @@
 package com.example.ir.rest;
 
+import com.example.ir.config.FonctionnelException;
 import com.example.ir.entity.dto.LoginDTO;
 import com.example.ir.entity.dto.UtilisateurDTO;
 import com.example.ir.service.LoginService;
@@ -20,7 +21,7 @@ public class LoginController {
     }
 
     @PostMapping
-    public ResponseEntity<UtilisateurDTO> login(@RequestBody LoginDTO loginDTO) throws Exception {
+    public ResponseEntity<UtilisateurDTO> login(@RequestBody LoginDTO loginDTO) throws FonctionnelException {
         return ResponseEntity.ok().body(loginService.login(loginDTO));
     }
 

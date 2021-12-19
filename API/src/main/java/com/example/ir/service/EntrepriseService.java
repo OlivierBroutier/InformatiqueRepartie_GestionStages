@@ -1,9 +1,9 @@
 package com.example.ir.service;
 
+import com.example.ir.config.FonctionnelException;
 import com.example.ir.entity.Entreprise;
 import com.example.ir.config.ErrorEnum;
 import com.example.ir.repository.EntrepriseRepository;
-import com.example.ir.repository.StageRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,10 +22,10 @@ public class EntrepriseService {
         return entrepriseRepository.findAll();
     }
 
-    public Entreprise findById(Integer id) throws Exception {
+    public Entreprise findById(Integer id) throws FonctionnelException {
         Optional<Entreprise> oEntreprise = entrepriseRepository.findById(id);
         if (oEntreprise.isEmpty()) {
-            throw new Exception(ErrorEnum.ENTREPRISE_NOT_FOUND.getMessage());
+            throw new FonctionnelException(ErrorEnum.ENTREPRISE_NOT_FOUND);
         }
 
         return oEntreprise.get();
@@ -35,10 +35,10 @@ public class EntrepriseService {
         return entrepriseRepository.save(entreprise);
     }
 
-    public Entreprise update(Integer id, Entreprise entreprise) throws Exception {
+    public Entreprise update(Integer id, Entreprise entreprise) throws FonctionnelException {
         Optional<Entreprise> oEntreprise = entrepriseRepository.findById(id);
         if (oEntreprise.isEmpty()) {
-            throw new Exception(ErrorEnum.ENTREPRISE_NOT_FOUND.getMessage());
+            throw new FonctionnelException(ErrorEnum.ENTREPRISE_NOT_FOUND);
         }
 
         return entrepriseRepository.save(entreprise);

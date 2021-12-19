@@ -1,0 +1,3 @@
+<ng-container *ngFor="let alert of alerts">
+    <app-aux-alert [ogiAlert]="alert" (closeEvent)="onAlertClose($event)"></app-aux-alert>
+</ng-container>

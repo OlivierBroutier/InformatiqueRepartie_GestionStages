@@ -1,5 +1,6 @@
 package com.example.ir.rest;
 
+import com.example.ir.config.FonctionnelException;
 import com.example.ir.entity.Etudiant;
 import com.example.ir.service.EtudiantService;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +27,7 @@ public class EtudiantController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Etudiant> findById(@PathVariable(name = "id") Integer id) throws Exception {
+    public ResponseEntity<Etudiant> findById(@PathVariable(name = "id") Integer id) throws FonctionnelException {
         return ResponseEntity.ok().body(etudiantService.findById(id));
     }
 

@@ -1,0 +1,14 @@
+<div class="aux-alert-header">
+    <div class="title">
+        <img src="assets/img/alert-error.svg"/>
+        <h4>Erreur</h4>
+    </div>
+    <button (click)="onClose()" class="button-close">X</button>
+</div>
+<div class="aux-alert-body">
+    <p *ngIf="error.message">{{ error.message }}</p>
+    <div class="sub-details">
+        <p *ngIf="error.code"><span>Code</span>{{ error.code }}</p>
+        <p *ngIf="error.details"><span>Details</span>{{ error.details }}</p>
+    </div>
+</div>
