@@ -12,6 +12,7 @@ import { AlertComponent } from './shared/component/alert/alert.component';
 import { AuxAlertComponent } from './shared/component/alert/aux-alert/aux-alert.component';
 import { AuxAlertErrorComponent } from './shared/component/alert/aux-alert/aux-alert-error/aux-alert-error.component';
 import { HttpDefaultInterceptor } from './shared/inteceptor/http-default.interceptor';
+import { StageComponent } from './stage/stage.component';
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import { HttpDefaultInterceptor } from './shared/inteceptor/http-default.interce
         HomeComponent,
         AlertComponent,
         AuxAlertComponent,
-        AuxAlertErrorComponent
+        AuxAlertErrorComponent,
+        StageComponent
     ],
     imports: [
         BrowserModule,
