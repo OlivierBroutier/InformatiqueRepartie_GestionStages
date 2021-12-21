@@ -2,6 +2,7 @@ package com.example.ir.service;
 
 import com.example.ir.config.ErrorEnum;
 import com.example.ir.config.FonctionnelException;
+import com.example.ir.entity.Entreprise;
 import com.example.ir.entity.Stage;
 import com.example.ir.repository.StageRepository;
 import org.springframework.stereotype.Service;
@@ -13,9 +14,11 @@ import java.util.Optional;
 public class StageService {
 
     private StageRepository stage_repository;
+    private EntrepriseService entrepriseService;
 
-    public StageService(StageRepository stage_repository) {
+    public StageService(StageRepository stage_repository, EntrepriseService entrepriseService) {
         this.stage_repository = stage_repository;
+        this.entrepriseService = entrepriseService;
     }
 
     public List<Stage> findAll() {
@@ -28,5 +31,11 @@ public class StageService {
             throw new FonctionnelException(ErrorEnum.STAGE_NOT_FOUND);
         }
         return o.get();
+    }
+
+    public List<Stage> findStagesByEntrepriseId(int id) throws FonctionnelException {
+        Entreprise entreprise = entrepriseService.findById(id);
+        return stage_repository.findAllByEntreprise(entreprise);
+
     }
 }

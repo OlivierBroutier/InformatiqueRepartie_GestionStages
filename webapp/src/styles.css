@@ -5,6 +5,7 @@ html, body
 
 body
 {
+    display : flex;
     margin: 0px;
     background-color: #EEE;
     font-family: 'Courier New', verdana;
@@ -195,4 +196,8 @@ article h2
 
 .main-container {
     display: flex;
+}
+
+th {
+    white-space: nowrap;
 }

@@ -15,4 +15,8 @@ export class StageService {
     public findAllStage() : Promise<Stage[]> {
         return this.httpClient.get<Stage[]>(this.apiUrl + 'stage').toPromise();
     }
+
+    public findStageByEntrepriseId(id: string) : Promise<Stage[]>{
+        return this.httpClient.get<Stage[]>(this.apiUrl + 'stage/entreprise/'+id).toPromise();
+    }
 }

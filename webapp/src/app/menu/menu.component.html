@@ -11,7 +11,7 @@
             <li>
                 <a [routerLink]="'/entreprise'" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
                     <span class="glyphicon glyphicon-list"></span>
-                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Entreprise</span> </a>
+                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline"> Entreprise</span> </a>
                 <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                 </ul>
             </li>
@@ -19,19 +19,19 @@
             <li *ngIf="userIsProfesseur">
                 <a [routerLink]="'/stagiaire'" class="nav-link px-0 align-middle">
                     <span class="glyphicon glyphicon-user"></span>
-                    <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Stagiaire</span></a>
+                    <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline"> Stagiaire</span></a>
             </li>
 
             <li *ngIf="userIsProfesseur">
                 <a [routerLink]="'/stage'" class="nav-link px-0 align-middle">
                     <span class="glyphicon glyphicon-user"></span>
-                    <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Stage</span></a>
+                    <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline"> Stage</span></a>
             </li>
 
             <li>
                 <a [routerLink]="'/inscription'" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
                     <span class="glyphicon glyphicon-edit"></span>
-                    <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Inscription</span></a>
+                    <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline"> Inscription</span></a>
                 <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
                 </ul>
             </li>
@@ -39,13 +39,13 @@
             <li>
                 <a [routerLink]="'/aide'" class="nav-link px-0 align-middle">
                     <span class="glyphicon glyphicon-question-sign"></span>
-                    <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Aide</span> </a>
+                    <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline"> Aide</span> </a>
             </li>
 
             <li *ngIf="isLoggedIn">
                 <a (click)="disconnect()" class="nav-link px-0 align-middle">
                     <span class="glyphicon glyphicon-log-out"></span>
-                    <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Déconnexion</span> </a>
+                    <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline"> Déconnexion</span> </a>
             </li>
         </ul>
 

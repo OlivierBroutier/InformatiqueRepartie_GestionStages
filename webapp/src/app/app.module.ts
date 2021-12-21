@@ -13,6 +13,8 @@ import { AuxAlertComponent } from './shared/component/alert/aux-alert/aux-alert.
 import { AuxAlertErrorComponent } from './shared/component/alert/aux-alert/aux-alert-error/aux-alert-error.component';
 import { HttpDefaultInterceptor } from './shared/inteceptor/http-default.interceptor';
 import { StageComponent } from './stage/stage.component';
+import { EntrepriseComponent } from './entreprise/entreprise.component';
+import { EntrepriseDetailComponent } from './entreprise/entreprise-detail/entreprise-detail.component';
 
 @NgModule({
     declarations: [
@@ -23,7 +25,9 @@ import { StageComponent } from './stage/stage.component';
         AlertComponent,
         AuxAlertComponent,
         AuxAlertErrorComponent,
-        StageComponent
+        StageComponent,
+        EntrepriseComponent,
+        EntrepriseDetailComponent
     ],
     imports: [
         BrowserModule,

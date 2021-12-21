@@ -1,4 +1,30 @@
-<div *ngFor="let stage of stages">
-    <span>ID: {{ stage.id }}</span>
-    <span>Description: {{ stage.descProjet }}</span>
-</div>
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th scope="col">Identifiant</th>
+        <th scope="col">Date de début</th>
+        <th scope="col">Date de fin</th>
+        <th scope="col">Type</th>
+        <th scope="col">Description</th>
+        <th scope="col">Observation</th>
+        <th scope="col">Etudiant</th>
+        <th scope="col">Professeur</th>
+        <th scope="col">Entreprise</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let stage of stages">
+        <td>{{ stage.id }} </td>
+        <td>{{ stage.debutStage |  date: 'dd/MM/yyyy'}}  </td>
+        <td>{{ stage.finStage |  date: 'dd/MM/yyyy'}}  </td>
+        <td>{{ stage.typeStage }} </td>
+        <td [innerHTML]="stage.descProjet"></td>
+        <td>{{ stage.observationStage }} </td>
+        <td>{{ stage.etudiant?.nomEtudiant }} {{ stage.etudiant?.prenomEtudiant }} </td>
+        <td>{{ stage.professeur?.nomProf }} {{ stage.professeur?.prenomProf }} </td>
+        <td>{{ stage.entreprise?.raisonSociale}} </td>
+    </tr>
+    </tbody>
+</table>
+
+

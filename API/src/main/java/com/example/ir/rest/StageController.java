@@ -30,4 +30,9 @@ public class StageController {
         return stage_service.findAllById(id);
     }
 
+    @GetMapping(value="entreprise/{id_entreprise}")
+    public List<Stage> findStageByEntrepriseId(@PathVariable(name="id_entreprise") int id) throws FonctionnelException {
+        return stage_service.findStagesByEntrepriseId(id);
+    }
+
 }
