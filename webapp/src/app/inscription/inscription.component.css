@@ -1,0 +1,12 @@
+form {
+    padding: 0 10px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+.grid input {
+    width: min-content;
+}

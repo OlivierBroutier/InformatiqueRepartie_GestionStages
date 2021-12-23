@@ -15,6 +15,8 @@ import { HttpDefaultInterceptor } from './shared/inteceptor/http-default.interce
 import { StageComponent } from './stage/stage.component';
 import { EntrepriseComponent } from './entreprise/entreprise.component';
 import { EntrepriseDetailComponent } from './entreprise/entreprise-detail/entreprise-detail.component';
+import { AjoutEntrepriseComponent } from './entreprise/entreprise-ajout/ajout-entreprise.component';
+import { InscriptionComponent } from './inscription/inscription.component';
 
 @NgModule({
     declarations: [
@@ -27,7 +29,9 @@ import { EntrepriseDetailComponent } from './entreprise/entreprise-detail/entrep
         AuxAlertErrorComponent,
         StageComponent,
         EntrepriseComponent,
-        EntrepriseDetailComponent
+        EntrepriseDetailComponent,
+        AjoutEntrepriseComponent,
+        InscriptionComponent
     ],
     imports: [
         BrowserModule,

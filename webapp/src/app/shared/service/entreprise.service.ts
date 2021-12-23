@@ -19,4 +19,12 @@ export class EntrepriseService {
     public findEntrepriseById(id: string) : Promise<Entreprise> {
         return this.httpClient.get<Entreprise>(this.apiUrl + 'entreprise/'+id).toPromise();
     }
+
+    public ajoutEntreprise(entreprise: Entreprise) : Promise<Entreprise> {
+        return this.httpClient.post<Entreprise>(this.apiUrl+'entreprise', entreprise).toPromise();
+    }
+
+    public updateEntreprise(entreprise: Entreprise): Promise<Entreprise> {
+        return this.httpClient.put<Entreprise>(this.apiUrl + 'entreprise/' + entreprise.id, entreprise).toPromise();
+    }
 }

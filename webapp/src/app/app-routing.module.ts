@@ -6,6 +6,10 @@ import { LoginComponent } from './login/login.component';
 import { StageComponent } from './stage/stage.component';
 import { EntrepriseComponent } from './entreprise/entreprise.component';
 import {EntrepriseDetailComponent} from "./entreprise/entreprise-detail/entreprise-detail.component";
+import {AjoutEntrepriseComponent} from "./entreprise/entreprise-ajout/ajout-entreprise.component";
+import {InscriptionComponent} from "./inscription/inscription.component";
+
+
 
 
 const routes: Routes = [
@@ -15,8 +19,11 @@ const routes: Routes = [
     { path: 'stage', component: StageComponent },
     { path: 'entreprise', children: [
             { path: '', pathMatch: 'full', component: EntrepriseComponent },
-            { path: ':idEntreprise', component: EntrepriseDetailComponent }
+            { path: 'ajout', component: AjoutEntrepriseComponent },
+            { path: ':idEntreprise', component: EntrepriseDetailComponent },
+
         ] },
+    { path: 'inscription', component : InscriptionComponent}
 
 ];
 

@@ -5,3 +5,9 @@ button:nth-child(n + 2) {
 .icone:nth-child(n+2) {
     margin-left : 10px;
 }
+
+.boutons {
+    display: flex;
+    align-items: center;
+}
+
