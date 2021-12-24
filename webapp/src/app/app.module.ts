@@ -18,6 +18,7 @@ import { EntrepriseDetailComponent } from './entreprise/entreprise-detail/entrep
 import { AjoutEntrepriseComponent } from './entreprise/entreprise-ajout/ajout-entreprise.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { AideComponent } from './aide/aide.component';
+import { AuxAlertSuccessComponent } from './shared/component/alert/aux-alert/aux-alert-success/aux-alert-success.component';
 
 @NgModule({
     declarations: [
