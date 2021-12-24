@@ -8,6 +8,7 @@ import { EntrepriseComponent } from './entreprise/entreprise.component';
 import {EntrepriseDetailComponent} from "./entreprise/entreprise-detail/entreprise-detail.component";
 import {AjoutEntrepriseComponent} from "./entreprise/entreprise-ajout/ajout-entreprise.component";
 import {InscriptionComponent} from "./inscription/inscription.component";
+import {AideComponent} from "./aide/aide.component";
 
 
 
@@ -23,7 +24,8 @@ const routes: Routes = [
             { path: ':idEntreprise', component: EntrepriseDetailComponent },
 
         ] },
-    { path: 'inscription', component : InscriptionComponent}
+    { path: 'inscription', component : InscriptionComponent},
+    { path: 'aide', component : AideComponent}
 
 ];
 
