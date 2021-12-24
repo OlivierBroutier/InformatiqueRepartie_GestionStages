@@ -17,6 +17,7 @@ import { EntrepriseComponent } from './entreprise/entreprise.component';
 import { EntrepriseDetailComponent } from './entreprise/entreprise-detail/entreprise-detail.component';
 import { AjoutEntrepriseComponent } from './entreprise/entreprise-ajout/ajout-entreprise.component';
 import { InscriptionComponent } from './inscription/inscription.component';
+import { AideComponent } from './aide/aide.component';
 
 @NgModule({
     declarations: [
@@ -31,7 +32,8 @@ import { InscriptionComponent } from './inscription/inscription.component';
         EntrepriseComponent,
         EntrepriseDetailComponent,
         AjoutEntrepriseComponent,
-        InscriptionComponent
+        InscriptionComponent,
+        AideComponent
     ],
     imports: [
         BrowserModule,
