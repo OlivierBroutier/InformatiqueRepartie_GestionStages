@@ -19,6 +19,9 @@ export class InscriptionComponent implements OnInit {
     public etudiants: Etudiant[] = [];
     public professeurs: Professeur[] = [];
     public stage : Stage = {};
+    public type_stage: undefined ;
+    public date_debut: string= '';
+    public date_fin : string= '';
 
     constructor(
         private entrepriseService : EntrepriseService,
@@ -34,7 +37,7 @@ export class InscriptionComponent implements OnInit {
 
         this.stage.professeur = this.authentificationService.professeur;
         this.stage.entreprise = window.history.state.entreprise;
-    }
+            }
 
     public compare(a: any, b: any): boolean {
         return a && b ? a.id === b.id : a === b
