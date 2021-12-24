@@ -28,15 +28,15 @@
     <div class="form-row">
         <div class="form-group col-md-12 grid">
             <label for="date_debut_stage">Date de début du stage* :</label>
-            <input type="date" name="date_debut_stage" id="date_debut_stage" [(ngModel)]="date_debut" required >
+            <input type="date" name="date_debut_stage" id="date_debut_stage" [(ngModel)]="stage.debutStage" required >
         </div>
         <div class="form-group col-md-12 grid">
             <label for="date_fin_stage">Date de fin du stage* :</label>
-            <input type="date" id="date_fin_stage" name="date_fin_stage"  [(ngModel)]="date_fin" required>
+            <input type="date" id="date_fin_stage" name="date_fin_stage"  [(ngModel)]="stage.finStage" required>
         </div>
         <div class="form-group col-md-12">
             <label>Type de stage* :</label>
-            <select class="custom-select custom-select-lg mb-3" name="type_stage" [(ngModel)]="type_stage"  required>
+            <select class="custom-select custom-select-lg mb-3" name="type_stage" [(ngModel)]="stage.typeStage"  required>
                 <option [ngValue]="undefined">Choisissez un type de stage</option>
                 <option ngValue="aucun">Aucun</option>
                 <option ngValue="alternance">Alternance</option>
@@ -45,15 +45,15 @@
         </div>
         <div class="form-group col-md-12">
         <label for="description">Description du projet :</label>
-        <textarea class="form-control"   id="description" name="description"></textarea>
+        <textarea class="form-control"   id="description" name="description"  [(ngModel)]="stage.descProjet"></textarea>
         </div>
         <div class="form-group col-md-12">
             <label for="observation">Observation :</label>
-            <textarea class="form-control"   id="observation" name="observation"></textarea>
+            <textarea class="form-control"   id="observation" name="observation" [(ngModel)]="stage.observationStage"></textarea>
         </div>
     </div>
     <div style="text-align: center">
-        <button class="btn btn-primary" [disabled]="!f.valid">  Valider l'inscription </button>
+        <button (click)="valider()" class="btn btn-primary" [disabled]="!f.valid">  Valider l'inscription </button>
     </div>
 
 

@@ -7,6 +7,7 @@ import {Professeur} from "../model/professeur.model";
 import {ProfesseurService} from "../shared/service/professeur.service";
 import {Stage} from "../model/stage.model";
 import {AuthentificationService} from "../shared/authentification.service";
+import {StageService} from "../shared/service/stage.service";
 
 @Component({
     selector: 'app-inscription',
@@ -22,19 +23,20 @@ export class InscriptionComponent implements OnInit {
     public type_stage: undefined ;
     public date_debut: string= '';
     public date_fin : string= '';
+    public stage_resultat? : Stage;
 
     constructor(
         private entrepriseService : EntrepriseService,
         private etudiantService : EtudiantService,
         private professeurService : ProfesseurService,
-        private authentificationService: AuthentificationService
+        private authentificationService: AuthentificationService,
+        private stageService : StageService
     ) { }
 
     async ngOnInit(): Promise<void> {
         this.entreprises = await this.entrepriseService.findAllEntreprise();
         this.etudiants = await this.etudiantService.findAllEtudiant();
         this.professeurs = await this.professeurService.findAllProfesseur();
-
         this.stage.professeur = this.authentificationService.professeur;
         this.stage.entreprise = window.history.state.entreprise;
             }
@@ -42,5 +44,11 @@ export class InscriptionComponent implements OnInit {
     public compare(a: any, b: any): boolean {
         return a && b ? a.id === b.id : a === b
     }
+
+    public async valider(): Promise<void> {
+        this.stage_resultat = await this.stageService.ajoutStage(this.stage);
+
+    }
+
 
 }

@@ -38,4 +38,8 @@ public class StageService {
         return stage_repository.findAllByEntreprise(entreprise);
 
     }
+
+    public Stage create(Stage stage) {
+        return stage_repository.save(stage);
+    }
 }

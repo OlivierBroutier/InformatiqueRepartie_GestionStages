@@ -19,4 +19,8 @@ export class StageService {
     public findStageByEntrepriseId(id: string) : Promise<Stage[]>{
         return this.httpClient.get<Stage[]>(this.apiUrl + 'stage/entreprise/'+id).toPromise();
     }
+
+    public ajoutStage(stage: Stage) : Promise<Stage> {
+        return this.httpClient.post<Stage>(this.apiUrl + 'stage',stage).toPromise();
+    }
 }
