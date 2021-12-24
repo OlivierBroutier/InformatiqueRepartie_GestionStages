@@ -17,6 +17,7 @@ import { EntrepriseComponent } from './entreprise/entreprise.component';
 import { EntrepriseDetailComponent } from './entreprise/entreprise-detail/entreprise-detail.component';
 import { AjoutEntrepriseComponent } from './entreprise/entreprise-ajout/ajout-entreprise.component';
 import { InscriptionComponent } from './inscription/inscription.component';
+import { AuxAlertSuccessComponent } from './shared/component/alert/aux-alert/aux-alert-success/aux-alert-success.component';
 
 @NgModule({
     declarations: [
@@ -26,6 +27,7 @@ import { InscriptionComponent } from './inscription/inscription.component';
         HomeComponent,
         AlertComponent,
         AuxAlertComponent,
+        AuxAlertSuccessComponent,
         AuxAlertErrorComponent,
         StageComponent,
         EntrepriseComponent,

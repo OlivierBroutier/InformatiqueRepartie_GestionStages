@@ -28,14 +28,3 @@ export class OgiError extends OgiAlert {
         this.details = details;
     }
 }
-
-export class OgiWarning extends OgiAlert {
-    code?: string;
-    details?: string;
-
-    constructor(name?: string, message?: string, code?: string, details?: string) {
-        super(AuxAlertEnum.WARNING, name, message);
-        this.code = code;
-        this.details = details;
-    }
-}

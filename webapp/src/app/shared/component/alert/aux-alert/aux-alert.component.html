@@ -1,1 +1,4 @@
-<app-aux-alert-error [ogiAlert]="ogiAlert" (closeEvent)="onClose($event)"></app-aux-alert-error>
+<ng-container [ngSwitch]="ogiAlert.type">
+    <app-aux-alert-success *ngSwitchCase="auxAlertEnum.SUCCESS" [ogiAlert]="ogiAlert" (closeEvent)="onClose($event)"></app-aux-alert-success>
+    <app-aux-alert-error *ngSwitchCase="auxAlertEnum.ERROR" [ogiAlert]="ogiAlert" (closeEvent)="onClose($event)"></app-aux-alert-error>
+</ng-container>

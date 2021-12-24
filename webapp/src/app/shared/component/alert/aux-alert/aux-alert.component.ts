@@ -13,6 +13,8 @@ export class AuxAlertComponent implements OnInit {
 
     @Output() closeEvent: EventEmitter<OgiAlert> = new EventEmitter<OgiAlert>();
 
+    public auxAlertEnum = AuxAlertEnum;
+
     constructor() { }
 
     ngOnInit(): void {

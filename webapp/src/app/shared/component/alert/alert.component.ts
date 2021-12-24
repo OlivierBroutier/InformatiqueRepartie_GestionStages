@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OgiAlert } from '../../model/ogi-alert.model';
 import { ErrorService } from '../../service/error.service';
+import { SuccessService } from '../../service/success.service';
 
 @Component({
     selector: 'app-alert',
@@ -12,10 +13,14 @@ export class AlertComponent implements OnInit {
     public alerts: OgiAlert[] = [];
 
     constructor(
+        private readonly successService: SuccessService,
         private readonly errorService: ErrorService
     ) { }
 
     ngOnInit(): void {
+        this.successService.success.subscribe((success: any) => {
+            this.addAlert(success);
+        });
         this.errorService.error.subscribe((error: any) => {
             this.addAlert(error);
         });
