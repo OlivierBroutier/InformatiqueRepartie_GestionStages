@@ -11,7 +11,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.io.Serializable;
-import java.time.Instant;
+import java.time.LocalDate;
 
 @Table(name = "stage", indexes = {
         @Index(name = "num_prof", columnList = "num_prof"),
@@ -27,10 +27,10 @@ public class Stage implements Serializable {
     private Integer id;
 
     @Column(name = "debut_stage", nullable = false)
-    private Instant debutStage;
+    private LocalDate debutStage;
 
     @Column(name = "fin_stage", nullable = false)
-    private Instant finStage;
+    private LocalDate finStage;
 
     @Column(name = "type_stage", length = 128)
     private String typeStage;
@@ -103,19 +103,19 @@ public class Stage implements Serializable {
         this.typeStage = typeStage;
     }
 
-    public Instant getFinStage() {
+    public LocalDate getFinStage() {
         return finStage;
     }
 
-    public void setFinStage(Instant finStage) {
+    public void setFinStage(LocalDate finStage) {
         this.finStage = finStage;
     }
 
-    public Instant getDebutStage() {
+    public LocalDate getDebutStage() {
         return debutStage;
     }
 
-    public void setDebutStage(Instant debutStage) {
+    public void setDebutStage(LocalDate debutStage) {
         this.debutStage = debutStage;
     }
 
