@@ -27,4 +27,8 @@ export class EntrepriseService {
     public updateEntreprise(entreprise: Entreprise): Promise<Entreprise> {
         return this.httpClient.put<Entreprise>(this.apiUrl + 'entreprise/' + entreprise.id, entreprise).toPromise();
     }
+
+    public deleteEntreprise(id : string) : Promise<void> {
+        return this.httpClient.delete<void>(this.apiUrl + 'entreprise/'+ id).toPromise();
+    }
 }

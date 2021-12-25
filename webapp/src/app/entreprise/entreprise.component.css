@@ -3,7 +3,7 @@ button:nth-child(n + 2) {
 }
 
 .icone:nth-child(n+2) {
-    margin-left : 10px;
+    margin-left : 6px;
 }
 
 .boutons {

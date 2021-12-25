@@ -44,4 +44,8 @@ public class EntrepriseService {
         return entrepriseRepository.save(entreprise);
     }
 
+    public boolean delete(Integer id) {
+      entrepriseRepository.deleteById(id);
+      return true;
+    }
 }
