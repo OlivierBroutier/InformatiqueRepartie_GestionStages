@@ -19,6 +19,7 @@ import { AjoutEntrepriseComponent } from './entreprise/entreprise-ajout/ajout-en
 import { InscriptionComponent } from './inscription/inscription.component';
 import { AideComponent } from './aide/aide.component';
 import { AuxAlertSuccessComponent } from './shared/component/alert/aux-alert/aux-alert-success/aux-alert-success.component';
+import { StagiaireComponent } from './stagiaire/stagiaire.component';
 
 @NgModule({
     declarations: [
@@ -35,7 +36,8 @@ import { AuxAlertSuccessComponent } from './shared/component/alert/aux-alert/aux
         EntrepriseDetailComponent,
         AjoutEntrepriseComponent,
         InscriptionComponent,
-        AideComponent
+        AideComponent,
+        StagiaireComponent
     ],
     imports: [
         BrowserModule,

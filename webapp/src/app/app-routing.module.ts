@@ -9,6 +9,7 @@ import {EntrepriseDetailComponent} from "./entreprise/entreprise-detail/entrepri
 import {AjoutEntrepriseComponent} from "./entreprise/entreprise-ajout/ajout-entreprise.component";
 import {InscriptionComponent} from "./inscription/inscription.component";
 import {AideComponent} from "./aide/aide.component";
+import {StagiaireComponent} from "./stagiaire/stagiaire.component";
 
 
 
@@ -25,7 +26,8 @@ const routes: Routes = [
 
         ] },
     { path: 'inscription', component : InscriptionComponent},
-    { path: 'aide', component : AideComponent}
+    { path: 'aide', component : AideComponent},
+    { path: 'stagiaire', component: StagiaireComponent}
 
 ];
 
