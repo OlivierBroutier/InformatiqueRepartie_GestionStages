@@ -2,12 +2,16 @@ package com.example.ir.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Table(name = "entreprise")
 @Entity
@@ -57,6 +61,9 @@ public class Entreprise implements Serializable {
 
     @Column(name = "en_activite", nullable = false)
     private Boolean enActivite = false;
+
+    @OneToMany(mappedBy = "etudiant", fetch = FetchType.LAZY)
+    private List<Stage> stages = new ArrayList<>();
 
     public Boolean getEnActivite() {
         return enActivite;
@@ -170,4 +177,11 @@ public class Entreprise implements Serializable {
         this.id = id;
     }
 
+    public List<Stage> getStages() {
+        return stages;
+    }
+
+    public void setStages(List<Stage> stages) {
+        this.stages = stages;
+    }
 }

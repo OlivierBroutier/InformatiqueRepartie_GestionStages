@@ -1,5 +1,6 @@
 package com.example.ir.rest;
 
+import com.example.ir.dto.ProfesseurDTO;
 import com.example.ir.entity.Professeur;
 import com.example.ir.service.ProfesseurService;
 import org.springframework.http.ResponseEntity;
@@ -20,8 +21,8 @@ public class ProfesseurController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Professeur>> findAll() {
-        return ResponseEntity.ok().body(professeurService.findAll());
+    public ResponseEntity<List<ProfesseurDTO>> findAll() {
+        return ResponseEntity.ok().body(professeurService.findAllDTO());
     }
 
 }

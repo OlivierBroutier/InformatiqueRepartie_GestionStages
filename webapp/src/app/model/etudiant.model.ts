@@ -1,4 +1,5 @@
 import { Classe } from './classe.model';
+import { Stage } from './stage.model';
 
 export interface Etudiant {
     id?: number;
@@ -6,7 +7,7 @@ export interface Etudiant {
     prenomEtudiant?: string;
     anneeObtention?: string;
     login?: string;
-    mdp?: string;
     classe?: Classe;
     enActivite?: boolean;
+    stages?: Stage[];
 }

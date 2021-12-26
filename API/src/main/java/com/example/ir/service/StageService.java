@@ -2,8 +2,10 @@ package com.example.ir.service;
 
 import com.example.ir.config.ErrorEnum;
 import com.example.ir.config.FonctionnelException;
+import com.example.ir.dto.StageDTO;
 import com.example.ir.entity.Entreprise;
 import com.example.ir.entity.Stage;
+import com.example.ir.mapper.StageMapper;
 import com.example.ir.repository.StageRepository;
 import org.springframework.stereotype.Service;
 
@@ -13,33 +15,43 @@ import java.util.Optional;
 @Service
 public class StageService {
 
-    private StageRepository stage_repository;
-    private EntrepriseService entrepriseService;
+    private final StageRepository stageRepository;
+    private final StageMapper stageMapper;
+    private final EntrepriseService entrepriseService;
 
-    public StageService(StageRepository stage_repository, EntrepriseService entrepriseService) {
-        this.stage_repository = stage_repository;
+    public StageService(StageRepository stageRepository, StageMapper stageMapper, EntrepriseService entrepriseService) {
+        this.stageRepository = stageRepository;
+        this.stageMapper = stageMapper;
         this.entrepriseService = entrepriseService;
     }
 
     public List<Stage> findAll() {
-        return stage_repository.findAll();
+        return stageRepository.findAll();
     }
 
-    public Stage findAllById(int id) throws FonctionnelException {
-        Optional<Stage> o = stage_repository.findById(id);
+    public List<StageDTO> findAllDTO() {
+        return stageMapper.toListDTO(findAll());
+    }
+
+    public Stage findById(Integer id) throws FonctionnelException {
+        Optional<Stage> o = stageRepository.findById(id);
         if (o.isEmpty()) {
             throw new FonctionnelException(ErrorEnum.STAGE_NOT_FOUND);
         }
         return o.get();
     }
 
-    public List<Stage> findStagesByEntrepriseId(int id) throws FonctionnelException {
+    public StageDTO findByIdDTO(Integer id) throws FonctionnelException {
+        return stageMapper.toDTO(findById(id));
+    }
+
+    public List<StageDTO> findStagesByEntrepriseId(Integer id) throws FonctionnelException {
         Entreprise entreprise = entrepriseService.findById(id);
-        return stage_repository.findAllByEntreprise(entreprise);
+        return stageMapper.toListDTO(stageRepository.findAllByEntreprise(entreprise));
 
     }
 
-    public Stage create(Stage stage) {
-        return stage_repository.save(stage);
+    public StageDTO create(StageDTO stage) {
+        return stageMapper.toDTO(stageRepository.save(stageMapper.toBO(stage)));
     }
 }

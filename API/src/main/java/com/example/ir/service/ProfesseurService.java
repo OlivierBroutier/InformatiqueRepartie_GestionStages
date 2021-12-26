@@ -1,6 +1,10 @@
 package com.example.ir.service;
 
+import com.example.ir.config.ErrorEnum;
+import com.example.ir.config.FonctionnelException;
+import com.example.ir.dto.ProfesseurDTO;
 import com.example.ir.entity.Professeur;
+import com.example.ir.mapper.ProfesseurMapper;
 import com.example.ir.repository.ProfesseurRepository;
 import org.springframework.stereotype.Service;
 
@@ -11,17 +15,27 @@ import java.util.Optional;
 public class ProfesseurService {
 
     private final ProfesseurRepository professeurRepository;
+    private final ProfesseurMapper professeurMapper;
 
-    public ProfesseurService(ProfesseurRepository professeurRepository) {
+    public ProfesseurService(ProfesseurRepository professeurRepository, ProfesseurMapper professeurMapper) {
         this.professeurRepository = professeurRepository;
+        this.professeurMapper = professeurMapper;
     }
 
     public List<Professeur> findAll() {
         return professeurRepository.findAll();
     }
 
-    public Optional<Professeur> findByLoginAndPassword(String login, String password) {
-        return professeurRepository.findByLoginAndMdp(login, password);
+    public List<ProfesseurDTO> findAllDTO() {
+        return professeurMapper.toListDTO(findAll());
+    }
+
+    public ProfesseurDTO findByLoginAndPassword(String login, String password) throws FonctionnelException {
+        Optional<Professeur> oProfesseur = professeurRepository.findByLoginAndMdp(login, password);
+        if (oProfesseur.isEmpty()) {
+            throw new FonctionnelException(ErrorEnum.PROFESSEUR_WITH_LOGIN_NOT_FOUND);
+        }
+        return professeurMapper.toDTO(oProfesseur.get());
     }
 
 }

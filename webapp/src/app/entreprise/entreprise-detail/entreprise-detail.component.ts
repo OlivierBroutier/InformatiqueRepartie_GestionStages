@@ -13,10 +13,9 @@ import {StageService} from "../../shared/service/stage.service";
 export class EntrepriseDetailComponent implements OnInit {
 
     public entreprise?: Entreprise;
-    public stages? : Stage[] = [];
 
     constructor(
-        private activatedRoute: ActivatedRoute, private entrepriseService : EntrepriseService, private stageService : StageService
+        private activatedRoute: ActivatedRoute, private entrepriseService : EntrepriseService
     ) { }
 
     ngOnInit(): void {
@@ -24,9 +23,12 @@ export class EntrepriseDetailComponent implements OnInit {
             const id = p.get('idEntreprise');
             if (id) {
                 this.entreprise = await this.entrepriseService.findEntrepriseById(id);
-                this.stages = await this.stageService.findStageByEntrepriseId(id);
             }
         });
+    }
+
+    get stages(): Stage[] {
+        return this.entreprise?.stages ?? [];
     }
 
 }

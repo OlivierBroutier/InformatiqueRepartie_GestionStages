@@ -1,4 +1,4 @@
-package com.example.ir.entity.dto;
+package com.example.ir.dto;
 
 import java.io.Serializable;
 

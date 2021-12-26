@@ -1,7 +1,7 @@
 package com.example.ir.rest;
 
 import com.example.ir.config.FonctionnelException;
-import com.example.ir.entity.Etudiant;
+import com.example.ir.dto.EtudiantDTO;
 import com.example.ir.service.EtudiantService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,13 +22,13 @@ public class EtudiantController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Etudiant>> findAll() {
-        return ResponseEntity.ok().body(etudiantService.findAll());
+    public ResponseEntity<List<EtudiantDTO>> findAll() {
+        return ResponseEntity.ok().body(etudiantService.findAllDTO());
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Etudiant> findById(@PathVariable(name = "id") Integer id) throws FonctionnelException {
-        return ResponseEntity.ok().body(etudiantService.findById(id));
+    public ResponseEntity<EtudiantDTO> findById(@PathVariable(name = "id") Integer id) throws FonctionnelException {
+        return ResponseEntity.ok().body(etudiantService.findByIdDTO(id));
     }
 
 }
