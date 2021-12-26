@@ -1,6 +1,7 @@
 package com.example.ir.rest;
 
 import com.example.ir.config.FonctionnelException;
+import com.example.ir.dto.EntrepriseDTO;
 import com.example.ir.entity.Entreprise;
 import com.example.ir.service.EntrepriseService;
 import org.springframework.http.ResponseEntity;
@@ -20,22 +21,22 @@ public class EntrepriseController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Entreprise>> findAll() {
+    public ResponseEntity<List<EntrepriseDTO>> findAll() {
         return ResponseEntity.ok().body(entrepriseService.findAll());
     }
 
     @GetMapping(value="{id}")
-    public ResponseEntity<Entreprise> findById(@PathVariable(name="id") Integer id) throws FonctionnelException {
-        return ResponseEntity.ok().body(entrepriseService.findById(id));
+    public ResponseEntity<EntrepriseDTO> findById(@PathVariable(name="id") Integer id) throws FonctionnelException {
+        return ResponseEntity.ok().body(entrepriseService.findByIdDTO(id));
     }
 
     @PostMapping
-    public ResponseEntity<Entreprise> create(@RequestBody Entreprise entreprise) {
+    public ResponseEntity<EntrepriseDTO> create(@RequestBody EntrepriseDTO entreprise) {
         return ResponseEntity.ok().body(entrepriseService.create(entreprise));
     }
 
     @PutMapping(value = "{id}")
-    public ResponseEntity<Entreprise> update(@PathVariable(name = "id") Integer id, @RequestBody Entreprise entreprise) throws FonctionnelException {
+    public ResponseEntity<EntrepriseDTO> update(@PathVariable(name = "id") Integer id, @RequestBody EntrepriseDTO entreprise) throws FonctionnelException {
         if (!Objects.equals(id, entreprise.getId())) {
             return ResponseEntity.badRequest().build();
         }

@@ -1,6 +1,7 @@
 package com.example.ir.rest;
 
 import com.example.ir.config.FonctionnelException;
+import com.example.ir.dto.StageDTO;
 import com.example.ir.entity.Stage;
 import com.example.ir.service.StageService;
 import org.springframework.web.bind.annotation.*;
@@ -11,30 +12,30 @@ import java.util.List;
 @RequestMapping(value = "api/stage")
 public class StageController {
 
-    private StageService stage_service;
+    private final StageService stageService;
 
     public StageController(StageService stage_service) {
-        this.stage_service = stage_service;
+        this.stageService = stage_service;
     }
 
     @GetMapping
-    public List<Stage> findAll() {
-        return stage_service.findAll();
+    public List<StageDTO> findAll() {
+        return stageService.findAllDTO();
     }
 
     @GetMapping(value= "/{id}")
-    public Stage findStageById(@PathVariable(name = "id") int id) throws FonctionnelException {
-        return stage_service.findAllById(id);
+    public StageDTO findStageById(@PathVariable(name = "id") int id) throws FonctionnelException {
+        return stageService.findByIdDTO(id);
     }
 
     @GetMapping(value="entreprise/{id_entreprise}")
-    public List<Stage> findStageByEntrepriseId(@PathVariable(name="id_entreprise") int id) throws FonctionnelException {
-        return stage_service.findStagesByEntrepriseId(id);
+    public List<StageDTO> findStageByEntrepriseId(@PathVariable(name="id_entreprise") int id) throws FonctionnelException {
+        return stageService.findStagesByEntrepriseId(id);
     }
 
     @PostMapping
-    public Stage ajoutStage(@RequestBody Stage stage) {
-        return stage_service.create(stage);
+    public StageDTO ajoutStage(@RequestBody StageDTO stage) {
+        return stageService.create(stage);
 
     }
 

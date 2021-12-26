@@ -1,5 +1,6 @@
 package com.example.ir.rest;
 
+import com.example.ir.dto.SpecialiteDTO;
 import com.example.ir.entity.Specialite;
 import com.example.ir.service.SpecialiteService;
 import org.springframework.http.ResponseEntity;
@@ -20,8 +21,8 @@ public class SpecialiteController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Specialite>> findAll() {
-        return ResponseEntity.ok().body(specialiteService.findAll());
+    public ResponseEntity<List<SpecialiteDTO>> findAll() {
+        return ResponseEntity.ok().body(specialiteService.findAllDTO());
     }
 
 }

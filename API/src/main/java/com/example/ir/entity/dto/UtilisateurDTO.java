@@ -1,38 +1,38 @@
 package com.example.ir.entity.dto;
 
-import com.example.ir.entity.Etudiant;
-import com.example.ir.entity.Professeur;
+import com.example.ir.dto.EtudiantDTO;
+import com.example.ir.dto.ProfesseurDTO;
 
 import java.io.Serializable;
 
 public class UtilisateurDTO implements Serializable {
 
-    private Etudiant etudiant;
-    private Professeur professeur;
+    private EtudiantDTO etudiant;
+    private ProfesseurDTO professeur;
 
     public UtilisateurDTO() { }
 
-    public UtilisateurDTO(Etudiant etudiant) {
+    public UtilisateurDTO(EtudiantDTO etudiant) {
         this.etudiant = etudiant;
     }
 
-    public UtilisateurDTO(Professeur professeur) {
+    public UtilisateurDTO(ProfesseurDTO professeur) {
         this.professeur = professeur;
     }
 
-    public Etudiant getEtudiant() {
+    public EtudiantDTO getEtudiant() {
         return etudiant;
     }
 
-    public void setEtudiant(Etudiant etudiant) {
+    public void setEtudiant(EtudiantDTO etudiant) {
         this.etudiant = etudiant;
     }
 
-    public Professeur getProfesseur() {
+    public ProfesseurDTO getProfesseur() {
         return professeur;
     }
 
-    public void setProfesseur(Professeur professeur) {
+    public void setProfesseur(ProfesseurDTO professeur) {
         this.professeur = professeur;
     }
 }

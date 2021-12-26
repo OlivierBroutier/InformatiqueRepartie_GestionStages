@@ -1,8 +1,10 @@
 package com.example.ir.service;
 
 import com.example.ir.config.FonctionnelException;
+import com.example.ir.dto.EntrepriseDTO;
 import com.example.ir.entity.Entreprise;
 import com.example.ir.config.ErrorEnum;
+import com.example.ir.mapper.EntrepriseMapper;
 import com.example.ir.repository.EntrepriseRepository;
 import org.springframework.stereotype.Service;
 
@@ -13,13 +15,15 @@ import java.util.Optional;
 public class EntrepriseService {
 
     private final EntrepriseRepository entrepriseRepository;
+    private final EntrepriseMapper entrepriseMapper;
 
-    public EntrepriseService(EntrepriseRepository entrepriseRepository) {
+    public EntrepriseService(EntrepriseRepository entrepriseRepository, EntrepriseMapper entrepriseMapper) {
         this.entrepriseRepository = entrepriseRepository;
+        this.entrepriseMapper = entrepriseMapper;
     }
 
-    public List<Entreprise> findAll() {
-        return entrepriseRepository.findAll();
+    public List<EntrepriseDTO> findAll() {
+        return entrepriseMapper.toListDTO(entrepriseRepository.findAll());
     }
 
     public Entreprise findById(Integer id) throws FonctionnelException {
@@ -31,17 +35,18 @@ public class EntrepriseService {
         return oEntreprise.get();
     }
 
-    public Entreprise create(Entreprise entreprise) {
-        return entrepriseRepository.save(entreprise);
+    public EntrepriseDTO findByIdDTO(Integer id) throws FonctionnelException {
+        return entrepriseMapper.toDTO(findById(id));
     }
 
-    public Entreprise update(Integer id, Entreprise entreprise) throws FonctionnelException {
-        Optional<Entreprise> oEntreprise = entrepriseRepository.findById(id);
-        if (oEntreprise.isEmpty()) {
-            throw new FonctionnelException(ErrorEnum.ENTREPRISE_NOT_FOUND);
-        }
+    public EntrepriseDTO create(EntrepriseDTO entreprise) {
+        return entrepriseMapper.toDTO(entrepriseRepository.save(entrepriseMapper.toBO(entreprise)));
+    }
 
-        return entrepriseRepository.save(entreprise);
+    public EntrepriseDTO update(Integer id, EntrepriseDTO entrepriseDTO) throws FonctionnelException {
+        Entreprise entreprise = findById(id);
+
+        return entrepriseMapper.toDTO(entrepriseRepository.save(entrepriseMapper.toBO(entrepriseDTO)));
     }
 
     public boolean delete(Integer id) {
