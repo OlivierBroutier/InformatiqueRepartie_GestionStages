@@ -2,6 +2,8 @@ package com.example.ir.dto;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EtudiantDTO implements Serializable {
 
@@ -12,6 +14,7 @@ public class EtudiantDTO implements Serializable {
     private String login;
     private ClasseDTO classe;
     private Boolean enActivite;
+    private List<StageDTO> stages = new ArrayList<>();
 
     public EtudiantDTO() {
         // no-op
@@ -71,5 +74,13 @@ public class EtudiantDTO implements Serializable {
 
     public void setEnActivite(Boolean enActivite) {
         this.enActivite = enActivite;
+    }
+
+    public List<StageDTO> getStages() {
+        return stages;
+    }
+
+    public void setStages(List<StageDTO> stages) {
+        this.stages = stages;
     }
 }

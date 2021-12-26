@@ -1,5 +1,8 @@
 package com.example.ir.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class EntrepriseDTO {
 
     private Integer id;
@@ -16,6 +19,7 @@ public class EntrepriseDTO {
     private String siteEntreprise;
     private String niveau;
     private Boolean enActivite;
+    private List<StageDTO> stages = new ArrayList<>();
 
     public EntrepriseDTO() {
         // no-op
@@ -131,5 +135,13 @@ public class EntrepriseDTO {
 
     public void setEnActivite(Boolean enActivite) {
         this.enActivite = enActivite;
+    }
+
+    public List<StageDTO> getStages() {
+        return stages;
+    }
+
+    public void setStages(List<StageDTO> stages) {
+        this.stages = stages;
     }
 }

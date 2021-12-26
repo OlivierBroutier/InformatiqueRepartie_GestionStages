@@ -1,6 +1,8 @@
 package com.example.ir.dto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProfesseurDTO implements Serializable {
 
@@ -9,6 +11,7 @@ public class ProfesseurDTO implements Serializable {
     private String prenomProf;
     private String login;
     private String email;
+    private List<StageDTO> stages = new ArrayList<>();
 
     public ProfesseurDTO() {
         // no-op
@@ -52,5 +55,13 @@ public class ProfesseurDTO implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<StageDTO> getStages() {
+        return stages;
+    }
+
+    public void setStages(List<StageDTO> stages) {
+        this.stages = stages;
     }
 }

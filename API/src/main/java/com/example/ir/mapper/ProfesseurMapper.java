@@ -14,22 +14,35 @@ import java.util.List;
 
 @Mapper(
         componentModel = "spring",
-        unmappedTargetPolicy = ReportingPolicy.ERROR
+        unmappedTargetPolicy = ReportingPolicy.ERROR,
+        uses = {
+                StageMapper.class
+        }
 )
 @Named("Professeur")
 public interface ProfesseurMapper {
 
     @Named("DTO")
+    @Mapping(target = "stages", qualifiedByName = { "Stage", "ListLightDTO" })
     ProfesseurDTO toDTO(Professeur professeur);
 
     @Named("ListDTO")
     @IterableMapping(qualifiedByName = "DTO")
     List<ProfesseurDTO> toListDTO(List<Professeur> professeurs);
 
+    @Named("LightDTO")
+    @Mapping(target = "stages", ignore = true)
+    ProfesseurDTO toLightDTO(Professeur professeur);
+
+    @Named("ListLightDTO")
+    @IterableMapping(qualifiedByName = "LightDTO")
+    List<ProfesseurDTO> toListLightDTO(List<Professeur> professeurs);
+
 
 
     @Named("BO")
     @Mapping(target = "mdp", ignore = true)
+    @Mapping(target = "stages", qualifiedByName = { "Stage", "ListLightBO" })
     Professeur toBO(ProfesseurDTO professeur);
 
     @Named("ListBO")

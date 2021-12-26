@@ -2,6 +2,7 @@ package com.example.ir.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -43,15 +44,15 @@ public class Stage implements Serializable {
     @Column(name = "observation_stage")
     private String observationStage;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "num_etudiant", nullable = false)
     private Etudiant etudiant;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "num_prof", nullable = false)
     private Professeur professeur;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "num_entreprise", nullable = false)
     private Entreprise entreprise;
 

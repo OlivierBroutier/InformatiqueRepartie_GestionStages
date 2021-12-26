@@ -4,13 +4,9 @@ import com.example.ir.config.ErrorEnum;
 import com.example.ir.config.FonctionnelException;
 import com.example.ir.dto.EtudiantDTO;
 import com.example.ir.dto.ProfesseurDTO;
-import com.example.ir.entity.Etudiant;
-import com.example.ir.entity.Professeur;
-import com.example.ir.entity.dto.LoginDTO;
-import com.example.ir.entity.dto.UtilisateurDTO;
+import com.example.ir.dto.LoginDTO;
+import com.example.ir.dto.UtilisateurDTO;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 public class LoginService {

@@ -1,8 +1,9 @@
 package com.example.ir.dto;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class StageDTO {
+public class StageDTO implements Serializable {
 
     private Integer id;
     private LocalDate debutStage;

@@ -23,9 +23,9 @@ import java.util.List;
 public interface StageMapper {
 
     @Named("DTO")
-    @Mapping(target = "etudiant", qualifiedByName = { "Etudiant", "DTO" })
-    @Mapping(target = "professeur", qualifiedByName = { "Professeur", "DTO" })
-    @Mapping(target = "entreprise", qualifiedByName = { "Entreprise", "DTO" })
+    @Mapping(target = "etudiant", qualifiedByName = { "Etudiant", "LightDTO" })
+    @Mapping(target = "professeur", qualifiedByName = { "Professeur", "LightDTO" })
+    @Mapping(target = "entreprise", qualifiedByName = { "Entreprise", "LightDTO" })
     StageDTO toDTO(Stage stage);
 
     @Named("ListDTO")
@@ -33,9 +33,9 @@ public interface StageMapper {
     List<StageDTO> toListDTO(List<Stage> stages);
 
     @Named("LightDTO")
-    @Mapping(target = "etudiant", ignore = true)
-    @Mapping(target = "professeur", qualifiedByName = { "Professeur", "DTO" })
-    @Mapping(target = "entreprise", qualifiedByName = { "Entreprise", "DTO" })
+    @Mapping(target = "etudiant", qualifiedByName = { "Etudiant", "LightDTO" })
+    @Mapping(target = "professeur", qualifiedByName = { "Professeur", "LightDTO" })
+    @Mapping(target = "entreprise", qualifiedByName = { "Entreprise", "LightDTO" })
     StageDTO toLightDTO(Stage stage);
 
     @Named("ListLightDTO")
@@ -45,13 +45,23 @@ public interface StageMapper {
 
 
     @Named("BO")
-    @Mapping(target = "etudiant", qualifiedByName = "BO")
-    @Mapping(target = "professeur", qualifiedByName = "BO")
-    @Mapping(target = "entreprise", qualifiedByName = "BO")
+    @Mapping(target = "etudiant", qualifiedByName = { "Etudiant", "BO" })
+    @Mapping(target = "professeur", qualifiedByName = { "Professeur", "BO" })
+    @Mapping(target = "entreprise", qualifiedByName = { "Entreprise", "BO" })
     Stage toBO(StageDTO stage);
 
     @Named("ListBO")
     @IterableMapping(qualifiedByName = "BO")
     List<Stage> toListBO(List<StageDTO> stages);
+
+    @Named("LightBO")
+    @Mapping(target = "etudiant", ignore = true)
+    @Mapping(target = "professeur", ignore = true)
+    @Mapping(target = "entreprise", ignore = true)
+    Stage toLightBO(StageDTO stage);
+
+    @Named("ListLightBO")
+    @IterableMapping(qualifiedByName = "LightBO")
+    List<Stage> toListLightBO(List<StageDTO> stages);
 
 }

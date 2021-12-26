@@ -1,8 +1,8 @@
 package com.example.ir.rest;
 
 import com.example.ir.config.FonctionnelException;
-import com.example.ir.entity.dto.LoginDTO;
-import com.example.ir.entity.dto.UtilisateurDTO;
+import com.example.ir.dto.LoginDTO;
+import com.example.ir.dto.UtilisateurDTO;
 import com.example.ir.service.LoginService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

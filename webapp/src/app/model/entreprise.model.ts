@@ -1,3 +1,5 @@
+import { Stage } from './stage.model';
+
 export interface Entreprise {
     id?: number;
     raisonSociale? : string;
@@ -13,5 +15,5 @@ export interface Entreprise {
     siteEntreprise? : string;
     niveau? : string;
     enActivite? : boolean;
-
+    stages?: Stage[];
 }
