@@ -1,6 +1,6 @@
-<!--<div class="boutons">
+<div class="boutons">
     <div class="input-group">
-        <input type="text" [(ngModel)]="nom" (keydown.enter)="rechercher()" class="form-control" placeholder="Tapez l'entreprise ou le nom du responsable" name="search">
+        <input type="text"  [(ngModel)]="nom" (keydown.enter)="rechercher()" class="form-control" placeholder="Tapez le nom et/ou prénom du stagiaire" name="search">
         <div class="input-group-btn">
             <button class="btn btn-default" (click)="rechercher()">
                 <i class="glyphicon glyphicon-search"></i>
@@ -8,12 +8,12 @@
         </div>
 
     </div>
-    <button type="button" class="btn btn-primary" [routerLink]="'/entreprise/ajout'"><span class="glyphicon glyphicon-plus"> Ajouter une entreprise</span></button>
+    <button type="button" class="btn btn-primary" [routerLink]="'/stagiaire/ajout'"><span class="glyphicon glyphicon-plus"> Ajouter un étudiant</span></button>
 
 </div>
 
 
--->
+
 <hr>
 <table class="table table-hover">
     <thead>
@@ -28,16 +28,16 @@
     <tbody>
     <tr *ngFor="let stagiaire of stagiaires_find">
         <td>
-          <!--  <a class="icone" [routerLink]="'/entreprise/' + stagiaire.id">
+            <a class="icone">
                 <span class="glyphicon glyphicon-eye-open"></span>
             </a>
-            <a class="icone" [routerLink]="" (click)="editEntreprise(entreprise)">
-                <span class="glyphicon glyphicon-edit"></span>
+            <a class="icone" >
+                <span class="glyphicon glyphicon-pencil"></span>
             </a>
-            <a class="icone" [routerLink]="" (click)="inscription(entreprise)">
-                <span class="glyphicon glyphicon-plus"></span>
+            <a class="icone">
+                <span class="glyphicon glyphicon-remove"></span>
             </a>
-            <a class="icone" [routerLink]="" (click)="removeEntreprise(entreprise)">
+            <!--<a class="icone" [routerLink]="" (click)="removeEntreprise(entreprise)">
                 <span class="glyphicon glyphicon-remove"></span>
             </a>-->
 
@@ -46,8 +46,8 @@
 
         </td>
         <td>{{ stagiaire.prenomEtudiant }} {{ stagiaire.nomEtudiant }}</td>
-        <td> </td>
-        <td> </td>
+        <td (click)="navigateToEntreprise(stagiaire)"> <a>{{getEntreprise(stagiaire)?.raisonSociale}}</a></td>
+        <td> {{getProfesseur(stagiaire)?.prenomProf }} {{getProfesseur(stagiaire)?.nomProf }}</td>
     </tr>
     </tbody>
 </table>

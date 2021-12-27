@@ -5,6 +5,8 @@ import {Router} from "@angular/router";
 import {SuccessService} from "../shared/service/success.service";
 import {Stage} from "../model/stage.model";
 import {StageService} from "../shared/service/stage.service";
+import {Entreprise} from "../model/entreprise.model";
+import { Professeur } from '../model/professeur.model';
 
 @Component({
   selector: 'app-stagiaire',
@@ -24,6 +26,38 @@ export class StagiaireComponent implements OnInit {
       this.stagiaires_find = this.stagiaires;
   }
 
+    public getLastStage(stagiaire: Etudiant): Stage | undefined {
+        if (stagiaire.stages?.length === 0) {
+            return undefined;
+        }
+        return stagiaire.stages?.reduce((a, b) => (a.finStage ?? '') > (b.finStage ?? '') ? a : b);
+    }
+
+    public getEntreprise(stagiaire: Etudiant): Entreprise | undefined {
+        return this.getLastStage(stagiaire)?.entreprise;
+    }
+
+    public getProfesseur(stagiaire: Etudiant): Professeur | undefined {
+        return this.getLastStage(stagiaire)?.professeur;
+    }
+
+    public navigateToEntreprise(stagiaire: Etudiant): void {
+        const entreprise = this.getEntreprise(stagiaire);
+        if (entreprise) {
+            this.router.navigate(['/entreprise/' + entreprise.id]);
+        }
+    }
+
+    public rechercher() {
+        this.stagiaires_find = [];
+        for(let stagiaire of this.stagiaires) {
+            if(stagiaire.nomEtudiant?.toLowerCase()?.includes(this.nom.toLowerCase()) || stagiaire.prenomEtudiant?.toLowerCase()?.includes(this.nom.toLowerCase())) {
+                this.stagiaires_find.push(stagiaire);
+            }
+        }
+
+
+    }
 }
 
 
