@@ -1,47 +1,27 @@
 package com.example.ir.entity;
 
-import org.hibernate.Hibernate;
-
-import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
-import java.util.Objects;
 
 @Embeddable
 public class ProfClasseId implements Serializable {
-    private static final long serialVersionUID = 1320494392832328751L;
-    @Column(name = "num_prof", nullable = false)
-    private Integer numProf;
-    @Column(name = "num_classe", nullable = false)
-    private Integer numClasse;
 
-    public Integer getNumClasse() {
-        return numClasse;
+    private Integer professeur;
+    private Integer classe;
+
+    public Integer getProfesseur() {
+        return professeur;
     }
 
-    public void setNumClasse(Integer numClasse) {
-        this.numClasse = numClasse;
+    public void setProfesseur(Integer professeur) {
+        this.professeur = professeur;
     }
 
-    public Integer getNumProf() {
-        return numProf;
+    public Integer getClasse() {
+        return classe;
     }
 
-    public void setNumProf(Integer numProf) {
-        this.numProf = numProf;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(numProf, numClasse);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        ProfClasseId entity = (ProfClasseId) o;
-        return Objects.equals(this.numProf, entity.numProf) &&
-                Objects.equals(this.numClasse, entity.numClasse);
+    public void setClasse(Integer classe) {
+        this.classe = classe;
     }
 }

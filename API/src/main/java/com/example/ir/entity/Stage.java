@@ -1,5 +1,6 @@
 package com.example.ir.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,9 +11,12 @@ import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Table(name = "stage", indexes = {
         @Index(name = "num_prof", columnList = "num_prof"),
@@ -55,6 +59,10 @@ public class Stage implements Serializable {
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "num_entreprise", nullable = false)
     private Entreprise entreprise;
+
+    @OneToMany(mappedBy = "stage", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Mission> missions = new ArrayList<>();
+
 
     public Entreprise getEntreprise() {
         return entreprise;
@@ -128,4 +136,11 @@ public class Stage implements Serializable {
         this.id = id;
     }
 
+    public List<Mission> getMissions() {
+        return missions;
+    }
+
+    public void setMissions(List<Mission> missions) {
+        this.missions = missions;
+    }
 }

@@ -1,47 +1,39 @@
 package com.example.ir.entity;
 
-import org.hibernate.Hibernate;
-
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.Objects;
 
-@Embeddable
 public class SpecEntrepriseId implements Serializable {
-    private static final long serialVersionUID = -6117744997646784729L;
-    @Column(name = "num_entreprise", nullable = false)
-    private Integer numEntreprise;
-    @Column(name = "num_spec", nullable = false)
-    private Integer numSpec;
 
-    public Integer getNumSpec() {
-        return numSpec;
+    private Integer entreprise;
+    private Integer specialite;
+
+    public Integer getEntreprise() {
+        return entreprise;
     }
 
-    public void setNumSpec(Integer numSpec) {
-        this.numSpec = numSpec;
+    public void setEntreprise(Integer entreprise) {
+        this.entreprise = entreprise;
     }
 
-    public Integer getNumEntreprise() {
-        return numEntreprise;
+    public Integer getSpecialite() {
+        return specialite;
     }
 
-    public void setNumEntreprise(Integer numEntreprise) {
-        this.numEntreprise = numEntreprise;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(numEntreprise, numSpec);
+    public void setSpecialite(Integer specialite) {
+        this.specialite = specialite;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        SpecEntrepriseId entity = (SpecEntrepriseId) o;
-        return Objects.equals(this.numEntreprise, entity.numEntreprise) &&
-                Objects.equals(this.numSpec, entity.numSpec);
+        if (o == null || getClass() != o.getClass()) return false;
+        SpecEntrepriseId that = (SpecEntrepriseId) o;
+        return Objects.equals(getEntreprise(), that.getEntreprise()) && Objects.equals(getSpecialite(), that.getSpecialite());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getEntreprise(), getSpecialite());
     }
 }

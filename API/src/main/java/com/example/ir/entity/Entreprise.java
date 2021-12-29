@@ -1,5 +1,6 @@
 package com.example.ir.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -62,8 +63,11 @@ public class Entreprise implements Serializable {
     @Column(name = "en_activite", nullable = false)
     private Boolean enActivite = false;
 
-    @OneToMany(mappedBy = "entreprise", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "entreprise", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Stage> stages = new ArrayList<>();
+
+    @OneToMany(mappedBy = "entreprise", cascade = CascadeType.ALL)
+    private List<SpecEntreprise> specEntrepriseAssoc = new ArrayList<>();
 
     public Boolean getEnActivite() {
         return enActivite;
@@ -183,5 +187,13 @@ public class Entreprise implements Serializable {
 
     public void setStages(List<Stage> stages) {
         this.stages = stages;
+    }
+
+    public List<SpecEntreprise> getSpecEntrepriseAssoc() {
+        return specEntrepriseAssoc;
+    }
+
+    public void setSpecEntrepriseAssoc(List<SpecEntreprise> specEntrepriseAssoc) {
+        this.specEntrepriseAssoc = specEntrepriseAssoc;
     }
 }

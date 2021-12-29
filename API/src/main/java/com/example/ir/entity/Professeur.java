@@ -1,5 +1,6 @@
 package com.example.ir.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -38,6 +39,9 @@ public class Professeur implements Serializable {
 
     @OneToMany(mappedBy = "professeur", fetch = FetchType.LAZY)
     private List<Stage> stages = new ArrayList<>();
+
+    @OneToMany(mappedBy = "professeur", cascade = CascadeType.ALL)
+    private List<ProfClasse> profClasseAssoc = new ArrayList<>();
 
     public String getEmail() {
         return email;
@@ -93,5 +97,13 @@ public class Professeur implements Serializable {
 
     public void setStages(List<Stage> stages) {
         this.stages = stages;
+    }
+
+    public List<ProfClasse> getProfClasseAssoc() {
+        return profClasseAssoc;
+    }
+
+    public void setProfClasseAssoc(List<ProfClasse> profClasseAssoc) {
+        this.profClasseAssoc = profClasseAssoc;
     }
 }
