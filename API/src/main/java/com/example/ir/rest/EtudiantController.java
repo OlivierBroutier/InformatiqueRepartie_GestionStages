@@ -6,6 +6,8 @@ import com.example.ir.service.EtudiantService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,6 +31,11 @@ public class EtudiantController {
     @GetMapping("{id}")
     public ResponseEntity<EtudiantDTO> findById(@PathVariable(name = "id") Integer id) throws FonctionnelException {
         return ResponseEntity.ok().body(etudiantService.findByIdDTO(id));
+    }
+
+    @PostMapping
+    public ResponseEntity<EtudiantDTO> create(@RequestBody EtudiantDTO etudiantDTO) {
+        return ResponseEntity.ok().body(etudiantService.create(etudiantDTO));
     }
 
 }

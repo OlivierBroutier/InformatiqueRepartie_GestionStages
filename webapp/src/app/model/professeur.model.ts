@@ -5,6 +5,7 @@ export interface Professeur {
     nomProf?: string;
     prenomProf?: string;
     login?: string;
+    mdp?: string;
     email?: string;
     stages?: Stage[];
 }

@@ -12,6 +12,7 @@ public class EtudiantDTO implements Serializable {
     private String prenomEtudiant;
     private LocalDate anneeObtention;
     private String login;
+    private String mdp;
     private ClasseDTO classe;
     private Boolean enActivite;
     private List<StageDTO> stages = new ArrayList<>();
@@ -58,6 +59,14 @@ public class EtudiantDTO implements Serializable {
 
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    public String getMdp() {
+        return mdp;
+    }
+
+    public void setMdp(String mdp) {
+        this.mdp = mdp;
     }
 
     public ClasseDTO getClasse() {

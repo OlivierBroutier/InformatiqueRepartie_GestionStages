@@ -7,6 +7,7 @@ export interface Etudiant {
     prenomEtudiant?: string;
     anneeObtention?: string;
     login?: string;
+    mdp?: string;
     classe?: Classe;
     enActivite?: boolean;
     stages?: Stage[];

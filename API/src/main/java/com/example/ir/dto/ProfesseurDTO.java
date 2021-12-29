@@ -10,6 +10,7 @@ public class ProfesseurDTO implements Serializable {
     private String nomProf;
     private String prenomProf;
     private String login;
+    private String mdp;
     private String email;
     private List<StageDTO> stages = new ArrayList<>();
 
@@ -47,6 +48,14 @@ public class ProfesseurDTO implements Serializable {
 
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    public String getMdp() {
+        return mdp;
+    }
+
+    public void setMdp(String mdp) {
+        this.mdp = mdp;
     }
 
     public String getEmail() {

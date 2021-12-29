@@ -22,6 +22,7 @@ import java.util.List;
 public interface EtudiantMapper {
 
     @Named("DTO")
+    @Mapping(target = "mdp", ignore = true)
     @Mapping(target = "stages", qualifiedByName = { "Stage", "ListLightDTO" })
     EtudiantDTO toDTO(Etudiant etudiant);
 
@@ -30,6 +31,7 @@ public interface EtudiantMapper {
     List<EtudiantDTO> toListDTO(List<Etudiant> etudiants);
 
     @Named("LightDTO")
+    @Mapping(target = "mdp", ignore = true)
     @Mapping(target = "stages", ignore = true)
     EtudiantDTO toLightDTO(Etudiant etudiant);
 
@@ -40,7 +42,6 @@ public interface EtudiantMapper {
 
 
     @Named("BO")
-    @Mapping(target = "mdp", ignore = true)
     @Mapping(target = "stages", qualifiedByName = { "Stage", "ListLightBO" })
     Etudiant toBO(EtudiantDTO etudiant);
 

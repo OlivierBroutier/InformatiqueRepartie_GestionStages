@@ -15,4 +15,9 @@ export class EtudiantService {
     public findAllEtudiant() : Promise<Etudiant[]> {
         return this.httpClient.get<Etudiant[]>(this.apiUrl + 'etudiant').toPromise();
     }
+
+    public ajoutEtudiant(etudiant : Etudiant) : Promise<Etudiant> {
+        return this.httpClient.post(this.apiUrl+'etudiant', etudiant).toPromise();
+
+    }
 }
