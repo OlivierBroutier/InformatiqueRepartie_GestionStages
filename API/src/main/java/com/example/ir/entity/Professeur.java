@@ -36,7 +36,7 @@ public class Professeur implements Serializable {
     @Column(name = "email", nullable = false, length = 100)
     private String email;
 
-    @OneToMany(mappedBy = "etudiant", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "professeur", fetch = FetchType.LAZY)
     private List<Stage> stages = new ArrayList<>();
 
     public String getEmail() {

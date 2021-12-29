@@ -62,7 +62,7 @@ public class Entreprise implements Serializable {
     @Column(name = "en_activite", nullable = false)
     private Boolean enActivite = false;
 
-    @OneToMany(mappedBy = "etudiant", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "entreprise", fetch = FetchType.LAZY)
     private List<Stage> stages = new ArrayList<>();
 
     public Boolean getEnActivite() {
