@@ -28,7 +28,7 @@
     <tbody>
     <tr *ngFor="let stagiaire of stagiaires_find">
         <td>
-            <a class="icone">
+            <a class="icone" [routerLink]="'/stagiaire/'+ stagiaire.id">
                 <span class="glyphicon glyphicon-eye-open"></span>
             </a>
             <a class="icone" >

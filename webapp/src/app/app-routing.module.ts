@@ -11,6 +11,7 @@ import {InscriptionComponent} from "./inscription/inscription.component";
 import {AideComponent} from "./aide/aide.component";
 import {StagiaireComponent} from "./stagiaire/stagiaire.component";
 import {StagiaireAjoutComponent} from "./stagiaire/stagiaire-ajout/stagiaire-ajout.component";
+import {StagiaireDetailComponent} from "./stagiaire/stagiaire-detail/stagiaire-detail.component";
 
 
 
@@ -30,7 +31,8 @@ const routes: Routes = [
     { path: 'aide', component : AideComponent},
     { path: 'stagiaire', children : [
             { path: '', pathMatch: 'full', component: StagiaireComponent },
-            { path: 'ajout', pathMatch: 'full', component: StagiaireAjoutComponent },
+            { path: 'ajout',  component: StagiaireAjoutComponent },
+            { path: ':idStagiaire', component:StagiaireDetailComponent}
 
         ] }
 

@@ -21,6 +21,7 @@ import { AideComponent } from './aide/aide.component';
 import { AuxAlertSuccessComponent } from './shared/component/alert/aux-alert/aux-alert-success/aux-alert-success.component';
 import { StagiaireComponent } from './stagiaire/stagiaire.component';
 import { StagiaireAjoutComponent } from './stagiaire/stagiaire-ajout/stagiaire-ajout.component';
+import { StagiaireDetailComponent } from './stagiaire/stagiaire-detail/stagiaire-detail.component';
 
 @NgModule({
     declarations: [
@@ -39,7 +40,8 @@ import { StagiaireAjoutComponent } from './stagiaire/stagiaire-ajout/stagiaire-a
         InscriptionComponent,
         AideComponent,
         StagiaireComponent,
-        StagiaireAjoutComponent
+        StagiaireAjoutComponent,
+        StagiaireDetailComponent
     ],
     imports: [
         BrowserModule,

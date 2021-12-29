@@ -1,0 +1,52 @@
+<h1><div style="text-align: center;">{{stagiaire?.prenomEtudiant}} {{stagiaire?.nomEtudiant}}</div></h1>
+<hr>
+<div class="card-deck">
+    <div class="card">
+
+        <div class="card-body">
+            <h5 class="card-title"><b>Informations</b></h5>
+            <br>
+            <p class="card-text">Etudiant: {{stagiaire?.prenomEtudiant}} {{stagiaire?.nomEtudiant}} </p>
+            <p class="card-text" *ngIf="stagiaire?.anneeObtention!=null">Date d'obtention du BTS : {{stagiaire?.anneeObtention}} </p>
+            <p class="card-text">Classe : {{stagiaire?.classe?.nomClasse}} </p>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+    </div>
+</div>
+<hr>
+<h3>Historique des stages</h3>
+
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th scope="col">Début du stage</th>
+        <th scope="col">Fin du stage</th>
+        <th scope="col">Type de stage</th>
+        <th scope="col">Description du projet</th>
+        <th scope="col">Observation du stage</th>
+        <th scope="col">Professeur</th>
+        <th scope="col">Email du professeur</th>
+        <th scope="col">Entreprise</th>
+    </tr>
+
+    </thead>
+    <tbody>
+    <tr *ngFor="let stage of stagiaire?.stages">
+        <td>{{stage.debutStage}}</td>
+        <td>{{stage.finStage}}</td>
+        <td>{{stage.typeStage}}</td>
+        <td>{{stage.descProjet}}</td>
+        <td>{{stage.observationStage}}</td>
+        <td>{{stage.professeur?.prenomProf}} {{stage.professeur?.nomProf}}</td>
+        <td>{{stage.professeur?.email}}</td>
+
+        <td><a [routerLink]="'/entreprise/' + stage.entreprise?.id">
+            {{stage.entreprise?.raisonSociale}}
+        </a></td>
+    </tr>
+
+    </tbody>
+</table>
+
