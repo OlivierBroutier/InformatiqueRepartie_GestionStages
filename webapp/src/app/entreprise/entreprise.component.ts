@@ -44,9 +44,9 @@ export class EntrepriseComponent implements OnInit {
         this.router.navigate(['/inscription'], { state: { entreprise } });
     }
 
-    public removeEntreprise(entreprise: Entreprise): void {
-        if(entreprise.id) {
-            this.entreprise_service.deleteEntreprise(String(entreprise.id));
+    public async removeEntreprise(entreprise: Entreprise): Promise<void> {
+        if (entreprise.id) {
+            await this.entreprise_service.deleteEntreprise(String(entreprise.id));
             this.success_service.createSuccessAlert('Succès', 'L\'entreprise a bien été supprimée');
             this.entreprises = [...this.entreprises].filter(e => e.id !== entreprise.id);
             this.entreprises_find = [...this.entreprises_find].filter(e => e.id !== entreprise.id);

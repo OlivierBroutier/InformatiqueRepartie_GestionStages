@@ -25,4 +25,9 @@ export class EtudiantService {
     public findEtudiantById(id: string) : Promise<Etudiant> {
         return this.httpClient.get<Etudiant>(this.apiUrl + 'etudiant/'+id).toPromise();
     }
+
+    public deleteEntreprise(id: string) : Promise<void> {
+        return this.httpClient.delete<void>(this.apiUrl + 'etudiant/'+ id).toPromise();
+
+    }
 }

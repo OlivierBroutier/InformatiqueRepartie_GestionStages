@@ -57,4 +57,8 @@ public class EtudiantService {
         return etudiantMapper.toDTO(oEtudiant.get());
     }
 
+    public boolean delete(Integer id) {
+       etudiantRepository.deleteById(id);
+       return true;
+    }
 }

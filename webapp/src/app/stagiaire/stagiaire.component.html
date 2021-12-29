@@ -31,10 +31,10 @@
             <a class="icone" [routerLink]="'/stagiaire/'+ stagiaire.id">
                 <span class="glyphicon glyphicon-eye-open"></span>
             </a>
-            <a class="icone" >
+            <a class="icone" [routerLink]="" (click)="editEtudiant(stagiaire)">
                 <span class="glyphicon glyphicon-pencil"></span>
             </a>
-            <a class="icone">
+            <a class="icone" [routerLink]="" (click)="removeEtudiant(stagiaire) ">
                 <span class="glyphicon glyphicon-remove"></span>
             </a>
             <!--<a class="icone" [routerLink]="" (click)="removeEntreprise(entreprise)">

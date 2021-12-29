@@ -58,6 +58,21 @@ export class StagiaireComponent implements OnInit {
 
 
     }
+
+    public async removeEtudiant(stagiaire: Etudiant): Promise<void> {
+        if (stagiaire.id) {
+            await this.stagiaire_service.deleteEntreprise(String(stagiaire.id));
+            this.success_service.createSuccessAlert('Succès', 'L\'étudiant a bien été supprimée');
+            this.stagiaires = [...this.stagiaires].filter(e => e.id !== stagiaire.id);
+            this.stagiaires_find = [...this.stagiaires_find].filter(e => e.id !== stagiaire.id);
+        }
+
+    }
+
+    editEtudiant(stagiaire: Etudiant) {
+        this.router.navigate(['/stagiaire/ajout'], { state: { stagiaire } });
+
+    }
 }
 
 
