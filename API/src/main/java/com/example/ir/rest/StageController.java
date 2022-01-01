@@ -39,4 +39,14 @@ public class StageController {
 
     }
 
+    @PutMapping
+    public StageDTO modifStage(@RequestBody StageDTO stage){
+        return stageService.update(stage);
+    }
+
+    @DeleteMapping(value="/{id}")
+    public Boolean deleteStage(@PathVariable(name = "id") int id) {
+        return stageService.delete(id);
+    }
+
 }

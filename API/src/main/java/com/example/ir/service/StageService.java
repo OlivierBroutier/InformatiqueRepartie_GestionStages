@@ -54,4 +54,12 @@ public class StageService {
     public StageDTO create(StageDTO stage) {
         return stageMapper.toDTO(stageRepository.save(stageMapper.toBO(stage)));
     }
+
+    public StageDTO update(StageDTO stage) { return stageMapper.toDTO(stageRepository.save(stageMapper.toBO(stage)));
+    }
+
+    public Boolean delete(Integer id) {
+        stageRepository.deleteById(id);
+        return true;
+    }
 }

@@ -23,4 +23,16 @@ export class StageService {
     public ajoutStage(stage: Stage) : Promise<Stage> {
         return this.httpClient.post<Stage>(this.apiUrl + 'stage',stage).toPromise();
     }
+
+    public findStageById(id: string) : Promise<Stage> {
+        return this.httpClient.get<Stage>(this.apiUrl+'stage/'+id).toPromise();
+    }
+
+    public modifStage(stage: Stage) : Promise<Stage> {
+        return this.httpClient.put<Stage>(this.apiUrl+'stage',stage).toPromise();
+    }
+
+    public deleteStage(id: string) : Promise<void> {
+        return this.httpClient.delete<void>(this.apiUrl+'stage/'+id).toPromise();
+    }
 }

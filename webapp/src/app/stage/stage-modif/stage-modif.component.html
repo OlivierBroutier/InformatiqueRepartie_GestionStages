@@ -1,0 +1,60 @@
+<form #f="ngForm">
+    <h3>Contact</h3>
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <label>Entreprise* :</label>
+            <select class="custom-select custom-select-lg mb-3" name="entreprise" [compareWith]="compare" [(ngModel)]="stage.entreprise" required>
+                <option [ngValue]="undefined">Choisissez une entreprise</option>
+                <option *ngFor="let entreprise of entreprises" [ngValue]="entreprise"> {{entreprise.raisonSociale}} </option>
+            </select>
+
+        </div>
+        <div class="form-group col-md-12">
+            <label>Etudiant* :</label>
+            <select class="custom-select custom-select-lg mb-3" name="etudiant"  [compareWith]="compare" [(ngModel)]="stage.etudiant" required>
+                <option [ngValue]="undefined">Choisissez un étudiant</option>
+                <option *ngFor="let etudiant of etudiants" [ngValue]="etudiant"> {{etudiant.prenomEtudiant}} {{etudiant.nomEtudiant}}</option>
+            </select>
+        </div>
+        <div class="form-group col-md-12">
+            <label>Professeur* :</label>
+            <select class="custom-select custom-select-lg mb-3" name="professeur" [compareWith]="compare" [(ngModel)]="stage.professeur" required>
+                <option [ngValue]="undefined" >Choisissez un professeur</option>
+                <option *ngFor="let professeur of professeurs" [ngValue]="professeur"> {{professeur.prenomProf}} {{professeur.nomProf}} </option>
+            </select>
+        </div>
+    </div>
+    <h3>Description du stage</h3>
+    <div class="form-row">
+        <div class="form-group col-md-12 grid">
+            <label for="date_debut_stage">Date de début du stage* :</label>
+            <input type="date" name="date_debut_stage" id="date_debut_stage" [(ngModel)]="stage.debutStage" required >
+        </div>
+        <div class="form-group col-md-12 grid">
+            <label for="date_fin_stage">Date de fin du stage* :</label>
+            <input type="date" id="date_fin_stage" name="date_fin_stage"  [(ngModel)]="stage.finStage" required>
+        </div>
+        <div class="form-group col-md-12">
+            <label>Type de stage* :</label>
+            <select class="custom-select custom-select-lg mb-3" name="type_stage" [(ngModel)]="stage.typeStage"  required>
+                <option [ngValue]="undefined">Choisissez un type de stage</option>
+                <option ngValue="aucun">Aucun</option>
+                <option ngValue="alternance">Alternance</option>
+                <option ngValue="stage">Stage</option>
+            </select>
+        </div>
+        <div class="form-group col-md-12">
+            <label for="description" >Description du projet :</label>
+            <textarea class="form-control"   id="description" name="description" [(ngModel)]="stage.descProjet"></textarea>
+        </div>
+        <div class="form-group col-md-12">
+            <label for="observation">Observation :</label>
+            <textarea class="form-control"   id="observation" name="observation" [(ngModel)]="stage.observationStage"></textarea>
+        </div>
+    </div>
+    <div style="text-align: center">
+        <button (click)="valider()" class="btn btn-primary" [disabled]="!f.valid">  Modifier le stage </button>
+    </div>
+
+
+</form>

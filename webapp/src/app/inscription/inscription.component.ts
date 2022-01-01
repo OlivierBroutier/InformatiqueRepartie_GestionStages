@@ -8,6 +8,9 @@ import {ProfesseurService} from "../shared/service/professeur.service";
 import {Stage} from "../model/stage.model";
 import {AuthentificationService} from "../shared/service/authentification.service";
 import {StageService} from "../shared/service/stage.service";
+import {SuccessService} from "../shared/service/success.service";
+import {Location} from "@angular/common";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-inscription',
@@ -30,7 +33,9 @@ export class InscriptionComponent implements OnInit {
         private etudiantService : EtudiantService,
         private professeurService : ProfesseurService,
         private authentificationService: AuthentificationService,
-        private stageService : StageService
+        private stageService : StageService,
+        private readonly successService: SuccessService,
+        private router: Router
     ) { }
 
     async ngOnInit(): Promise<void> {
@@ -47,6 +52,8 @@ export class InscriptionComponent implements OnInit {
 
     public async valider(): Promise<void> {
         this.stage_resultat = await this.stageService.ajoutStage(this.stage);
+        this.successService.createSuccessAlert('Succès', 'Le stage a bien été créé');
+        this.router.navigate(['/stage']);
 
     }
 

@@ -12,6 +12,7 @@ import {AideComponent} from "./aide/aide.component";
 import {StagiaireComponent} from "./stagiaire/stagiaire.component";
 import {StagiaireAjoutComponent} from "./stagiaire/stagiaire-ajout/stagiaire-ajout.component";
 import {StagiaireDetailComponent} from "./stagiaire/stagiaire-detail/stagiaire-detail.component";
+import {StageModifComponent} from "./stage/stage-modif/stage-modif.component";
 
 
 
@@ -20,7 +21,11 @@ const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'home' },
     { path: 'home', component: HomeComponent,canActivate : [AuthGuard]},
     { path: 'connexion', component: LoginComponent },
-    { path: 'stage', component: StageComponent },
+    { path: 'stage', children : [
+            { path: '', pathMatch: 'full', component: StageComponent },
+            { path: 'modif/:idStage', component: StageModifComponent }
+
+    ]},
     { path: 'entreprise', children: [
             { path: '', pathMatch: 'full', component: EntrepriseComponent },
             { path: 'ajout', component: AjoutEntrepriseComponent },
