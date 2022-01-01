@@ -6,7 +6,7 @@ import {EtudiantService} from "../shared/service/etudiant.service";
 import {Professeur} from "../model/professeur.model";
 import {ProfesseurService} from "../shared/service/professeur.service";
 import {Stage} from "../model/stage.model";
-import {AuthentificationService} from "../shared/authentification.service";
+import {AuthentificationService} from "../shared/service/authentification.service";
 import {StageService} from "../shared/service/stage.service";
 
 @Component({

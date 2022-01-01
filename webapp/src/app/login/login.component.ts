@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Login } from '../model/login.model';
-import { AuthentificationService } from '../shared/authentification.service';
+import { AuthentificationService } from '../shared/service/authentification.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthentificationService } from '../shared/authentification.service';
+import { AuthentificationService } from '../shared/service/authentification.service';
 
 @Component({
     selector: 'app-menu',
@@ -40,8 +40,7 @@ export class MenuComponent implements OnInit {
     }
 
     public disconnect(): void {
-        this.authentificationService.etudiant = undefined;
-        this.authentificationService.professeur = undefined;
+        this.authentificationService.disconnect();
 
         location.reload();
     }
