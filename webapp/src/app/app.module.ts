@@ -22,6 +22,7 @@ import { AuxAlertSuccessComponent } from './shared/component/alert/aux-alert/aux
 import { StagiaireComponent } from './stagiaire/stagiaire.component';
 import { StagiaireAjoutComponent } from './stagiaire/stagiaire-ajout/stagiaire-ajout.component';
 import { StagiaireDetailComponent } from './stagiaire/stagiaire-detail/stagiaire-detail.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
     declarations: [
@@ -47,7 +48,8 @@ import { StagiaireDetailComponent } from './stagiaire/stagiaire-detail/stagiaire
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
-        FormsModule
+        FormsModule,
+        NgbModule
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: HttpDefaultInterceptor, multi: true },
