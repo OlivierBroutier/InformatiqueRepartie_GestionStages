@@ -35,10 +35,10 @@ public class Etudiant implements Serializable {
     @Column(name = "annee_obtention")
     private LocalDate anneeObtention;
 
-    @Column(name = "login", nullable = false, length = 8)
+    @Column(name = "login", nullable = false, updatable = false, length = 8)
     private String login;
 
-    @Column(name = "mdp", nullable = false, length = 30)
+    @Column(name = "mdp", nullable = false, updatable = false, length = 30)
     private String mdp;
 
     @ManyToOne(optional = false)

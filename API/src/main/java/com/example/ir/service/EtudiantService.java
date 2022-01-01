@@ -3,6 +3,7 @@ package com.example.ir.service;
 import com.example.ir.config.ErrorEnum;
 import com.example.ir.config.FonctionnelException;
 import com.example.ir.dto.EtudiantDTO;
+import com.example.ir.entity.Entreprise;
 import com.example.ir.entity.Etudiant;
 import com.example.ir.mapper.EtudiantMapper;
 import com.example.ir.repository.EtudiantRepository;
@@ -60,5 +61,10 @@ public class EtudiantService {
     public boolean delete(Integer id) {
        etudiantRepository.deleteById(id);
        return true;
+    }
+
+    public EtudiantDTO update(Integer id, EtudiantDTO etudiantDTO) throws FonctionnelException {
+        Etudiant etudiant = findById(id);
+        return etudiantMapper.toDTO(etudiantRepository.save(etudiantMapper.toBO(etudiantDTO)));
     }
 }

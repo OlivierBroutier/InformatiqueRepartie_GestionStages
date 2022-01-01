@@ -19,7 +19,7 @@ export class StagiaireComponent implements OnInit {
     public stagiaires_find : Etudiant[] = [];
     public stages : Stage[] = [];
 
-  constructor(private stagiaire_service : EtudiantService, private router : Router, private success_service : SuccessService, private stage_service : StageService) { }
+  constructor(private readonly stagiaire_service : EtudiantService, private  readonly router : Router, private readonly success_service : SuccessService, private readonly stage_service : StageService) { }
 
   async ngOnInit(): Promise<void> {
       this.stagiaires = await this.stagiaire_service.findAllEtudiant();
@@ -62,7 +62,7 @@ export class StagiaireComponent implements OnInit {
     public async removeEtudiant(stagiaire: Etudiant): Promise<void> {
         if (stagiaire.id) {
             await this.stagiaire_service.deleteEntreprise(String(stagiaire.id));
-            this.success_service.createSuccessAlert('Succès', 'L\'étudiant a bien été supprimée');
+            this.success_service.createSuccessAlert('Succès', 'L\'étudiant a bien été supprimé');
             this.stagiaires = [...this.stagiaires].filter(e => e.id !== stagiaire.id);
             this.stagiaires_find = [...this.stagiaires_find].filter(e => e.id !== stagiaire.id);
         }
@@ -71,7 +71,6 @@ export class StagiaireComponent implements OnInit {
 
     editEtudiant(stagiaire: Etudiant) {
         this.router.navigate(['/stagiaire/ajout'], { state: { stagiaire } });
-
     }
 }
 

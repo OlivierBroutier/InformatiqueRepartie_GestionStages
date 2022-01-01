@@ -9,9 +9,9 @@ import { EtudiantService } from '../../shared/service/etudiant.service';
 import { EntrepriseService } from '../../shared/service/entreprise.service';
 
 @Component({
-  selector: 'app-stagiaire-ajout',
-  templateUrl: './stagiaire-ajout.component.html',
-  styleUrls: ['./stagiaire-ajout.component.css']
+    selector: 'app-stagiaire-ajout',
+    templateUrl: './stagiaire-ajout.component.html',
+    styleUrls: ['./stagiaire-ajout.component.css']
 })
 export class StagiaireAjoutComponent implements OnInit {
 
@@ -19,21 +19,34 @@ export class StagiaireAjoutComponent implements OnInit {
     public classe : string = '';
     public stagiaire : Etudiant = {};
 
-  constructor(private classe_service : ClasseService, private router: Router,
-              private success_service : SuccessService, private readonly stagiaire_service : EtudiantService) { }
+    constructor(
+        private readonly classeService: ClasseService,
+        private readonly router: Router,
+        private readonly successService: SuccessService,
+        private readonly etudiantService : EtudiantService
+    ) { }
 
-  async ngOnInit(): Promise<void> {
-      this.classes = await this.classe_service.findAllClasse();
-  }
+    async ngOnInit(): Promise<void> {
+        this.classes = await this.classeService.findAllClasse();
+        this.stagiaire = window.history.state.stagiaire ?? { }
+    }
 
-  public compare(a: any, b: any): boolean {
+    public get isEditing(): boolean {
+        return !!this.stagiaire.id;
+    }
+
+    public compare(a: any, b: any): boolean {
         return a && b ? a.id === b.id : a === b
-  }
+    }
 
-  public async ajout() : Promise<void> {
-    await this.stagiaire_service.ajoutEtudiant(this.stagiaire);
-    this.success_service.createSuccessAlert('Succès', 'L\'étudiant a bien été créée');
-    this.router.navigate(['/stagiaire']);
+    public async ajout(): Promise<void> {
+        await this.etudiantService.ajoutEtudiant(this.stagiaire);
+        this.successService.createSuccessAlert('Succès', 'L\'étudiant a bien été créée');
+        this.router.navigate(['/stagiaire']);
+    }
 
-  }
+    public async edit(): Promise<void> {
+        this.stagiaire = await this.etudiantService.updateEtudiant(this.stagiaire);
+        this.successService.createSuccessAlert('Succès', 'Le stagiaire a bien été modifié');
+    }
 }
