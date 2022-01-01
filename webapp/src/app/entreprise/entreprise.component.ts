@@ -51,7 +51,5 @@ export class EntrepriseComponent implements OnInit {
             this.entreprises = [...this.entreprises].filter(e => e.id !== entreprise.id);
             this.entreprises_find = [...this.entreprises_find].filter(e => e.id !== entreprise.id);
         }
-
-
     }
 }

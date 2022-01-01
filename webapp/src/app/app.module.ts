@@ -23,6 +23,7 @@ import { StagiaireComponent } from './stagiaire/stagiaire.component';
 import { StagiaireAjoutComponent } from './stagiaire/stagiaire-ajout/stagiaire-ajout.component';
 import { StagiaireDetailComponent } from './stagiaire/stagiaire-detail/stagiaire-detail.component';
 import { StageModifComponent } from './stage/stage-modif/stage-modif.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
     declarations: [
@@ -49,7 +50,8 @@ import { StageModifComponent } from './stage/stage-modif/stage-modif.component';
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
-        FormsModule
+        FormsModule,
+        NgbModule
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: HttpDefaultInterceptor, multi: true },
