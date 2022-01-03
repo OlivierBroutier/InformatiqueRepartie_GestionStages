@@ -22,22 +22,22 @@ const routes: Routes = [
     { path: 'home', component: HomeComponent,canActivate : [AuthGuard]},
     { path: 'connexion', component: LoginComponent },
     { path: 'stage', children : [
-            { path: '', pathMatch: 'full', component: StageComponent },
-            { path: 'modif/:idStage', component: StageModifComponent }
+            { path: '', pathMatch: 'full', component: StageComponent,canActivate : [AuthGuard] },
+            { path: 'modif/:idStage', component: StageModifComponent,canActivate : [AuthGuard] }
 
     ]},
     { path: 'entreprise', children: [
-            { path: '', pathMatch: 'full', component: EntrepriseComponent },
-            { path: 'ajout', component: AjoutEntrepriseComponent },
-            { path: ':idEntreprise', component: EntrepriseDetailComponent },
+            { path: '', pathMatch: 'full', component: EntrepriseComponent, canActivate : [AuthGuard]},
+            { path: 'ajout', component: AjoutEntrepriseComponent, canActivate : [AuthGuard] },
+            { path: ':idEntreprise', component: EntrepriseDetailComponent, canActivate : [AuthGuard] },
 
         ] },
-    { path: 'inscription', component : InscriptionComponent},
-    { path: 'aide', component : AideComponent},
+    { path: 'inscription', component : InscriptionComponent, canActivate : [AuthGuard]},
+    { path: 'aide', component : AideComponent, canActivate : [AuthGuard]},
     { path: 'stagiaire', children : [
-            { path: '', pathMatch: 'full', component: StagiaireComponent },
-            { path: 'ajout',  component: StagiaireAjoutComponent },
-            { path: ':idStagiaire', component:StagiaireDetailComponent}
+            { path: '', pathMatch: 'full', component: StagiaireComponent, canActivate : [AuthGuard] },
+            { path: 'ajout',  component: StagiaireAjoutComponent, canActivate : [AuthGuard] },
+            { path: ':idStagiaire', component:StagiaireDetailComponent, canActivate : [AuthGuard]}
 
         ] }
 

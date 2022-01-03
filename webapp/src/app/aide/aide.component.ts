@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthentificationService} from "../shared/service/authentification.service";
 
 @Component({
     selector: 'app-aide',
@@ -9,9 +10,13 @@ export class AideComponent implements OnInit {
 
     public expand: boolean = false;
 
-    constructor() { }
+    constructor(private readonly authentificationService: AuthentificationService) { }
 
     ngOnInit(): void {
+    }
+
+    get userIsProfesseur(): boolean {
+        return this.authentificationService.userIsProfesseur;
     }
 
 }

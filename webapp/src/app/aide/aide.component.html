@@ -6,14 +6,15 @@
 <h4> Entreprise </h4>
 
 <ngb-accordion [closeOthers]="true">
-    <ngb-panel title="Comment rechercher une entreprise ?">
+    <ngb-panel title="Comment rechercher une entreprise ?" *ngIf="userIsProfesseur">
         <ng-template ngbPanelContent>
-            Si vous voulez rechercher une entreprise, vous devez aller sur la page "Entreprise" et chercher blah blah
+            Pour rechercher une entreprise, dirigez-vous sur l'onglet Entreprise. Vous pouvez apercevoir une barre de recherche (tout un haut de la page). Il vous suffit de mettre des lettres et ou/mots qui sont dans l'entreprise, pour la voir apparaitre. Vous pouvez aussi décider de faire une recherche par nom du responsable également. Ensuite, cliquez sur l'icone situé à côté (la loupe), ou sur la touche Entrée de votre clavier. La liste correspondant à votre recherche, se trouve juste en bas (le tableau a été mis à jour avec votre recherche).
         </ng-template>
     </ngb-panel>
     <ngb-panel title="Comment ajouter une entreprise ?">
         <ng-template ngbPanelContent>
-            Si vous voulez ajouter une entreprise, et blah blah met ce que tu veux :heart:
+           Pour ajouter une entreprise,  dirigez-vous sur l'onglet Entreprise. Tout en haut à droite de la page, vous avez un bouton signalant "Ajouter une entreprise". Cliquez dessus. Vous vous retrouverez avec un formulaire à remplir. Il faut impérativement remplir les champs ayant un astérix afin de valider le formulaire. Attention ! Pour le numéro de téléphone, il faut bien mettre des espaces tous les deux chiffres (ex : 04 04 04 04 04). A la validation du formulaire,
+            bla bla bla
         </ng-template>
     </ngb-panel>
 </ngb-accordion>

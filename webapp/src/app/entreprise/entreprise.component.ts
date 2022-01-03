@@ -3,6 +3,7 @@ import {Entreprise} from "../model/entreprise.model";
 import {EntrepriseService} from "../shared/service/entreprise.service";
 import {Router} from "@angular/router";
 import {SuccessService} from "../shared/service/success.service";
+import {AuthentificationService} from "../shared/service/authentification.service";
 
 @Component({
     selector: 'app-entreprise',
@@ -18,7 +19,8 @@ export class EntrepriseComponent implements OnInit {
     constructor(
         private entreprise_service : EntrepriseService,
         private router: Router,
-        private success_service : SuccessService
+        private success_service : SuccessService,
+        private readonly authentificationService: AuthentificationService
     ) { }
 
     async ngOnInit(): Promise<void> {
@@ -34,6 +36,9 @@ export class EntrepriseComponent implements OnInit {
                 this.entreprises_find.push(entreprise);
             }
         }
+    }
+    get userIsProfesseur(): boolean {
+        return this.authentificationService.userIsProfesseur;
     }
 
     public editEntreprise(entreprise: Entreprise): void {
