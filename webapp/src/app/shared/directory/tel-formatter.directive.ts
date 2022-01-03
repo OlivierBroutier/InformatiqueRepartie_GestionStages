@@ -31,6 +31,7 @@ export class TelFormatterDirective implements OnChanges {
             const formattedValue = value.match(/.{1,2}/g)?.join(' ');
             if (formattedValue) {
                 this.ref.nativeElement.value = formattedValue;
+                this.ngModelChange.emit(formattedValue);
             }
         }
     }
