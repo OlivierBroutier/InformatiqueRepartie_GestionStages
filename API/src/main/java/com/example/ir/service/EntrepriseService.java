@@ -39,8 +39,11 @@ public class EntrepriseService {
         return entrepriseMapper.toDTO(findById(id));
     }
 
-    public EntrepriseDTO create(EntrepriseDTO entreprise) {
-        return entrepriseMapper.toDTO(entrepriseRepository.save(entrepriseMapper.toBO(entreprise)));
+    public EntrepriseDTO create(EntrepriseDTO entrepriseDTO) {
+        Entreprise entreprise = entrepriseMapper.toBO(entrepriseDTO);
+        entreprise.setEnActivite(true);
+
+        return entrepriseMapper.toDTO(entrepriseRepository.save(entreprise));
     }
 
     public EntrepriseDTO update(Integer id, EntrepriseDTO entrepriseDTO) throws FonctionnelException {
