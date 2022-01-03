@@ -24,6 +24,7 @@ import { StagiaireAjoutComponent } from './stagiaire/stagiaire-ajout/stagiaire-a
 import { StagiaireDetailComponent } from './stagiaire/stagiaire-detail/stagiaire-detail.component';
 import { StageModifComponent } from './stage/stage-modif/stage-modif.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TelFormatterDirective } from './shared/directory/tel-formatter.directive';
 
 @NgModule({
     declarations: [
@@ -44,7 +45,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
         StagiaireComponent,
         StagiaireAjoutComponent,
         StagiaireDetailComponent,
-        StageModifComponent
+        StageModifComponent,
+        TelFormatterDirective
     ],
     imports: [
         BrowserModule,
