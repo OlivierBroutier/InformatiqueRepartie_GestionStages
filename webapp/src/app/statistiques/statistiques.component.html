@@ -1,8 +1,9 @@
+<h3>Statistiques</h3>
 <div class="card-deck">
     <div class="card">
         <div class="card-body" >
-            <h5 class="card-title">Répartition des élèves dans les classes</h5>
-            <div *ngIf="chartReady" style="display: block">
+            <h5 class="card-title">Répartition du nombre d'élèves dans les classes</h5>
+            <div style="display: block">
                 <canvas mdbChart
                         [chartType]="chartType"
                         [datasets]="chartDatasets"
@@ -19,17 +20,32 @@
     </div>
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <h5 class="card-title">Les entreprises selon leurs spécialités </h5>
+            <canvas mdbChart
+                    [chartType]="chartType"
+                    [datasets]="chartDatasets1"
+                    [labels]="chartLabels1"
+                    [colors]="chartColors"
+                    [options]="chartOptions"
+                    [legend]="true"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)">
+            </canvas>
         </div>
     </div>
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <h5 class="card-title">Stage combien de stagiaire ayant trouvé une entreprise</h5>
+            <canvas mdbChart
+                    [chartType]="chartType"
+                    [datasets]="chartDatasets2"
+                    [labels]="chartLabels2"
+                    [colors]="chartColors"
+                    [options]="chartOptions"
+                    [legend]="true"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)">
+            </canvas>
         </div>
     </div>
 </div>
-

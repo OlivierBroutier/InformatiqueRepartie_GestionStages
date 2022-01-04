@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {EtudiantService} from "../shared/service/etudiant.service";
 import {Etudiant} from "../model/etudiant.model";
+import {Entreprise} from "../model/entreprise.model";
+import {EntrepriseService} from "../shared/service/entreprise.service";
 
 
 @Component({
@@ -10,14 +12,17 @@ import {Etudiant} from "../model/etudiant.model";
 })
 export class StatistiquesComponent implements OnInit {
 
-    public chartReady = false;
-    public etudiant_groupe: Map<string, number> = new Map<string, number>();
+    public etudiant_groupe : Map<string, number> = new Map<string, number>();
+    public entreprise_groupe : Map<string, number> = new Map<string, number>();
     public etudiants: Etudiant[] = [];
+    public entreprises: Entreprise[] = [];
     public chartType: string = 'pie';
-    public chartDatasets: Array<any> = [
-    ];
-
+    public chartDatasets: Array<any> = [];
+    public chartDatasets1: Array<any> = [];
+    public chartDatasets2: Array<any> = [];
     public chartLabels: Array<any> = [];
+    public chartLabels1: Array<any> = [];
+    public chartLabels2: Array<any> = [];
 
     public chartColors: Array<any> = [];
 
@@ -25,30 +30,25 @@ export class StatistiquesComponent implements OnInit {
         responsive: true
     };
 
-    constructor(private etudiantService: EtudiantService) {
+    constructor(private etudiantService: EtudiantService, private entrepriseService : EntrepriseService) {
     }
 
     async ngOnInit(): Promise<void> {
-
-        let array_etudiant = [];
-
         this.etudiants = await this.etudiantService.findAllEtudiant();
-        for (let i = 0; i < this.etudiants.length; i++) {
-            array_etudiant.push(this.etudiants[i].classe?.nomClasse);
-
-
-        }
+        this.entreprises = await this.entrepriseService.findAllEntreprise();
         this.etudiant_groupe = this.groupByClasse(this.etudiants);
-
-
-        this.chartDatasets = [{data : [...this.etudiant_groupe.values()], label : 'Etudiant selon leurs classes'} ];
+        this.entreprise_groupe = this.groupBySpecialite(this.entreprises);
+        this.chartDatasets = [{data : [...this.etudiant_groupe.values()]} ];
+        this.chartDatasets1 = [{data : [...this.entreprise_groupe.values()]} ];
         this.chartLabels = [...this.etudiant_groupe.keys()];
-        console.log(this.chartDatasets);
-        console.log(this.chartLabels);
+        this.chartLabels1 = [...this.entreprise_groupe.keys()];
 
-        this.chartReady = true;
+        const nbEtudiantsAvecStage = this.etudiants.filter(e => e.stages && e.stages.length > 0).length;
+        this.chartDatasets2 = [{ data: [nbEtudiantsAvecStage, this.etudiants.length - nbEtudiantsAvecStage] }];
+        this.chartLabels2 = ['Etudiants avec stage', 'Etudiants sans stage'];
     }
-      groupByClasse = (etudiants: Etudiant[]): Map<string, number> => {
+
+    groupByClasse = (etudiants: Etudiant[]): Map<string, number> => {
           return etudiants.reduce((rv: Map<string, number>, x: Etudiant) => {
               if (!x.classe || !x.classe.nomClasse) {
                   return rv;
@@ -59,6 +59,18 @@ export class StatistiquesComponent implements OnInit {
           }, new Map());
       }
 
+    groupBySpecialite = (entreprises: Entreprise[]): Map<string, number> => {
+        return entreprises.reduce((rv: Map<string, number>, x: Entreprise) => {
+            x.specialites?.forEach(specialite => {
+                if (!specialite.libelle) {
+                    return;
+                }
+
+                rv.set(specialite.libelle, (rv.get(specialite.libelle) ?? 0) + 1);
+            });
+            return rv;
+        }, new Map());
+    }
 
 
 
