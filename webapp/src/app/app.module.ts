@@ -26,6 +26,7 @@ import { StageModifComponent } from './stage/stage-modif/stage-modif.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StatistiquesComponent } from './statistiques/statistiques.component';
 import { TelFormatterDirective } from './shared/directory/tel-formatter.directive';
+import {ChartsModule, MDBBootstrapModule, MDBRootModule} from "angular-bootstrap-md";
 
 
 @NgModule({
@@ -56,7 +57,10 @@ import { TelFormatterDirective } from './shared/directory/tel-formatter.directiv
         AppRoutingModule,
         HttpClientModule,
         FormsModule,
-        NgbModule
+        NgbModule,
+        ChartsModule,
+        MDBRootModule,
+        MDBBootstrapModule.forRoot()
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: HttpDefaultInterceptor, multi: true },
