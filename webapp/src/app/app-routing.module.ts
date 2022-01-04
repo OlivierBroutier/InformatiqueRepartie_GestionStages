@@ -13,6 +13,7 @@ import {StagiaireComponent} from "./stagiaire/stagiaire.component";
 import {StagiaireAjoutComponent} from "./stagiaire/stagiaire-ajout/stagiaire-ajout.component";
 import {StagiaireDetailComponent} from "./stagiaire/stagiaire-detail/stagiaire-detail.component";
 import {StageModifComponent} from "./stage/stage-modif/stage-modif.component";
+import {StatistiquesComponent} from "./statistiques/statistiques.component";
 
 
 
@@ -39,7 +40,8 @@ const routes: Routes = [
             { path: 'ajout',  component: StagiaireAjoutComponent, canActivate : [AuthGuard] },
             { path: ':idStagiaire', component:StagiaireDetailComponent, canActivate : [AuthGuard]}
 
-        ] }
+        ] },
+    { path: 'statistiques', component : StatistiquesComponent, canActivate : [AuthGuard]}
 
 ];
 

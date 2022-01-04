@@ -24,8 +24,10 @@ import { StagiaireAjoutComponent } from './stagiaire/stagiaire-ajout/stagiaire-a
 import { StagiaireDetailComponent } from './stagiaire/stagiaire-detail/stagiaire-detail.component';
 import { StageModifComponent } from './stage/stage-modif/stage-modif.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { StatistiquesComponent } from './statistiques/statistiques.component';
 import { TelFormatterDirective } from './shared/directory/tel-formatter.directive';
 import { NgSelectModule } from '@ng-select/ng-select';
+
 
 @NgModule({
     declarations: [
@@ -47,6 +49,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
         StagiaireAjoutComponent,
         StagiaireDetailComponent,
         StageModifComponent,
+        StatistiquesComponent,
         TelFormatterDirective
     ],
     imports: [
