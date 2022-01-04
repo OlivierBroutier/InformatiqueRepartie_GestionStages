@@ -1,4 +1,5 @@
 import { Stage } from './stage.model';
+import { Specialite } from './specialite.model';
 
 export interface Entreprise {
     id?: number;
@@ -16,4 +17,5 @@ export interface Entreprise {
     niveau? : string;
     enActivite? : boolean;
     stages?: Stage[];
+    specialites?: Specialite[];
 }

@@ -25,6 +25,7 @@ import { StagiaireDetailComponent } from './stagiaire/stagiaire-detail/stagiaire
 import { StageModifComponent } from './stage/stage-modif/stage-modif.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TelFormatterDirective } from './shared/directory/tel-formatter.directive';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
     declarations: [
@@ -53,7 +54,8 @@ import { TelFormatterDirective } from './shared/directory/tel-formatter.directiv
         AppRoutingModule,
         HttpClientModule,
         FormsModule,
-        NgbModule
+        NgbModule,
+        NgSelectModule
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: HttpDefaultInterceptor, multi: true },

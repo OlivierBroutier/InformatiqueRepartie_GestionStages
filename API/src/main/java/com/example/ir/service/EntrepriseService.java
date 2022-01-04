@@ -7,6 +7,7 @@ import com.example.ir.config.ErrorEnum;
 import com.example.ir.mapper.EntrepriseMapper;
 import com.example.ir.repository.EntrepriseRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -39,13 +40,19 @@ public class EntrepriseService {
         return entrepriseMapper.toDTO(findById(id));
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public EntrepriseDTO create(EntrepriseDTO entrepriseDTO) {
         Entreprise entreprise = entrepriseMapper.toBO(entrepriseDTO);
         entreprise.setEnActivite(true);
 
-        return entrepriseMapper.toDTO(entrepriseRepository.save(entreprise));
+
+
+        entreprise = entrepriseRepository.save(entreprise);
+
+        return entrepriseMapper.toDTO(entreprise);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public EntrepriseDTO update(Integer id, EntrepriseDTO entrepriseDTO) throws FonctionnelException {
         Entreprise entreprise = findById(id);
 

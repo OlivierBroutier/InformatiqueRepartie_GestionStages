@@ -20,6 +20,7 @@ public class EntrepriseDTO {
     private String niveau;
     private Boolean enActivite;
     private List<StageDTO> stages = new ArrayList<>();
+    private List<SpecialiteDTO> specialites = new ArrayList<>();
 
     public EntrepriseDTO() {
         // no-op
@@ -143,5 +144,13 @@ public class EntrepriseDTO {
 
     public void setStages(List<StageDTO> stages) {
         this.stages = stages;
+    }
+
+    public List<SpecialiteDTO> getSpecialites() {
+        return specialites;
+    }
+
+    public void setSpecialites(List<SpecialiteDTO> specialites) {
+        this.specialites = specialites;
     }
 }

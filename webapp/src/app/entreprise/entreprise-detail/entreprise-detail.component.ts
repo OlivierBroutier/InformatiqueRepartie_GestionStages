@@ -31,4 +31,8 @@ export class EntrepriseDetailComponent implements OnInit {
         return this.entreprise?.stages ?? [];
     }
 
+    get specialitesLibelle(): string {
+        return this.entreprise?.specialites?.map(specialite => specialite.libelle).join(' / ') ?? 'Aucune';
+    }
+
 }

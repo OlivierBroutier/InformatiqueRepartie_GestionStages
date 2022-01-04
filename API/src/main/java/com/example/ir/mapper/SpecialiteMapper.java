@@ -19,4 +19,6 @@ public interface SpecialiteMapper {
 
     Specialite toBO(SpecialiteDTO specialite);
 
+    List<Specialite> toListBO(List<SpecialiteDTO> specialites);
+
 }

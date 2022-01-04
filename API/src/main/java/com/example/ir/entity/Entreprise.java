@@ -7,7 +7,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.io.Serializable;
@@ -63,11 +66,15 @@ public class Entreprise implements Serializable {
     @Column(name = "en_activite", nullable = false)
     private Boolean enActivite = false;
 
-    @OneToMany(mappedBy = "entreprise", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "entreprise", fetch = FetchType.LAZY)
     private List<Stage> stages = new ArrayList<>();
 
-    @OneToMany(mappedBy = "entreprise", cascade = CascadeType.ALL)
-    private List<SpecEntreprise> specEntrepriseAssoc = new ArrayList<>();
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "spec_entreprise",
+            joinColumns = {@JoinColumn(name = "num_entreprise")},
+            inverseJoinColumns = {@JoinColumn(name = "num_spec")})
+    private List<Specialite> specialites = new ArrayList<>();
 
     public Boolean getEnActivite() {
         return enActivite;
@@ -189,11 +196,11 @@ public class Entreprise implements Serializable {
         this.stages = stages;
     }
 
-    public List<SpecEntreprise> getSpecEntrepriseAssoc() {
-        return specEntrepriseAssoc;
+    public List<Specialite> getSpecialites() {
+        return specialites;
     }
 
-    public void setSpecEntrepriseAssoc(List<SpecEntreprise> specEntrepriseAssoc) {
-        this.specEntrepriseAssoc = specEntrepriseAssoc;
+    public void setSpecialites(List<Specialite> specialites) {
+        this.specialites = specialites;
     }
 }
