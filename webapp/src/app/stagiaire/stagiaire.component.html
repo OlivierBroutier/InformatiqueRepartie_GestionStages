@@ -11,10 +11,11 @@
     <button type="button" class="btn btn-primary" [routerLink]="'/stagiaire/ajout'"><span class="glyphicon glyphicon-plus"> Ajouter un étudiant</span></button>
 
 </div>
-
 <hr>
+<div class="boutons">
+    <h3>{{ nbStagiaires }}</h3>  <button class="btn btn-primary" (click)="downloadAsPDF()">Exporter en PDF</button>
+</div>
 
-<h3>{{ nbStagiaires }}</h3>
 
 <table class="table table-hover">
     <thead>
@@ -38,14 +39,26 @@
             <a class="icone" [routerLink]="" (click)="removeEtudiant(stagiaire) ">
                 <span class="glyphicon glyphicon-remove"></span>
             </a>
-            <!--<a class="icone" [routerLink]="" (click)="removeEntreprise(entreprise)">
-                <span class="glyphicon glyphicon-remove"></span>
-            </a>-->
-
-
-
-
         </td>
+        <td>{{ stagiaire.prenomEtudiant }} {{ stagiaire.nomEtudiant }}</td>
+        <td (click)="navigateToEntreprise(stagiaire)"> <a>{{getEntreprise(stagiaire)?.raisonSociale}}</a></td>
+        <td> {{getProfesseur(stagiaire)?.prenomProf }} {{getProfesseur(stagiaire)?.nomProf }}</td>
+    </tr>
+    </tbody>
+</table>
+
+
+<table class="table table-hover"  id="pdfTable" #pdfTable hidden>
+    <thead>
+    <tr>
+        <th scope="col">Etudiant</th>
+        <th scope="col">Entreprise</th>
+        <th scope="col">Professeur</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let stagiaire of stagiaires_find">
         <td>{{ stagiaire.prenomEtudiant }} {{ stagiaire.nomEtudiant }}</td>
         <td (click)="navigateToEntreprise(stagiaire)"> <a>{{getEntreprise(stagiaire)?.raisonSociale}}</a></td>
         <td> {{getProfesseur(stagiaire)?.prenomProf }} {{getProfesseur(stagiaire)?.nomProf }}</td>

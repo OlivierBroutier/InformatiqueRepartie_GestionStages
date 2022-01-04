@@ -20,7 +20,6 @@ interface jsPDFCustom extends jsPDF {
     styleUrls: ['./entreprise.component.css']
 })
 export class EntrepriseComponent implements OnInit {
-    title = 'htmltopdf';
     @ViewChild('pdfTable') pdfTable: ElementRef | undefined;
     public entreprises : Entreprise[] = [];
     public nom: string = '';
@@ -89,6 +88,6 @@ export class EntrepriseComponent implements OnInit {
         doc.autoTable({
             html: pdfTable
         });
-        doc.save('web.pdf');
+        doc.save('liste_entreprise.pdf');
     }
 }
