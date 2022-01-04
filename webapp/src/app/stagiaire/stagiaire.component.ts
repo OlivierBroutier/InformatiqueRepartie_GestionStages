@@ -9,9 +9,9 @@ import {Entreprise} from "../model/entreprise.model";
 import { Professeur } from '../model/professeur.model';
 
 @Component({
-  selector: 'app-stagiaire',
-  templateUrl: './stagiaire.component.html',
-  styleUrls: ['./stagiaire.component.css']
+    selector: 'app-stagiaire',
+    templateUrl: './stagiaire.component.html',
+    styleUrls: ['./stagiaire.component.css']
 })
 export class StagiaireComponent implements OnInit {
     public stagiaires : Etudiant[] = [];
@@ -19,12 +19,22 @@ export class StagiaireComponent implements OnInit {
     public stagiaires_find : Etudiant[] = [];
     public stages : Stage[] = [];
 
-  constructor(private readonly stagiaire_service : EtudiantService, private  readonly router : Router, private readonly success_service : SuccessService, private readonly stage_service : StageService) { }
+    constructor(private readonly stagiaire_service : EtudiantService, private  readonly router : Router, private readonly success_service : SuccessService, private readonly stage_service : StageService) { }
 
-  async ngOnInit(): Promise<void> {
-      this.stagiaires = await this.stagiaire_service.findAllEtudiant();
-      this.stagiaires_find = this.stagiaires;
-  }
+    async ngOnInit(): Promise<void> {
+        this.stagiaires = await this.stagiaire_service.findAllEtudiant();
+        this.stagiaires_find = this.stagiaires;
+    }
+
+    get nbStagiaires(): string {
+        if (this.stagiaires_find.length === 0) {
+            return 'Aucun stagiaire trouvé';
+        } else if (this.stagiaires_find.length === 1) {
+            return '1 stagiaire trouvé';
+        } else {
+            return this.stagiaires_find.length + ' stagiaires trouvés';
+        }
+    }
 
     public getLastStage(stagiaire: Etudiant): Stage | undefined {
         if (stagiaire.stages?.length === 0) {
@@ -76,33 +86,33 @@ export class StagiaireComponent implements OnInit {
 
 
 
-    /*public rechercher() {
-        this.entreprises_find = [];
-        for(let entreprise of this.entreprises) {
-            if (entreprise.raisonSociale?.toLowerCase()?.includes(this.nom.toLowerCase())
-                || entreprise.nomResp?.toLowerCase()?.includes(this.nom.toLowerCase())) {
-                this.entreprises_find.push(entreprise);
-            }
+/*public rechercher() {
+    this.entreprises_find = [];
+    for(let entreprise of this.entreprises) {
+        if (entreprise.raisonSociale?.toLowerCase()?.includes(this.nom.toLowerCase())
+            || entreprise.nomResp?.toLowerCase()?.includes(this.nom.toLowerCase())) {
+            this.entreprises_find.push(entreprise);
         }
     }
+}
 
-    public editEntreprise(entreprise: Entreprise): void {
-        this.router.navigate(['/entreprise/ajout'], { state: { entreprise } });
+public editEntreprise(entreprise: Entreprise): void {
+    this.router.navigate(['/entreprise/ajout'], { state: { entreprise } });
+}
+
+public inscription(entreprise: Entreprise): void {
+    this.router.navigate(['/inscription'], { state: { entreprise } });
+}
+
+public removeEntreprise(entreprise: Entreprise): void {
+    if(entreprise.id) {
+        this.entreprise_service.deleteEntreprise(String(entreprise.id));
+        this.success_service.createSuccessAlert('Succès', 'L\'entreprise a bien été supprimée');
+        this.entreprises = [...this.entreprises].filter(e => e.id !== entreprise.id);
+        this.entreprises_find = [...this.entreprises_find].filter(e => e.id !== entreprise.id);
     }
 
-    public inscription(entreprise: Entreprise): void {
-        this.router.navigate(['/inscription'], { state: { entreprise } });
-    }
 
-    public removeEntreprise(entreprise: Entreprise): void {
-        if(entreprise.id) {
-            this.entreprise_service.deleteEntreprise(String(entreprise.id));
-            this.success_service.createSuccessAlert('Succès', 'L\'entreprise a bien été supprimée');
-            this.entreprises = [...this.entreprises].filter(e => e.id !== entreprise.id);
-            this.entreprises_find = [...this.entreprises_find].filter(e => e.id !== entreprise.id);
-        }
-
-
-    }
+}
 }*/
 

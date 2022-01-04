@@ -44,6 +44,7 @@ public interface ProfesseurMapper {
 
     @Named("BO")
     @Mapping(target = "stages", qualifiedByName = { "Stage", "ListLightBO" })
+    @Mapping(target = "profClasseAssoc", ignore = true)
     Professeur toBO(ProfesseurDTO professeur);
 
     @Named("ListBO")

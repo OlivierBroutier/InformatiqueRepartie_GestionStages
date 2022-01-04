@@ -27,6 +27,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StatistiquesComponent } from './statistiques/statistiques.component';
 import { TelFormatterDirective } from './shared/directory/tel-formatter.directive';
 import {ChartsModule, MDBBootstrapModule, MDBRootModule} from "angular-bootstrap-md";
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import {ChartsModule, MDBBootstrapModule, MDBRootModule} from "angular-bootstrap
         NgbModule,
         ChartsModule,
         MDBRootModule,
-        MDBBootstrapModule.forRoot()
+        MDBBootstrapModule.forRoot(),
+        NgSelectModule
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: HttpDefaultInterceptor, multi: true },

@@ -28,6 +28,24 @@ export class EntrepriseComponent implements OnInit {
         this.entreprises_find = this.entreprises;
     }
 
+    get userIsProfesseur(): boolean {
+        return this.authentificationService.userIsProfesseur;
+    }
+
+    get nbEntreprises(): string {
+        if (this.entreprises_find.length === 0) {
+            return 'Aucune entreprise trouvée';
+        } else if (this.entreprises_find.length === 1) {
+            return '1 entreprise trouvée';
+        } else {
+            return this.entreprises_find.length + ' entreprises trouvées';
+        }
+    }
+
+    public getSpecialitesLibelle(entreprise: Entreprise): string {
+        return entreprise.specialites?.map(specialite => specialite.libelle).join(' / ') ?? 'Aucune';
+    }
+
     public rechercher() {
         this.entreprises_find = [];
         for(let entreprise of this.entreprises) {
@@ -36,9 +54,6 @@ export class EntrepriseComponent implements OnInit {
                 this.entreprises_find.push(entreprise);
             }
         }
-    }
-    get userIsProfesseur(): boolean {
-        return this.authentificationService.userIsProfesseur;
     }
 
     public editEntreprise(entreprise: Entreprise): void {

@@ -48,6 +48,7 @@ public interface StageMapper {
     @Mapping(target = "etudiant", qualifiedByName = { "Etudiant", "BO" })
     @Mapping(target = "professeur", qualifiedByName = { "Professeur", "BO" })
     @Mapping(target = "entreprise", qualifiedByName = { "Entreprise", "BO" })
+    @Mapping(target = "missions", ignore = true)
     Stage toBO(StageDTO stage);
 
     @Named("ListBO")
@@ -58,6 +59,7 @@ public interface StageMapper {
     @Mapping(target = "etudiant", ignore = true)
     @Mapping(target = "professeur", ignore = true)
     @Mapping(target = "entreprise", ignore = true)
+    @Mapping(target = "missions", ignore = true)
     Stage toLightBO(StageDTO stage);
 
     @Named("ListLightBO")

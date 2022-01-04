@@ -6,6 +6,7 @@ import { EntrepriseService } from '../../shared/service/entreprise.service';
 import { SuccessService } from '../../shared/service/success.service';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
+import { Etudiant } from '../../model/etudiant.model';
 
 @Component({
     selector: 'app-ajout-entreprise',
@@ -43,5 +44,6 @@ export class AjoutEntrepriseComponent implements OnInit {
     public async edit(): Promise<void> {
         this.entreprise = await this.entrepriseService.updateEntreprise(this.entreprise);
         this.successService.createSuccessAlert('Succès', 'L\'entreprise a bien été modifiée');
+        this.router.navigate(['/entreprise']);
     }
 }
