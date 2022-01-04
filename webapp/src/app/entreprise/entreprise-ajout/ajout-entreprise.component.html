@@ -18,14 +18,19 @@
     <div class="form-group">
         <label for="rue">Rue* :</label>
         <input type="text"  [(ngModel)]="entreprise.rueEntreprise" class="form-control" id="rue" name="rue" required>
+
         <label for="codepostal">Code postal* :</label>
         <input type="text" [(ngModel)]="entreprise.cpEntreprise" class="form-control" id="codepostal" name="codepostal"required>
+
         <label for="ville">Ville* :</label>
         <input type="text" [(ngModel)]="entreprise.villeEntreprise" class="form-control" id="ville" name="ville"required>
-        <label for="telephone">Téléphone* (format 00 00 00 00 00) :</label>
-        <input type="tel" pattern="[0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2}" [(ngModel)]="entreprise.telEntreprise" class="form-control" id="telephone" name="telephone" required>
+
+        <label for="telephone">Téléphone* :</label>
+        <input telFormatter type="tel" pattern="[0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2}" maxlength="14" [(ngModel)]="entreprise.telEntreprise" class="form-control" id="telephone" name="telephone" required>
+
         <label for="fax">Fax :</label>
-        <input type="tel" [(ngModel)]="entreprise.faxEntreprise" class="form-control" id="fax" name="fax">
+        <input telFormatter type="tel" pattern="[0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2}" maxlength="14" [(ngModel)]="entreprise.faxEntreprise" class="form-control" id="fax" name="fax">
+
         <label for="email">Email :</label>
         <input type="email" [(ngModel)]="entreprise.email" class="form-control" id="email" name="email">
     </div>
