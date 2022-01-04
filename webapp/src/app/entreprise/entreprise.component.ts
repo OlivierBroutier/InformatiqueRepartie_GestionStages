@@ -32,6 +32,16 @@ export class EntrepriseComponent implements OnInit {
         return this.authentificationService.userIsProfesseur;
     }
 
+    get nbEntreprises(): string {
+        if (this.entreprises_find.length === 0) {
+            return 'Aucune entreprise trouvée';
+        } else if (this.entreprises_find.length === 1) {
+            return '1 entreprise trouvée';
+        } else {
+            return this.entreprises_find.length + ' entreprises trouvées';
+        }
+    }
+
     public getSpecialitesLibelle(entreprise: Entreprise): string {
         return entreprise.specialites?.map(specialite => specialite.libelle).join(' / ') ?? 'Aucune';
     }
