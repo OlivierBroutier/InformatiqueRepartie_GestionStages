@@ -6,7 +6,7 @@
 <h4> Entreprise </h4>
 
 <ngb-accordion [closeOthers]="true">
-    <ngb-panel title="Rechercher une entreprise" *ngIf="userIsProfesseur">
+    <ngb-panel title="Rechercher une entreprise" >
         <ng-template ngbPanelContent>
             Pour rechercher une entreprise, dirigez-vous sur l'onglet Entreprise. Vous pouvez apercevoir une barre de recherche (tout en haut de la page). Il vous suffit de mettre des lettres et ou/mots qui sont dans le nom de l'entreprise, pour la voir apparaitre. Vous pouvez aussi décider de faire une recherche par nom du responsable également. Ensuite, cliquez sur l'icone situé à côté (la loupe), ou sur la touche Entrée de votre clavier. La liste correspondant à votre recherche, se trouve juste en bas (le tableau a été mis à jour avec votre recherche).
             Vous pouvez apercevoir le nombre d'entreprises associés à votre recherche.
@@ -30,7 +30,7 @@
             (ex : informations générales sur la société, leur coordonnées, les responsables, leurs spécialitées). De plus, vous avez accès à tout les stages associés à cette entreprise.
         </ng-template>
     </ngb-panel>
-    <ngb-panel title="Modifier une entreprise">
+    <ngb-panel title="Modifier une entreprise" *ngIf="userIsProfesseur">
         <ng-template ngbPanelContent>
             Pour modifier une entreprise,  dirigez-vous sur l'onglet Entreprise. Dans opération, cliquez sur l'icone "stylo".
             En cliquant sur l'icone, vous pourrez modifier l'entreprise. A la fin de vos modifications, cliquez sur "Modifier cette entreprise".
@@ -43,7 +43,7 @@
             On peut bien évidemment modifier ces valeurs pré-remplies. A la validation du formulaire, un message de validation s'affiche. Vous serez directement redirigé vers la liste des stages. Vous pourrez voir le stage rajouté dans les derniers de la liste.
         </ng-template>
     </ngb-panel>
-    <ngb-panel title="Supprimer une entreprise">
+    <ngb-panel title="Supprimer une entreprise" *ngIf="userIsProfesseur">
         <ng-template ngbPanelContent>
            Pour supprimer une entreprise, dirigez-vous sur l'onglet Entreprise. Cliquez sur l'icône croix qui se trouve dans opération. Un message de confirmation sera affiché, puis la liste des entreprises sera mis à jour directement.
             Vous pouvez apercevoir que le nombre d'entreprises a été mis à jour.
@@ -51,9 +51,9 @@
     </ngb-panel>
 </ngb-accordion>
 
-<h4> Etudiant </h4>
+<h4 *ngIf="userIsProfesseur"> Etudiant </h4>
 
-<ngb-accordion [closeOthers]="true">
+<ngb-accordion [closeOthers]="true" *ngIf="userIsProfesseur">
     <ngb-panel title="Rechercher un étudiant">
         <ng-template ngbPanelContent>
             Pour rechercher un étudiant, dirigez-vous sur l'onglet Stagiaire. Vous pouvez apercevoir une barre de recherche (tout en haut de la page). Il vous suffit de mettre des lettres et ou/mots qui sont dans le nom/prénom de l'étudiant, pour le voir apparaitre. Ensuite, cliquez sur l'icone situé à côté (la loupe), ou sur la touche Entrée de votre clavier. La liste correspondant à votre recherche, se trouve juste en bas (le tableau a été mis à jour avec votre recherche).
@@ -99,9 +99,9 @@
     </ngb-panel>
 </ngb-accordion>
 
-<h4> Stage </h4>
+<h4 *ngIf="userIsProfesseur"> Stage </h4>
 
-<ngb-accordion [closeOthers]="true">
+<ngb-accordion [closeOthers]="true" *ngIf="userIsProfesseur">
     <ngb-panel title="Rechercher un étudiant">
         <ng-template ngbPanelContent>
             Pour rechercher un étudiant, dirigez-vous sur l'onglet Stagiaire. Vous pouvez apercevoir une barre de recherche (tout en haut de la page). Il vous suffit de mettre des lettres et ou/mots qui sont dans le nom/prénom de l'étudiant, pour le voir apparaitre. Ensuite, cliquez sur l'icone situé à côté (la loupe), ou sur la touche Entrée de votre clavier. La liste correspondant à votre recherche, se trouve juste en bas (le tableau a été mis à jour avec votre recherche).
@@ -158,9 +158,9 @@
     </ngb-panel>
 </ngb-accordion>
 
-<h4> Statistiques </h4>
+<h4 *ngIf="userIsProfesseur"> Statistiques </h4>
 
-<ngb-accordion [closeOthers]="true">
+<ngb-accordion [closeOthers]="true" *ngIf="userIsProfesseur">
     <ngb-panel title="Visualiser les statistiques">
         <ng-template ngbPanelContent>
             Pour visualiser les statistiques, dirigez-vous sur l'onglet Statistiques.
