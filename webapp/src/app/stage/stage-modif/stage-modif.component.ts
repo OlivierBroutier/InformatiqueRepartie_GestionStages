@@ -18,28 +18,33 @@ import { Mission } from '../../model/mission.model';
 })
 export class StageModifComponent implements OnInit {
 
-    public stage : Stage = {};
     public entreprises: Entreprise[] = [];
     public etudiants : Etudiant[] = [];
     public professeurs : Professeur[] = [];
-    public stage_resultat : Stage = {};
+
+    public stage: Stage = { typeStage: 'aucun' };
+    public stage_resultat: Stage = {};
 
     constructor(
-        private activatedRoute : ActivatedRoute,
-        private stageService : StageService,
-        private entrepriseService : EntrepriseService,
-        private etudiantService : EtudiantService, private professeurService : ProfesseurService,
+        private readonly activatedRoute: ActivatedRoute,
+        private readonly stageService: StageService,
+        private readonly entrepriseService: EntrepriseService,
+        private readonly etudiantService: EtudiantService,
+        private readonly professeurService : ProfesseurService,
         private readonly successService: SuccessService,
-        private router: Router
+        private readonly router: Router
     ) { }
 
     async ngOnInit(): Promise<void> {
-        this.activatedRoute.paramMap.subscribe(async p => {
+        this.activatedRoute.paramMap.subscribe(p => {
             const id = p.get('idStage');
             if (id) {
-                this.stage = await this.stageService.findStageById(id);
+                this.stageService.findStageById(id)
+                    .then(stage => this.stage = stage)
+                    .catch(() => this.router.navigate(['/stage']));
             }
         });
+
         this.entreprises = await this.entrepriseService.findAllEntreprise();
         this.etudiants = await this.etudiantService.findAllEtudiant();
         this.professeurs = await this.professeurService.findAllProfesseur();
