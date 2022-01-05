@@ -4,11 +4,15 @@ import com.example.ir.config.ErrorEnum;
 import com.example.ir.config.FonctionnelException;
 import com.example.ir.dto.StageDTO;
 import com.example.ir.entity.Entreprise;
+import com.example.ir.entity.Mission;
 import com.example.ir.entity.Stage;
 import com.example.ir.mapper.StageMapper;
+import com.example.ir.repository.MissionRepository;
 import com.example.ir.repository.StageRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,11 +22,13 @@ public class StageService {
     private final StageRepository stageRepository;
     private final StageMapper stageMapper;
     private final EntrepriseService entrepriseService;
+    private final MissionRepository missionRepository;
 
-    public StageService(StageRepository stageRepository, StageMapper stageMapper, EntrepriseService entrepriseService) {
+    public StageService(StageRepository stageRepository, StageMapper stageMapper, EntrepriseService entrepriseService, MissionRepository missionRepository) {
         this.stageRepository = stageRepository;
         this.stageMapper = stageMapper;
         this.entrepriseService = entrepriseService;
+        this.missionRepository = missionRepository;
     }
 
     public List<Stage> findAll() {
@@ -51,11 +57,25 @@ public class StageService {
 
     }
 
-    public StageDTO create(StageDTO stage) {
-        return stageMapper.toDTO(stageRepository.save(stageMapper.toBO(stage)));
+    @Transactional(rollbackFor = Exception.class)
+    public StageDTO create(StageDTO stageDTO) {
+        Stage stage = stageMapper.toBO(stageDTO);
+        List<Mission> missions = new ArrayList<>(stage.getMissions());
+
+        stage.getMissions().clear();
+        Stage savedStage = stageRepository.save(stage);
+
+        missions.forEach(mission -> mission.setStage(savedStage));
+        missions = missionRepository.saveAll(missions);
+
+        savedStage.getMissions().addAll(missions);
+        return stageMapper.toLightDTO(savedStage);
     }
 
-    public StageDTO update(StageDTO stage) { return stageMapper.toDTO(stageRepository.save(stageMapper.toBO(stage)));
+    @Transactional(rollbackFor = Exception.class)
+    public StageDTO update(StageDTO stage) {
+        stage.getMissions().forEach(mission -> mission.setStage(stage));
+        return stageMapper.toDTO(stageRepository.save(stageMapper.toBO(stage)));
     }
 
     public Boolean delete(Integer id) {

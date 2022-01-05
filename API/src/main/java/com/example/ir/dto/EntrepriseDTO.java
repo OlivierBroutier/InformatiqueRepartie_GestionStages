@@ -1,9 +1,10 @@
 package com.example.ir.dto;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EntrepriseDTO {
+public class EntrepriseDTO implements Serializable {
 
     private Integer id;
     private String raisonSociale;

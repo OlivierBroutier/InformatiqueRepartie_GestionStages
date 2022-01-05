@@ -16,7 +16,8 @@ import java.util.List;
         uses = {
                 EtudiantMapper.class,
                 ProfesseurMapper.class,
-                EntrepriseMapper.class
+                EntrepriseMapper.class,
+                MissionMapper.class
         }
 )
 @Named("Stage")
@@ -26,6 +27,7 @@ public interface StageMapper {
     @Mapping(target = "etudiant", qualifiedByName = { "Etudiant", "LightDTO" })
     @Mapping(target = "professeur", qualifiedByName = { "Professeur", "LightDTO" })
     @Mapping(target = "entreprise", qualifiedByName = { "Entreprise", "LightDTO" })
+    @Mapping(target = "missions", qualifiedByName = { "Mission", "ListLightDTO" })
     StageDTO toDTO(Stage stage);
 
     @Named("ListDTO")
@@ -36,6 +38,7 @@ public interface StageMapper {
     @Mapping(target = "etudiant", qualifiedByName = { "Etudiant", "LightDTO" })
     @Mapping(target = "professeur", qualifiedByName = { "Professeur", "LightDTO" })
     @Mapping(target = "entreprise", qualifiedByName = { "Entreprise", "LightDTO" })
+    @Mapping(target = "missions", qualifiedByName = { "Mission", "ListLightDTO" })
     StageDTO toLightDTO(Stage stage);
 
     @Named("ListLightDTO")
@@ -48,7 +51,7 @@ public interface StageMapper {
     @Mapping(target = "etudiant", qualifiedByName = { "Etudiant", "BO" })
     @Mapping(target = "professeur", qualifiedByName = { "Professeur", "BO" })
     @Mapping(target = "entreprise", qualifiedByName = { "Entreprise", "BO" })
-    @Mapping(target = "missions", ignore = true)
+    @Mapping(target = "missions", qualifiedByName = { "Mission", "ListBO" })
     Stage toBO(StageDTO stage);
 
     @Named("ListBO")

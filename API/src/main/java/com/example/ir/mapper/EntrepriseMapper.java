@@ -1,18 +1,14 @@
 package com.example.ir.mapper;
 
 import com.example.ir.dto.EntrepriseDTO;
-import com.example.ir.dto.SpecialiteDTO;
 import com.example.ir.entity.Entreprise;
-import com.example.ir.entity.Specialite;
 import org.mapstruct.IterableMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 import org.mapstruct.ReportingPolicy;
-import org.mapstruct.factory.Mappers;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Mapper(
         componentModel = "spring",

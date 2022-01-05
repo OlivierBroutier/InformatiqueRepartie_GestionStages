@@ -2,6 +2,8 @@ package com.example.ir.dto;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StageDTO implements Serializable {
 
@@ -14,6 +16,7 @@ public class StageDTO implements Serializable {
     private EtudiantDTO etudiant;
     private ProfesseurDTO professeur;
     private EntrepriseDTO entreprise;
+    private List<MissionDTO> missions = new ArrayList<>();
 
     public StageDTO() {
         // no-op
@@ -89,5 +92,13 @@ public class StageDTO implements Serializable {
 
     public void setEntreprise(EntrepriseDTO entreprise) {
         this.entreprise = entreprise;
+    }
+
+    public List<MissionDTO> getMissions() {
+        return missions;
+    }
+
+    public void setMissions(List<MissionDTO> missions) {
+        this.missions = missions;
     }
 }

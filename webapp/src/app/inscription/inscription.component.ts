@@ -11,6 +11,7 @@ import {StageService} from "../shared/service/stage.service";
 import {SuccessService} from "../shared/service/success.service";
 import {Location} from "@angular/common";
 import {Router} from "@angular/router";
+import { Mission } from '../model/mission.model';
 
 @Component({
     selector: 'app-inscription',
@@ -44,7 +45,15 @@ export class InscriptionComponent implements OnInit {
         this.professeurs = await this.professeurService.findAllProfesseur();
         this.stage.professeur = this.authentificationService.professeur;
         this.stage.entreprise = window.history.state.entreprise;
-            }
+    }
+
+    public get missions(): Mission[] {
+        return this.stage.missions ?? [];
+    }
+
+    public set missions(missions: Mission[]) {
+        this.stage.missions = missions;
+    }
 
     public compare(a: any, b: any): boolean {
         return a && b ? a.id === b.id : a === b

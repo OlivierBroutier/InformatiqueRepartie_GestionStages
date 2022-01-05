@@ -28,6 +28,7 @@ import { StatistiquesComponent } from './statistiques/statistiques.component';
 import { TelFormatterDirective } from './shared/directory/tel-formatter.directive';
 import {ChartsModule, MDBBootstrapModule, MDBRootModule} from "angular-bootstrap-md";
 import { NgSelectModule } from '@ng-select/ng-select';
+import { MissionsComponent } from './entreprise/entreprise-ajout/missions/missions.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
         StagiaireDetailComponent,
         StageModifComponent,
         StatistiquesComponent,
-        TelFormatterDirective
+        TelFormatterDirective,
+        MissionsComponent
     ],
     imports: [
         BrowserModule,

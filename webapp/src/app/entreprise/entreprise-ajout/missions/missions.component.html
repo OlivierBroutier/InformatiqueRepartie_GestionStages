@@ -1,0 +1,10 @@
+<h3>Missions</h3>
+
+<div *ngFor="let mission of missions; let i = index" class="mission">
+    <textarea [name]="i.toString()" [(ngModel)]="mission.libelle" class="form-control" required></textarea>
+    <button (click)="removeMission(mission)" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+</div>
+
+<button (click)="addMission()" class="btn btn-primary">
+    <span class="glyphicon glyphicon-plus">Ajouter une mission</span>
+</button>

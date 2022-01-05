@@ -36,7 +36,6 @@ public class StageController {
     @PostMapping
     public StageDTO ajoutStage(@RequestBody StageDTO stage) {
         return stageService.create(stage);
-
     }
 
     @PutMapping

@@ -60,7 +60,7 @@ public class Stage implements Serializable {
     @JoinColumn(name = "num_entreprise", nullable = false)
     private Entreprise entreprise;
 
-    @OneToMany(mappedBy = "stage", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "stage", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Mission> missions = new ArrayList<>();
 
 

@@ -1,5 +1,9 @@
 <form #f="ngForm">
-    <h3>Contact</h3>
+
+    <h3>Ajouter un stage</h3>
+
+    <hr>
+
     <div class="form-row">
         <div class="form-group col-md-12">
             <label>Entreprise* :</label>
@@ -24,6 +28,7 @@
             </select>
         </div>
     </div>
+
     <h3>Description du stage</h3>
     <div class="form-row">
         <div class="form-group col-md-12 grid">
@@ -52,9 +57,11 @@
             <textarea class="form-control"   id="observation" name="observation" [(ngModel)]="stage.observationStage"></textarea>
         </div>
     </div>
+
+    <app-missions [(missions)]="missions"></app-missions>
+
     <div style="text-align: center">
         <button (click)="valider()" class="btn btn-primary" [disabled]="!f.valid">  Valider l'inscription </button>
     </div>
-
 
 </form>

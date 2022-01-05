@@ -1,6 +1,7 @@
 import {Etudiant} from "./etudiant.model";
 import {Professeur} from "./professeur.model";
 import {Entreprise} from "./entreprise.model";
+import { Mission } from './mission.model';
 
 export interface Stage {
     id?: number;
@@ -12,4 +13,5 @@ export interface Stage {
     etudiant? : Etudiant;
     professeur? : Professeur;
     entreprise?: Entreprise;
+    missions?: Mission[];
 }
