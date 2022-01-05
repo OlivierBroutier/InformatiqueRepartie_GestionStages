@@ -48,5 +48,6 @@ export class StagiaireAjoutComponent implements OnInit {
     public async edit(): Promise<void> {
         this.stagiaire = await this.etudiantService.updateEtudiant(this.stagiaire);
         this.successService.createSuccessAlert('Succès', 'Le stagiaire a bien été modifié');
+        this.router.navigate(['/stagiaire']);
     }
 }
