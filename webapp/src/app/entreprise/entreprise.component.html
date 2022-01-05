@@ -1,22 +1,23 @@
 <div class="boutons">
-<div class="input-group">
-    <input type="text" [(ngModel)]="nom" (keydown.enter)="rechercher()" class="form-control" placeholder="Tapez l'entreprise ou le nom du responsable" name="search">
-    <div class="input-group-btn">
-        <button class="btn btn-default" (click)="rechercher()">
-            <i class="glyphicon glyphicon-search"></i>
-        </button>
+    <div class="input-group">
+        <input type="text" [(ngModel)]="nom" (keydown.enter)="rechercher()" class="form-control" placeholder="Tapez l'entreprise ou le nom du responsable" name="search">
+        <div class="input-group-btn">
+            <button class="btn btn-default" (click)="rechercher()">
+                <i class="glyphicon glyphicon-search"></i>
+            </button>
+        </div>
     </div>
 
-</div>
     <button type="button" class="btn btn-primary" [routerLink]="'/entreprise/ajout'"><span class="glyphicon glyphicon-plus"> Ajouter une entreprise</span></button>
-
 </div>
 
 <hr>
-<div class="boutons">
-<h3>{{ nbEntreprises }}</h3>  <button class="btn btn-primary" (click)="downloadAsPDF()">Exporter en PDF</button>
 
+<div class="boutons">
+    <h3>{{ nbEntreprises }}</h3>
+    <button *ngIf="userIsProfesseur" class="btn btn-primary" (click)="downloadAsPDF()">Exporter en PDF</button>
 </div>
+
 <table class="table table-hover">
     <thead>
     <tr>

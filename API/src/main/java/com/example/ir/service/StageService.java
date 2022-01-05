@@ -3,7 +3,7 @@ package com.example.ir.service;
 import com.example.ir.config.ErrorEnum;
 import com.example.ir.config.FonctionnelException;
 import com.example.ir.dto.StageDTO;
-import com.example.ir.entity.Entreprise;
+import com.example.ir.entity.Etudiant;
 import com.example.ir.entity.Mission;
 import com.example.ir.entity.Stage;
 import com.example.ir.mapper.StageMapper;
@@ -21,13 +21,13 @@ public class StageService {
 
     private final StageRepository stageRepository;
     private final StageMapper stageMapper;
-    private final EntrepriseService entrepriseService;
+    private final EtudiantService etudiantService;
     private final MissionRepository missionRepository;
 
-    public StageService(StageRepository stageRepository, StageMapper stageMapper, EntrepriseService entrepriseService, MissionRepository missionRepository) {
+    public StageService(StageRepository stageRepository, StageMapper stageMapper, EtudiantService etudiantService, MissionRepository missionRepository) {
         this.stageRepository = stageRepository;
         this.stageMapper = stageMapper;
-        this.entrepriseService = entrepriseService;
+        this.etudiantService = etudiantService;
         this.missionRepository = missionRepository;
     }
 
@@ -51,9 +51,9 @@ public class StageService {
         return stageMapper.toDTO(findById(id));
     }
 
-    public List<StageDTO> findStagesByEntrepriseId(Integer id) throws FonctionnelException {
-        Entreprise entreprise = entrepriseService.findById(id);
-        return stageMapper.toListDTO(stageRepository.findAllByEntreprise(entreprise));
+    public List<StageDTO> findAllByEtudiant(Integer id) throws FonctionnelException {
+        Etudiant etudiant = etudiantService.findById(id);
+        return stageMapper.toListDTO(stageRepository.findAllByEtudiant(etudiant));
 
     }
 

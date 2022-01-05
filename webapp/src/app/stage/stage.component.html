@@ -1,6 +1,6 @@
 <div class="boutons">
-    <h3>{{ nbStages }}</h3>  <button class="btn btn-primary" (click)="downloadAsPDF()">Exporter en PDF</button>
-
+    <h3>{{ nbStages }}</h3>
+    <button *ngIf="userIsProfesseur" class="btn btn-primary" (click)="downloadAsPDF()">Exporter en PDF</button>
 </div>
 
 <table class="table table-hover">

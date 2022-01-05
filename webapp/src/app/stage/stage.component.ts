@@ -1,12 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Stage } from '../model/stage.model';
 import { StageService } from '../shared/service/stage.service';
 import { Router } from "@angular/router";
 import { SuccessService } from "../shared/service/success.service";
 import {jsPDF} from "jspdf";
-import { ViewChild, ElementRef } from '@angular/core';
-import 'jspdf-autotable';
-import {UserOptions} from "jspdf-autotable";
+import { UserOptions } from 'jspdf-autotable';
+import { AuthentificationService } from '../shared/service/authentification.service';
 
 interface jsPDFCustom extends jsPDF {
     autoTable: (options: UserOptions) => void;
@@ -18,17 +17,28 @@ interface jsPDFCustom extends jsPDF {
     styleUrls: ['./stage.component.css']
 })
 export class StageComponent implements OnInit {
+
     @ViewChild('pdfTable') pdfTable: ElementRef | undefined;
+
     public stages : Stage[] = [];
 
     constructor(
-        private readonly stage_service : StageService,
+        private readonly stageService: StageService,
         private readonly router: Router,
-        private readonly success_service : SuccessService
+        private readonly successService: SuccessService,
+        private readonly authentificationService: AuthentificationService
     ) { }
 
     async ngOnInit(): Promise<void> {
-        this.stages = await this.stage_service.findAllStage();
+        if (this.authentificationService.userIsEtudiant && this.authentificationService.etudiant) {
+            this.stages = await this.stageService.findAllByEtudiant(this.authentificationService.etudiant);
+        } else {
+            this.stages = await this.stageService.findAllStage();
+        }
+    }
+
+    get userIsProfesseur(): boolean {
+        return this.authentificationService.userIsProfesseur;
     }
 
     get nbStages(): string {
@@ -47,8 +57,8 @@ export class StageComponent implements OnInit {
 
     public async removeStage(stage: Stage) : Promise<void> {
         if (stage.id) {
-            await this.stage_service.deleteStage(String(stage.id));
-            this.success_service.createSuccessAlert('Succès', 'Le stage a bien été supprimé');
+            await this.stageService.deleteStage(String(stage.id));
+            this.successService.createSuccessAlert('Succès', 'Le stage a bien été supprimé');
             this.stages = [...this.stages].filter(e => e.id !== stage.id);
         }
     }
