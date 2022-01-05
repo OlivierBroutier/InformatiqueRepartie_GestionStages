@@ -15,8 +15,8 @@
         </div>
         <div class="form-group col-md-12">
             <label>Etudiant* :</label>
-            <select class="custom-select custom-select-lg mb-3" name="etudiant" [compareWith]="compare" [(ngModel)]="stage.etudiant" required>
-                <option [ngValue]="undefined">Choisissez un étudiant</option>
+            <select class="custom-select custom-select-lg mb-3" [disabled]="this.EtudiantConnecte" name="etudiant" [compareWith]="compare" [(ngModel)]="stage.etudiant" required>
+                <option [ngValue]="undefined" >Choisissez un étudiant</option>
                 <option *ngFor="let etudiant of etudiants" [ngValue]="etudiant">{{etudiant.prenomEtudiant}} {{etudiant.nomEtudiant}}</option>
             </select>
         </div>

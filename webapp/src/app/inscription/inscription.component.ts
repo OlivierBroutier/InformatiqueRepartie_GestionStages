@@ -62,6 +62,10 @@ export class InscriptionComponent implements OnInit {
         return this.stage.missions ?? [];
     }
 
+    public get EtudiantConnecte() : boolean {
+        return this.authentificationService.userIsEtudiant;
+    }
+
     public set missions(missions: Mission[]) {
         this.stage.missions = missions;
     }
