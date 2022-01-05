@@ -102,47 +102,35 @@
 <h4 *ngIf="userIsProfesseur"> Stage </h4>
 
 <ngb-accordion [closeOthers]="true" *ngIf="userIsProfesseur">
-    <ngb-panel title="Rechercher un étudiant">
+    <ngb-panel title="Ajouter un stage">
         <ng-template ngbPanelContent>
-            Pour rechercher un étudiant, dirigez-vous sur l'onglet Stagiaire. Vous pouvez apercevoir une barre de recherche (tout en haut de la page). Il vous suffit de mettre des lettres et ou/mots qui sont dans le nom/prénom de l'étudiant, pour le voir apparaitre. Ensuite, cliquez sur l'icone situé à côté (la loupe), ou sur la touche Entrée de votre clavier. La liste correspondant à votre recherche, se trouve juste en bas (le tableau a été mis à jour avec votre recherche).
-            Vous pouvez apercevoir le nombre d'étudiants associés à votre recherche.
+            Pour ajouter un stage, dirigez-vous sur l'onglet Inscription. Vous vous retrouverez avec un formulaire à remplir. Il faut impérativement remplir les champs ayant un astérix afin de valider le formulaire. Attention ! A la validation du formulaire, il y a aura un message annonçant la création du nouveau stage. Vous serez directement redirigé vers la liste des stages et vous pouvez apercevoir dans les derniers stages celui que vous avez créé.
+            Vous pouvez apercevoir que le nombre de stages a été mis à jour.
         </ng-template>
     </ngb-panel>
-    <ngb-panel title="Ajouter un étudiant">
+    <ngb-panel title="Exporter la liste des stages">
         <ng-template ngbPanelContent>
-            Pour ajouter un étudiant,  dirigez-vous sur l'onglet Stagiaire. Tout en haut à droite de la page, vous avez un bouton signalant "Ajouter un étudiant". Cliquez dessus. Vous vous retrouverez avec un formulaire à remplir. Il faut impérativement remplir les champs ayant un astérix afin de valider le formulaire. Attention ! A la validation du formulaire, il y a aura un message annonçant la bonne insertion du nouveau étudiant. Vous serez directement redirigé vers la liste des étudiants et vous pouvez apercevoir dans les derniers étudiant, celui que vous avez rajouté.
-            Vous pouvez apercevoir que le nombre d'étudiants a été mis à jour.
+            Pour exporter la liste des stages, dirigez-vous sur l'onglet Stage. Vous pouvez apercevoir un bouton "Exporter en PDF". Cliquez dessus. La liste des stages se téléchargera en PDF.
         </ng-template>
     </ngb-panel>
-    <ngb-panel title="Exporter la liste des étudiants">
-        <ng-template ngbPanelContent>
-            Pour exporter la liste des étudiants, dirigez-vous sur l'onglet Stagiaire. Vous pouvez apercevoir un bouton "Exporter en PDF". Cliquez dessus. La liste des étudiants se téléchargera en PDF.
-        </ng-template>
-    </ngb-panel>
-    <ngb-panel title="Obtenir les informations précises d'un étudiant">
+    <!--<ngb-panel title="Obtenir les informations précises d'un étudiant">
         <ng-template ngbPanelContent>
             Pour obtenir le détail d'un étudiant, dirigez-vous sur l'onglet Stagiaire.
             Dans opération, cliquez sur l'icone "oeil". En cliquant sur l'icone, vous aurez le détail de l'étudiant
             (ex : nom prénom de l'édudiant, sa classe). De plus, vous avez accès à l'historique des stages associés à cet étudiant. En effet, quand vous consultez le tableau de la liste des étudiants, seul le stage le plus récent est mentionné.
         </ng-template>
-    </ngb-panel>
-    <ngb-panel title="Modifier un étudiant">
+    </ngb-panel>-->
+    <ngb-panel title="Modifier un stage">
         <ng-template ngbPanelContent>
-            Pour modifier un étudiant,  dirigez-vous sur l'onglet Stagiaire. Dans opération, cliquez sur l'icone "stylo".
-            En cliquant sur l'icone, vous pourrez modifier les informations concernant l'étudiant. A la fin de vos modifications, cliquez sur "Modifier ce stagiaire".
-            Il y a aura un message annonçant la bonne modification de l'étudiant. Vous serez directement redirigé vers la liste des étudiants et vous pouvez consulter vos modifications.
+            Pour modifier un stage, dirigez-vous sur l'onglet Stage. Dans opération, cliquez sur l'icone "stylo".
+            En cliquant sur l'icone, vous pourrez modifier les informations concernant le stage. A la fin de vos modifications, cliquez sur "Modifier ce stage".
+            Il y a aura un message annonçant la bonne modification du stage. Vous serez directement redirigé vers la liste des stages et vous pouvez consulter vos modifications.
         </ng-template>
     </ngb-panel>
-    <ngb-panel title="Ajouter un stage">
+    <ngb-panel title="Supprimer un stage">
         <ng-template ngbPanelContent>
-            Depuis l'onglet Stagiaire, cliquez sur l'icône plus. Remplissez le formulaire, puis validez-le. L'étudiant est déjà pré-rempli car vous avez choisi un étudiant avant dans la liste des étudiants. Le professeur peut être aussi déjà pré-rempli (c'est la personne connectée si existant).
-            On peut bien évidemment modifier ces valeurs pré-remplies. A la validation du formulaire, un message de validation s'affiche. Vous serez directement redirigé vers la liste des stages. Vous pourrez voir le stage rajouté dans les derniers de la liste.
-        </ng-template>
-    </ngb-panel>
-    <ngb-panel title="Supprimer un étudiant">
-        <ng-template ngbPanelContent>
-            Pour supprimer un étudiant, dirigez-vous sur l'onglet Stagiaire. Cliquez sur l'icône croix qui se trouve dans opération. Un message de confirmation sera affiché, puis la liste des étudiant sera mis à jour directement.
-            Vous pouvez apercevoir que le nombre d'étudiants a été mis à jour.
+            Pour supprimer un stage, dirigez-vous sur l'onglet Stage. Cliquez sur l'icône croix qui se trouve dans opération. Un message de confirmation sera affiché, puis la liste des stages sera mis à jour directement.
+            Vous pouvez apercevoir que le nombre de stages a été mis à jour.
         </ng-template>
     </ngb-panel>
 </ngb-accordion>
