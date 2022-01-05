@@ -6,19 +6,169 @@
 <h4> Entreprise </h4>
 
 <ngb-accordion [closeOthers]="true">
-    <ngb-panel title="Comment rechercher une entreprise ?" *ngIf="userIsProfesseur">
+    <ngb-panel title="Rechercher une entreprise" *ngIf="userIsProfesseur">
         <ng-template ngbPanelContent>
-            Pour rechercher une entreprise, dirigez-vous sur l'onglet Entreprise. Vous pouvez apercevoir une barre de recherche (tout un haut de la page). Il vous suffit de mettre des lettres et ou/mots qui sont dans l'entreprise, pour la voir apparaitre. Vous pouvez aussi décider de faire une recherche par nom du responsable également. Ensuite, cliquez sur l'icone situé à côté (la loupe), ou sur la touche Entrée de votre clavier. La liste correspondant à votre recherche, se trouve juste en bas (le tableau a été mis à jour avec votre recherche).
+            Pour rechercher une entreprise, dirigez-vous sur l'onglet Entreprise. Vous pouvez apercevoir une barre de recherche (tout en haut de la page). Il vous suffit de mettre des lettres et ou/mots qui sont dans le nom de l'entreprise, pour la voir apparaitre. Vous pouvez aussi décider de faire une recherche par nom du responsable également. Ensuite, cliquez sur l'icone situé à côté (la loupe), ou sur la touche Entrée de votre clavier. La liste correspondant à votre recherche, se trouve juste en bas (le tableau a été mis à jour avec votre recherche).
+            Vous pouvez apercevoir le nombre d'entreprises associés à votre recherche.
         </ng-template>
     </ngb-panel>
-    <ngb-panel title="Comment ajouter une entreprise ?">
+    <ngb-panel title="Ajouter une entreprise">
         <ng-template ngbPanelContent>
-           Pour ajouter une entreprise,  dirigez-vous sur l'onglet Entreprise. Tout en haut à droite de la page, vous avez un bouton signalant "Ajouter une entreprise". Cliquez dessus. Vous vous retrouverez avec un formulaire à remplir. Il faut impérativement remplir les champs ayant un astérix afin de valider le formulaire. Attention ! Pour le numéro de téléphone, il faut bien mettre des espaces tous les deux chiffres (ex : 04 04 04 04 04). A la validation du formulaire,
-            bla bla bla
+           Pour ajouter une entreprise,  dirigez-vous sur l'onglet Entreprise. Tout en haut à droite de la page, vous avez un bouton signalant "Ajouter une entreprise". Cliquez dessus. Vous vous retrouverez avec un formulaire à remplir. Il faut impérativement remplir les champs ayant un astérix afin de valider le formulaire. Attention ! A la validation du formulaire, il y a aura un message annonçant la bonne insertion de la nouvelle entreprise. Vous serez directement redirigé vers la liste des entreprises et vous pouvez apercevoir dans les dernières entreprises, celle que vous avez rajoutée.
+            Vous pouvez apercevoir que le nombre d'entreprises a été mis à jour.
+        </ng-template>
+    </ngb-panel>
+    <ngb-panel title="Exporter la liste des entreprises">
+        <ng-template ngbPanelContent>
+            Pour exporter la liste des entreprises, dirigez-vous sur l'onglet Entreprise. Vous pouvez apercevoir un bouton "Exporter en PDF". Cliquez dessus. La liste des entreprises se téléchargera en PDF.
+        </ng-template>
+    </ngb-panel>
+    <ngb-panel title="Obtenir les informations précises d'une entreprise">
+        <ng-template ngbPanelContent>
+            Pour obtenir le détail d'une entreprise, dirigez-vous sur l'onglet Entreprise.
+            Dans opération, cliquez sur l'icone "oeil". En cliquant sur l'icone, vous aurez le détail de l'entreprise
+            (ex : informations générales sur la société, leur coordonnées, les responsables, leurs spécialitées). De plus, vous avez accès à tout les stages associés à cette entreprise.
+        </ng-template>
+    </ngb-panel>
+    <ngb-panel title="Modifier une entreprise">
+        <ng-template ngbPanelContent>
+            Pour modifier une entreprise,  dirigez-vous sur l'onglet Entreprise. Dans opération, cliquez sur l'icone "stylo".
+            En cliquant sur l'icone, vous pourrez modifier l'entreprise. A la fin de vos modifications, cliquez sur "Modifier cette entreprise".
+            Il y a aura un message annonçant la bonne modification de l'entreprise. Vous serez directement redirigé vers la liste des entreprises et vous pouvez consulter vos modifications.
+        </ng-template>
+    </ngb-panel>
+    <ngb-panel title="Ajouter un stage">
+        <ng-template ngbPanelContent>
+           Depuis l'onglet Entreprise, cliquez sur l'icône plus. Remplissez le formulaire, puis validez-le. L'entreprise est déjà pré-rempli car vous avez choisi une entreprise avant dans la liste des entreprises. Le professeur ou l'étudiant est aussi déjà pré-rempli (c'est la personne connectée).
+            On peut bien évidemment modifier ces valeurs pré-remplies. A la validation du formulaire, un message de validation s'affiche. Vous serez directement redirigé vers la liste des stages. Vous pourrez voir le stage rajouté dans les derniers de la liste.
+        </ng-template>
+    </ngb-panel>
+    <ngb-panel title="Supprimer une entreprise">
+        <ng-template ngbPanelContent>
+           Pour supprimer une entreprise, dirigez-vous sur l'onglet Entreprise. Cliquez sur l'icône croix qui se trouve dans opération. Un message de confirmation sera affiché, puis la liste des entreprises sera mis à jour directement.
+            Vous pouvez apercevoir que le nombre d'entreprises a été mis à jour.
         </ng-template>
     </ngb-panel>
 </ngb-accordion>
 
+<h4> Etudiant </h4>
+
+<ngb-accordion [closeOthers]="true">
+    <ngb-panel title="Rechercher un étudiant">
+        <ng-template ngbPanelContent>
+            Pour rechercher un étudiant, dirigez-vous sur l'onglet Stagiaire. Vous pouvez apercevoir une barre de recherche (tout en haut de la page). Il vous suffit de mettre des lettres et ou/mots qui sont dans le nom/prénom de l'étudiant, pour le voir apparaitre. Ensuite, cliquez sur l'icone situé à côté (la loupe), ou sur la touche Entrée de votre clavier. La liste correspondant à votre recherche, se trouve juste en bas (le tableau a été mis à jour avec votre recherche).
+            Vous pouvez apercevoir le nombre d'étudiants associés à votre recherche.
+        </ng-template>
+    </ngb-panel>
+    <ngb-panel title="Ajouter un étudiant">
+        <ng-template ngbPanelContent>
+            Pour ajouter un étudiant,  dirigez-vous sur l'onglet Stagiaire. Tout en haut à droite de la page, vous avez un bouton signalant "Ajouter un étudiant". Cliquez dessus. Vous vous retrouverez avec un formulaire à remplir. Il faut impérativement remplir les champs ayant un astérix afin de valider le formulaire. Attention ! A la validation du formulaire, il y a aura un message annonçant la bonne insertion du nouveau étudiant. Vous serez directement redirigé vers la liste des étudiants et vous pouvez apercevoir dans les derniers étudiant, celui que vous avez rajouté.
+            Vous pouvez apercevoir que le nombre d'étudiants a été mis à jour.
+        </ng-template>
+    </ngb-panel>
+    <ngb-panel title="Exporter la liste des étudiants">
+        <ng-template ngbPanelContent>
+            Pour exporter la liste des étudiants, dirigez-vous sur l'onglet Stagiaire. Vous pouvez apercevoir un bouton "Exporter en PDF". Cliquez dessus. La liste des étudiants se téléchargera en PDF.
+        </ng-template>
+    </ngb-panel>
+    <ngb-panel title="Obtenir les informations précises d'un étudiant">
+        <ng-template ngbPanelContent>
+            Pour obtenir le détail d'un étudiant, dirigez-vous sur l'onglet Stagiaire.
+            Dans opération, cliquez sur l'icone "oeil". En cliquant sur l'icone, vous aurez le détail de l'étudiant
+            (ex : nom prénom de l'édudiant, sa classe). De plus, vous avez accès à l'historique des stages associés à cet étudiant. En effet, quand vous consultez le tableau de la liste des étudiants, seul le stage le plus récent est mentionné.
+        </ng-template>
+    </ngb-panel>
+    <ngb-panel title="Modifier un étudiant">
+        <ng-template ngbPanelContent>
+            Pour modifier un étudiant,  dirigez-vous sur l'onglet Stagiaire. Dans opération, cliquez sur l'icone "stylo".
+            En cliquant sur l'icone, vous pourrez modifier les informations concernant l'étudiant. A la fin de vos modifications, cliquez sur "Modifier ce stagiaire".
+            Il y a aura un message annonçant la bonne modification de l'étudiant. Vous serez directement redirigé vers la liste des étudiants et vous pouvez consulter vos modifications.
+        </ng-template>
+    </ngb-panel>
+    <ngb-panel title="Ajouter un stage">
+        <ng-template ngbPanelContent>
+            Depuis l'onglet Stagiaire, cliquez sur l'icône plus. Remplissez le formulaire, puis validez-le. L'étudiant est déjà pré-rempli car vous avez choisi un étudiant avant dans la liste des étudiants. Le professeur peut être aussi déjà pré-rempli (c'est la personne connectée si existant).
+            On peut bien évidemment modifier ces valeurs pré-remplies. A la validation du formulaire, un message de validation s'affiche. Vous serez directement redirigé vers la liste des stages. Vous pourrez voir le stage rajouté dans les derniers de la liste.
+        </ng-template>
+    </ngb-panel>
+    <ngb-panel title="Supprimer un étudiant">
+        <ng-template ngbPanelContent>
+            Pour supprimer un étudiant, dirigez-vous sur l'onglet Stagiaire. Cliquez sur l'icône croix qui se trouve dans opération. Un message de confirmation sera affiché, puis la liste des étudiant sera mis à jour directement.
+            Vous pouvez apercevoir que le nombre d'étudiants a été mis à jour.
+        </ng-template>
+    </ngb-panel>
+</ngb-accordion>
+
+<h4> Stage </h4>
+
+<ngb-accordion [closeOthers]="true">
+    <ngb-panel title="Rechercher un étudiant">
+        <ng-template ngbPanelContent>
+            Pour rechercher un étudiant, dirigez-vous sur l'onglet Stagiaire. Vous pouvez apercevoir une barre de recherche (tout en haut de la page). Il vous suffit de mettre des lettres et ou/mots qui sont dans le nom/prénom de l'étudiant, pour le voir apparaitre. Ensuite, cliquez sur l'icone situé à côté (la loupe), ou sur la touche Entrée de votre clavier. La liste correspondant à votre recherche, se trouve juste en bas (le tableau a été mis à jour avec votre recherche).
+            Vous pouvez apercevoir le nombre d'étudiants associés à votre recherche.
+        </ng-template>
+    </ngb-panel>
+    <ngb-panel title="Ajouter un étudiant">
+        <ng-template ngbPanelContent>
+            Pour ajouter un étudiant,  dirigez-vous sur l'onglet Stagiaire. Tout en haut à droite de la page, vous avez un bouton signalant "Ajouter un étudiant". Cliquez dessus. Vous vous retrouverez avec un formulaire à remplir. Il faut impérativement remplir les champs ayant un astérix afin de valider le formulaire. Attention ! A la validation du formulaire, il y a aura un message annonçant la bonne insertion du nouveau étudiant. Vous serez directement redirigé vers la liste des étudiants et vous pouvez apercevoir dans les derniers étudiant, celui que vous avez rajouté.
+            Vous pouvez apercevoir que le nombre d'étudiants a été mis à jour.
+        </ng-template>
+    </ngb-panel>
+    <ngb-panel title="Exporter la liste des étudiants">
+        <ng-template ngbPanelContent>
+            Pour exporter la liste des étudiants, dirigez-vous sur l'onglet Stagiaire. Vous pouvez apercevoir un bouton "Exporter en PDF". Cliquez dessus. La liste des étudiants se téléchargera en PDF.
+        </ng-template>
+    </ngb-panel>
+    <ngb-panel title="Obtenir les informations précises d'un étudiant">
+        <ng-template ngbPanelContent>
+            Pour obtenir le détail d'un étudiant, dirigez-vous sur l'onglet Stagiaire.
+            Dans opération, cliquez sur l'icone "oeil". En cliquant sur l'icone, vous aurez le détail de l'étudiant
+            (ex : nom prénom de l'édudiant, sa classe). De plus, vous avez accès à l'historique des stages associés à cet étudiant. En effet, quand vous consultez le tableau de la liste des étudiants, seul le stage le plus récent est mentionné.
+        </ng-template>
+    </ngb-panel>
+    <ngb-panel title="Modifier un étudiant">
+        <ng-template ngbPanelContent>
+            Pour modifier un étudiant,  dirigez-vous sur l'onglet Stagiaire. Dans opération, cliquez sur l'icone "stylo".
+            En cliquant sur l'icone, vous pourrez modifier les informations concernant l'étudiant. A la fin de vos modifications, cliquez sur "Modifier ce stagiaire".
+            Il y a aura un message annonçant la bonne modification de l'étudiant. Vous serez directement redirigé vers la liste des étudiants et vous pouvez consulter vos modifications.
+        </ng-template>
+    </ngb-panel>
+    <ngb-panel title="Ajouter un stage">
+        <ng-template ngbPanelContent>
+            Depuis l'onglet Stagiaire, cliquez sur l'icône plus. Remplissez le formulaire, puis validez-le. L'étudiant est déjà pré-rempli car vous avez choisi un étudiant avant dans la liste des étudiants. Le professeur peut être aussi déjà pré-rempli (c'est la personne connectée si existant).
+            On peut bien évidemment modifier ces valeurs pré-remplies. A la validation du formulaire, un message de validation s'affiche. Vous serez directement redirigé vers la liste des stages. Vous pourrez voir le stage rajouté dans les derniers de la liste.
+        </ng-template>
+    </ngb-panel>
+    <ngb-panel title="Supprimer un étudiant">
+        <ng-template ngbPanelContent>
+            Pour supprimer un étudiant, dirigez-vous sur l'onglet Stagiaire. Cliquez sur l'icône croix qui se trouve dans opération. Un message de confirmation sera affiché, puis la liste des étudiant sera mis à jour directement.
+            Vous pouvez apercevoir que le nombre d'étudiants a été mis à jour.
+        </ng-template>
+    </ngb-panel>
+</ngb-accordion>
+
+
+<h4> Inscription </h4>
+
+<ngb-accordion [closeOthers]="true">
+    <ngb-panel title="Ajouter un stage">
+        <ng-template ngbPanelContent>
+            Pour ajouter un stage, dirigez-vous sur l'onglet Inscription. Remplissez le formulaire, en pensant à bien y inscrire les champs requis. Puis, validez-le. A la validation du formulaire, vous obtiendrez un message de confirmation. Vous serez aussi directement redirigé vers la liste des stages. Vous pourrez voir le stage rajouté dans les derniers de la liste.
+        </ng-template>
+    </ngb-panel>
+</ngb-accordion>
+
+<h4> Statistiques </h4>
+
+<ngb-accordion [closeOthers]="true">
+    <ngb-panel title="Visualiser les statistiques">
+        <ng-template ngbPanelContent>
+            Pour visualiser les statistiques, dirigez-vous sur l'onglet Statistiques.
+            Vous pouvez aperçevoir trois graphiques : la répartition du nombre d'élèves dans les classes, les entreprises selon leurs spécialités, et les étudiants ayant trouvé une entreprise.
+
+        </ng-template>
+    </ngb-panel>
+</ngb-accordion>
 
 
 

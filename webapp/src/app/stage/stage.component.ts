@@ -3,6 +3,14 @@ import { Stage } from '../model/stage.model';
 import { StageService } from '../shared/service/stage.service';
 import { Router } from "@angular/router";
 import { SuccessService } from "../shared/service/success.service";
+import {jsPDF} from "jspdf";
+import { ViewChild, ElementRef } from '@angular/core';
+import 'jspdf-autotable';
+import {UserOptions} from "jspdf-autotable";
+
+interface jsPDFCustom extends jsPDF {
+    autoTable: (options: UserOptions) => void;
+}
 
 @Component({
     selector: 'app-stage',
@@ -10,7 +18,7 @@ import { SuccessService } from "../shared/service/success.service";
     styleUrls: ['./stage.component.css']
 })
 export class StageComponent implements OnInit {
-
+    @ViewChild('pdfTable') pdfTable: ElementRef | undefined;
     public stages : Stage[] = [];
 
     constructor(
@@ -43,5 +51,14 @@ export class StageComponent implements OnInit {
             this.success_service.createSuccessAlert('Succès', 'Le stage a bien été supprimé');
             this.stages = [...this.stages].filter(e => e.id !== stage.id);
         }
+    }
+
+    public downloadAsPDF() {
+        const pdfTable = this.pdfTable?.nativeElement;
+        const doc = new jsPDF('l', 'pt', 'a4') as jsPDFCustom;
+        doc.autoTable({
+            html: pdfTable
+        });
+        doc.save('liste_stage.pdf');
     }
 }

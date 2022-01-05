@@ -13,9 +13,10 @@
 </div>
 
 <hr>
+<div class="boutons">
+<h3>{{ nbEntreprises }}</h3>  <button class="btn btn-primary" (click)="downloadAsPDF()">Exporter en PDF</button>
 
-<h3>{{ nbEntreprises }}</h3>
-
+</div>
 <table class="table table-hover">
     <thead>
     <tr>
@@ -57,6 +58,27 @@
                 <span class="glyphicon glyphicon-link"></span>
             </a>
         </td>
+        <td>{{ getSpecialitesLibelle(entreprise) }}</td>
+    </tr>
+    </tbody>
+</table>
+
+
+<table class="table table-hover"  id="pdfTable" #pdfTable hidden>
+    <thead>
+    <tr>
+        <th scope="col">Entreprise</th>
+        <th scope="col">Responsable</th>
+        <th scope="col">Adresse</th>
+        <th scope="col">Spécialité</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let entreprise of entreprises_find">
+        <td>{{ entreprise.raisonSociale }} </td>
+        <td>{{ entreprise.nomResp}}  </td>
+        <td>{{ entreprise.rueEntreprise}} {{ entreprise.cpEntreprise}} {{ entreprise.villeEntreprise}}  </td>
         <td>{{ getSpecialitesLibelle(entreprise) }}</td>
     </tr>
     </tbody>

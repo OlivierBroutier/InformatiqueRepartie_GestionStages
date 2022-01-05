@@ -7,13 +7,21 @@ import {Stage} from "../model/stage.model";
 import {StageService} from "../shared/service/stage.service";
 import {Entreprise} from "../model/entreprise.model";
 import { Professeur } from '../model/professeur.model';
+import {jsPDF} from "jspdf";
+import { ViewChild, ElementRef } from '@angular/core';
+import 'jspdf-autotable';
+import {UserOptions} from "jspdf-autotable";
 
+interface jsPDFCustom extends jsPDF {
+    autoTable: (options: UserOptions) => void;
+}
 @Component({
     selector: 'app-stagiaire',
     templateUrl: './stagiaire.component.html',
     styleUrls: ['./stagiaire.component.css']
 })
 export class StagiaireComponent implements OnInit {
+    @ViewChild('pdfTable') pdfTable: ElementRef | undefined;
     public stagiaires : Etudiant[] = [];
     public nom: string = '';
     public stagiaires_find : Etudiant[] = [];
@@ -82,37 +90,17 @@ export class StagiaireComponent implements OnInit {
     editEtudiant(stagiaire: Etudiant) {
         this.router.navigate(['/stagiaire/ajout'], { state: { stagiaire } });
     }
-}
 
-
-
-/*public rechercher() {
-    this.entreprises_find = [];
-    for(let entreprise of this.entreprises) {
-        if (entreprise.raisonSociale?.toLowerCase()?.includes(this.nom.toLowerCase())
-            || entreprise.nomResp?.toLowerCase()?.includes(this.nom.toLowerCase())) {
-            this.entreprises_find.push(entreprise);
-        }
+    public downloadAsPDF() {
+        const pdfTable = this.pdfTable?.nativeElement;
+        const doc = new jsPDF('l', 'pt', 'a4') as jsPDFCustom;
+        doc.autoTable({
+            html: pdfTable
+        });
+        doc.save('liste_etudiant_avec_sans_stage.pdf');
     }
 }
 
-public editEntreprise(entreprise: Entreprise): void {
-    this.router.navigate(['/entreprise/ajout'], { state: { entreprise } });
-}
-
-public inscription(entreprise: Entreprise): void {
-    this.router.navigate(['/inscription'], { state: { entreprise } });
-}
-
-public removeEntreprise(entreprise: Entreprise): void {
-    if(entreprise.id) {
-        this.entreprise_service.deleteEntreprise(String(entreprise.id));
-        this.success_service.createSuccessAlert('Succès', 'L\'entreprise a bien été supprimée');
-        this.entreprises = [...this.entreprises].filter(e => e.id !== entreprise.id);
-        this.entreprises_find = [...this.entreprises_find].filter(e => e.id !== entreprise.id);
-    }
 
 
-}
-}*/
 

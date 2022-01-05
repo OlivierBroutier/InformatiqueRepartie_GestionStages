@@ -4,6 +4,15 @@ import {EntrepriseService} from "../shared/service/entreprise.service";
 import {Router} from "@angular/router";
 import {SuccessService} from "../shared/service/success.service";
 import {AuthentificationService} from "../shared/service/authentification.service";
+import { ViewChild, ElementRef } from '@angular/core';
+import { jsPDF } from 'jspdf';
+import 'jspdf-autotable';
+import {UserOptions} from "jspdf-autotable";
+
+interface jsPDFCustom extends jsPDF {
+    autoTable: (options: UserOptions) => void;
+}
+
 
 @Component({
     selector: 'app-entreprise',
@@ -11,7 +20,7 @@ import {AuthentificationService} from "../shared/service/authentification.servic
     styleUrls: ['./entreprise.component.css']
 })
 export class EntrepriseComponent implements OnInit {
-
+    @ViewChild('pdfTable') pdfTable: ElementRef | undefined;
     public entreprises : Entreprise[] = [];
     public nom: string = '';
     public entreprises_find : Entreprise[] = [];
@@ -71,5 +80,14 @@ export class EntrepriseComponent implements OnInit {
             this.entreprises = [...this.entreprises].filter(e => e.id !== entreprise.id);
             this.entreprises_find = [...this.entreprises_find].filter(e => e.id !== entreprise.id);
         }
+    }
+
+    public downloadAsPDF() {
+        const pdfTable = this.pdfTable?.nativeElement;
+        const doc = new jsPDF('l', 'pt', 'a4') as jsPDFCustom;
+        doc.autoTable({
+            html: pdfTable
+        });
+        doc.save('liste_entreprise.pdf');
     }
 }
