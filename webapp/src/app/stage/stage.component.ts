@@ -11,6 +11,7 @@ import {UserOptions} from "jspdf-autotable";
 interface jsPDFCustom extends jsPDF {
     autoTable: (options: UserOptions) => void;
 }
+
 @Component({
     selector: 'app-stage',
     templateUrl: './stage.component.html',
