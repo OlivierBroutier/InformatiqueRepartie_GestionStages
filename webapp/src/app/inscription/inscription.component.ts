@@ -43,8 +43,10 @@ export class InscriptionComponent implements OnInit {
         this.entreprises = await this.entrepriseService.findAllEntreprise();
         this.etudiants = await this.etudiantService.findAllEtudiant();
         this.professeurs = await this.professeurService.findAllProfesseur();
+
         this.stage.professeur = this.authentificationService.professeur;
         this.stage.entreprise = window.history.state.entreprise;
+        this.stage.etudiant = window.history.state.stagiaire;
     }
 
     public get missions(): Mission[] {

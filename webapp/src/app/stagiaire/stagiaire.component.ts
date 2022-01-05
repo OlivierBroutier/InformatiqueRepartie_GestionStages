@@ -1,16 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import {Etudiant} from "../model/etudiant.model";
-import {EtudiantService} from "../shared/service/etudiant.service";
-import {Router} from "@angular/router";
-import {SuccessService} from "../shared/service/success.service";
-import {Stage} from "../model/stage.model";
-import {StageService} from "../shared/service/stage.service";
-import {Entreprise} from "../model/entreprise.model";
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Etudiant } from '../model/etudiant.model';
+import { EtudiantService } from '../shared/service/etudiant.service';
+import { Router } from '@angular/router';
+import { SuccessService } from '../shared/service/success.service';
+import { Stage } from '../model/stage.model';
+import { StageService } from '../shared/service/stage.service';
+import { Entreprise } from '../model/entreprise.model';
 import { Professeur } from '../model/professeur.model';
-import {jsPDF} from "jspdf";
-import { ViewChild, ElementRef } from '@angular/core';
+import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
-import {UserOptions} from "jspdf-autotable";
+import { UserOptions } from 'jspdf-autotable';
 
 interface jsPDFCustom extends jsPDF {
     autoTable: (options: UserOptions) => void;
@@ -87,8 +86,12 @@ export class StagiaireComponent implements OnInit {
 
     }
 
-    editEtudiant(stagiaire: Etudiant) {
+    public editEtudiant(stagiaire: Etudiant) {
         this.router.navigate(['/stagiaire/ajout'], { state: { stagiaire } });
+    }
+
+    public inscription(stagiaire: Etudiant): void {
+        this.router.navigate(['/inscription'], { state: { stagiaire } });
     }
 
     public downloadAsPDF() {
