@@ -9,27 +9,33 @@ import { Entreprise } from '../model/entreprise.model';
 import { Professeur } from '../model/professeur.model';
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
-import { UserOptions } from 'jspdf-autotable';
+import { jsPDFCustom } from '../model/jspdf.model';
+import { ConfirmationService } from '../shared/service/confirmation.service';
 
-interface jsPDFCustom extends jsPDF {
-    autoTable: (options: UserOptions) => void;
-}
+
 @Component({
     selector: 'app-stagiaire',
     templateUrl: './stagiaire.component.html',
     styleUrls: ['./stagiaire.component.css']
 })
 export class StagiaireComponent implements OnInit {
+
     @ViewChild('pdfTable') pdfTable: ElementRef | undefined;
+
     public stagiaires : Etudiant[] = [];
     public nom: string = '';
     public stagiaires_find : Etudiant[] = [];
     public stages : Stage[] = [];
 
-    constructor(private readonly stagiaire_service : EtudiantService, private  readonly router : Router, private readonly success_service : SuccessService, private readonly stage_service : StageService) { }
+    constructor(
+        private readonly etudiantService: EtudiantService,
+        private readonly router: Router,
+        private readonly success_service: SuccessService,
+        private readonly confirmationService: ConfirmationService
+    ) { }
 
     async ngOnInit(): Promise<void> {
-        this.stagiaires = await this.stagiaire_service.findAllEtudiant();
+        this.stagiaires = await this.etudiantService.findAllEtudiant();
         this.stagiaires_find = this.stagiaires;
     }
 
@@ -72,18 +78,20 @@ export class StagiaireComponent implements OnInit {
                 this.stagiaires_find.push(stagiaire);
             }
         }
-
-
     }
 
     public async removeEtudiant(stagiaire: Etudiant): Promise<void> {
-        if (stagiaire.id) {
-            await this.stagiaire_service.deleteEntreprise(String(stagiaire.id));
+        if (!stagiaire.id) {
+            return;
+        }
+
+        const confirmed = await this.confirmationService.confirmation('Êtes-vous sûr de vouloir supprimer cet étudiant ?')
+        if (confirmed) {
+            await this.etudiantService.deleteEntreprise(String(stagiaire.id));
             this.success_service.createSuccessAlert('Succès', 'L\'étudiant a bien été supprimé');
             this.stagiaires = [...this.stagiaires].filter(e => e.id !== stagiaire.id);
             this.stagiaires_find = [...this.stagiaires_find].filter(e => e.id !== stagiaire.id);
         }
-
     }
 
     public editEtudiant(stagiaire: Etudiant) {

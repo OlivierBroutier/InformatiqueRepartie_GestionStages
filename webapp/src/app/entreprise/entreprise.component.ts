@@ -1,17 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import {Entreprise} from "../model/entreprise.model";
-import {EntrepriseService} from "../shared/service/entreprise.service";
-import {Router} from "@angular/router";
-import {SuccessService} from "../shared/service/success.service";
-import {AuthentificationService} from "../shared/service/authentification.service";
-import { ViewChild, ElementRef } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Entreprise } from '../model/entreprise.model';
+import { EntrepriseService } from '../shared/service/entreprise.service';
+import { Router } from '@angular/router';
+import { SuccessService } from '../shared/service/success.service';
+import { AuthentificationService } from '../shared/service/authentification.service';
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
-import {UserOptions} from "jspdf-autotable";
-
-interface jsPDFCustom extends jsPDF {
-    autoTable: (options: UserOptions) => void;
-}
+import { jsPDFCustom } from '../model/jspdf.model';
+import { ConfirmationService } from '../shared/service/confirmation.service';
 
 
 @Component({
@@ -20,16 +16,19 @@ interface jsPDFCustom extends jsPDF {
     styleUrls: ['./entreprise.component.css']
 })
 export class EntrepriseComponent implements OnInit {
+
     @ViewChild('pdfTable') pdfTable: ElementRef | undefined;
+
     public entreprises : Entreprise[] = [];
     public nom: string = '';
     public entreprises_find : Entreprise[] = [];
 
     constructor(
-        private entreprise_service : EntrepriseService,
-        private router: Router,
-        private success_service : SuccessService,
-        private readonly authentificationService: AuthentificationService
+        private readonly entreprise_service : EntrepriseService,
+        private readonly router: Router,
+        private readonly success_service : SuccessService,
+        private readonly authentificationService: AuthentificationService,
+        private readonly confirmationService: ConfirmationService
     ) { }
 
     async ngOnInit(): Promise<void> {
@@ -74,7 +73,12 @@ export class EntrepriseComponent implements OnInit {
     }
 
     public async removeEntreprise(entreprise: Entreprise): Promise<void> {
-        if (entreprise.id) {
+        if (!entreprise.id) {
+            return;
+        }
+
+        const confirmed = await this.confirmationService.confirmation('Êtes-vous sûr de vouloir supprimer cette entreprise ?');
+        if (confirmed) {
             await this.entreprise_service.deleteEntreprise(String(entreprise.id));
             this.success_service.createSuccessAlert('Succès', 'L\'entreprise a bien été supprimée');
             this.entreprises = [...this.entreprises].filter(e => e.id !== entreprise.id);

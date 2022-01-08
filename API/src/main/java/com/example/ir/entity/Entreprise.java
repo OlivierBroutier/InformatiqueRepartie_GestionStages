@@ -66,7 +66,7 @@ public class Entreprise implements Serializable {
     @Column(name = "en_activite", nullable = false)
     private Boolean enActivite = false;
 
-    @OneToMany(mappedBy = "entreprise", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "entreprise", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Stage> stages = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.LAZY)

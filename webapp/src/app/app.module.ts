@@ -29,6 +29,7 @@ import { TelFormatterDirective } from './shared/directory/tel-formatter.directiv
 import {ChartsModule, MDBBootstrapModule, MDBRootModule} from "angular-bootstrap-md";
 import { NgSelectModule } from '@ng-select/ng-select';
 import { MissionsComponent } from './entreprise/entreprise-ajout/missions/missions.component';
+import { ConfirmationPopupComponent } from './confirmation-popup/confirmation-popup.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { MissionsComponent } from './entreprise/entreprise-ajout/missions/missio
         StageModifComponent,
         StatistiquesComponent,
         TelFormatterDirective,
-        MissionsComponent
+        MissionsComponent,
+        ConfirmationPopupComponent
     ],
     imports: [
         BrowserModule,

@@ -1,15 +1,13 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Stage } from '../model/stage.model';
 import { StageService } from '../shared/service/stage.service';
-import { Router } from "@angular/router";
-import { SuccessService } from "../shared/service/success.service";
-import {jsPDF} from "jspdf";
-import { UserOptions } from 'jspdf-autotable';
+import { Router } from '@angular/router';
+import { SuccessService } from '../shared/service/success.service';
+import { jsPDF } from 'jspdf';
 import { AuthentificationService } from '../shared/service/authentification.service';
+import { jsPDFCustom } from '../model/jspdf.model';
+import { ConfirmationService } from '../shared/service/confirmation.service';
 
-interface jsPDFCustom extends jsPDF {
-    autoTable: (options: UserOptions) => void;
-}
 
 @Component({
     selector: 'app-stage',
@@ -26,7 +24,8 @@ export class StageComponent implements OnInit {
         private readonly stageService: StageService,
         private readonly router: Router,
         private readonly successService: SuccessService,
-        private readonly authentificationService: AuthentificationService
+        private readonly authentificationService: AuthentificationService,
+        private readonly confirmationService: ConfirmationService
     ) { }
 
     async ngOnInit(): Promise<void> {
@@ -56,7 +55,12 @@ export class StageComponent implements OnInit {
     }
 
     public async removeStage(stage: Stage) : Promise<void> {
-        if (stage.id) {
+        if (!stage.id) {
+            return;
+        }
+
+        const confirmed = await this.confirmationService.confirmation('Êtes-vous sûr de vouloir supprimer ce stage ?');
+        if (confirmed) {
             await this.stageService.deleteStage(String(stage.id));
             this.successService.createSuccessAlert('Succès', 'Le stage a bien été supprimé');
             this.stages = [...this.stages].filter(e => e.id !== stage.id);
