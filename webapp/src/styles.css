@@ -23,3 +23,13 @@ hr {
 .modal-open .modal {
     opacity: 1;
 }
+
+.outlet a {
+    color: #007bff !important;
+    text-decoration: none !important;
+}
+
+.outlet a:hover {
+    cursor: pointer;
+    text-decoration: underline !important;
+}

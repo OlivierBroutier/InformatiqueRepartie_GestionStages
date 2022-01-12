@@ -19,8 +19,6 @@
     </tr>
     </thead>
     <tbody>
-
-
     <tr *ngFor="let stage of stages">
         <td>
             <a class="icone" [routerLink]="" (click)="editStage(stage)">
@@ -36,9 +34,18 @@
         <td>{{ stage.typeStage | titlecase }} </td>
         <td [innerHTML]="stage.descProjet"></td>
         <td>{{ stage.observationStage }} </td>
-        <td>{{ stage.etudiant?.nomEtudiant }} {{ stage.etudiant?.prenomEtudiant }} </td>
-        <td>{{ stage.professeur?.nomProf }} {{ stage.professeur?.prenomProf }} </td>
-        <td>{{ stage.entreprise?.raisonSociale}} </td>
+        <td>
+            <a [routerLink]="'/stagiaire/' + stage.etudiant?.id">
+                {{ stage.etudiant?.nomEtudiant }} {{ stage.etudiant?.prenomEtudiant }}
+            </a>
+        </td>
+        <td>{{ stage.professeur?.nomProf }} {{ stage.professeur?.prenomProf }}</td>
+        <td>
+            <a [routerLink]="'/entreprise/' + stage.entreprise?.id">
+                {{ stage.entreprise?.raisonSociale}}
+            </a>
+        </td>
+        <td> </td>
     </tr>
     </tbody>
 </table>
@@ -58,8 +65,6 @@
     </tr>
     </thead>
     <tbody>
-
-
     <tr *ngFor="let stage of stages">
         <td>{{ stage.id }} </td>
         <td>{{ stage.debutStage |  date: 'dd/MM/yyyy'}}  </td>

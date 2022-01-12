@@ -1,13 +1,3 @@
-a {
-    color: #337ab7!important;
-    text-decoration: none!important;
-}
-
-a:hover {
-    cursor: pointer;
-    text-decoration: underline!important;
-}
-
 .icone:nth-child(n+2) {
     margin-left : 10px;
 }
