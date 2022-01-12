@@ -89,8 +89,8 @@ export class StagiaireComponent implements OnInit {
         if (confirmed) {
             await this.etudiantService.deleteEntreprise(String(stagiaire.id));
             this.success_service.createSuccessAlert('Succès', 'L\'étudiant a bien été supprimé');
-            this.stagiaires = [...this.stagiaires].filter(e => e.id !== stagiaire.id);
-            this.stagiaires_find = [...this.stagiaires_find].filter(e => e.id !== stagiaire.id);
+            this.stagiaires = this.stagiaires.filter(e => e.id !== stagiaire.id);
+            this.stagiaires_find = this.stagiaires_find.filter(e => e.id !== stagiaire.id);
         }
     }
 

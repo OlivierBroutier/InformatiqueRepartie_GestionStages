@@ -81,8 +81,8 @@ export class EntrepriseComponent implements OnInit {
         if (confirmed) {
             await this.entreprise_service.deleteEntreprise(String(entreprise.id));
             this.success_service.createSuccessAlert('Succès', 'L\'entreprise a bien été supprimée');
-            this.entreprises = [...this.entreprises].filter(e => e.id !== entreprise.id);
-            this.entreprises_find = [...this.entreprises_find].filter(e => e.id !== entreprise.id);
+            this.entreprises = this.entreprises.filter(e => e.id !== entreprise.id);
+            this.entreprises_find = this.entreprises_find.filter(e => e.id !== entreprise.id);
         }
     }
 

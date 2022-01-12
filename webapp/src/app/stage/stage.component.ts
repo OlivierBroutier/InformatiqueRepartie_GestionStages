@@ -63,7 +63,7 @@ export class StageComponent implements OnInit {
         if (confirmed) {
             await this.stageService.deleteStage(String(stage.id));
             this.successService.createSuccessAlert('Succès', 'Le stage a bien été supprimé');
-            this.stages = [...this.stages].filter(e => e.id !== stage.id);
+            this.stages = this.stages.filter(e => e.id !== stage.id);
         }
     }
 
