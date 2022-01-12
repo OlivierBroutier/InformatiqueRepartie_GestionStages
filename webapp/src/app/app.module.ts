@@ -30,6 +30,7 @@ import {ChartsModule, MDBBootstrapModule, MDBRootModule} from "angular-bootstrap
 import { NgSelectModule } from '@ng-select/ng-select';
 import { MissionsComponent } from './entreprise/entreprise-ajout/missions/missions.component';
 import { ConfirmationPopupComponent } from './confirmation-popup/confirmation-popup.component';
+import { ContactComponent } from './contact/contact.component';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { ConfirmationPopupComponent } from './confirmation-popup/confirmation-po
         StatistiquesComponent,
         TelFormatterDirective,
         MissionsComponent,
-        ConfirmationPopupComponent
+        ConfirmationPopupComponent,
+        ContactComponent
     ],
     imports: [
         BrowserModule,

@@ -1,0 +1,30 @@
+<ng-container *ngIf="userIsProfesseur; else etudiant">
+    <p>Contacter un/les étudiant(s)</p>
+
+    <div class="form-group col-md-12">
+        <label>Destinataire* :</label>
+        <select *ngIf="userIsProfesseur;else etudiant" class="custom-select custom-select-lg mb-3" name="stagiaire_id" [compareWith]="compare" [(ngModel)]="stagiaire.id"  required>
+            <option [ngValue]="undefined">Choisissez un/les étudiant(s)</option>
+            <option [ngValue]="'tous'">Tous les étudiants</option>
+            <option *ngFor="let etudiant of stagiaires" [ngValue]="stagiaire">
+                {{etudiant.prenomEtudiant}} {{etudiant.nomEtudiant}}
+            </option>
+        </select>
+    </div>
+</ng-container>
+
+<ng-template #etudiant>
+    <p>Contacter un/les professeur(s)</p>
+
+    <div class="form-group col-md-12">
+        <label>Destinataire* :</label>
+        <select class="custom-select custom-select-lg mb-3" name="prof_id" [compareWith]="compare" [(ngModel)]="professeur.id"  required>
+            <option [ngValue]="undefined">Choisissez un/les professeur(s)</option>
+            <option [ngValue]="'tous'">Tous les professeurs</option>
+            <option *ngFor="let professeur of professeurs" [ngValue]="professeur">
+                {{professeur.prenomProf}} {{professeur.nomProf}}
+            </option>
+        </select>
+    </div>
+</ng-template>
+
