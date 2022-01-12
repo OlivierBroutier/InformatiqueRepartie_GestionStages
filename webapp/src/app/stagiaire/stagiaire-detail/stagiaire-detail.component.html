@@ -31,16 +31,16 @@
     </thead>
     <tbody>
     <tr *ngFor="let stage of stagiaire?.stages">
-        <td>{{stage.debutStage}}</td>
-        <td>{{stage.finStage}}</td>
-        <td>{{stage.typeStage}}</td>
-        <td>{{stage.descProjet}}</td>
-        <td>{{stage.observationStage}}</td>
-        <td>{{stage.professeur?.prenomProf}} {{stage.professeur?.nomProf}}</td>
-        <td>{{stage.professeur?.email}}</td>
+        <td>{{ stage.debutStage }}</td>
+        <td>{{ stage.finStage }}</td>
+        <td>{{ stage.typeStage | titlecase }}</td>
+        <td [innerHTML]="stage.descProjet"></td>
+        <td>{{ stage.observationStage }}</td>
+        <td>{{ stage.professeur?.prenomProf }} {{ stage.professeur?.nomProf }}</td>
+        <td>{{ stage.professeur?.email }}</td>
 
         <td><a [routerLink]="'/entreprise/' + stage.entreprise?.id">
-            {{stage.entreprise?.raisonSociale}}
+            {{ stage.entreprise?.raisonSociale }}
         </a></td>
     </tr>
 
