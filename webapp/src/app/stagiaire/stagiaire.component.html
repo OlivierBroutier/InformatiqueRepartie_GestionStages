@@ -1,6 +1,7 @@
 <div class="boutons">
     <div class="input-group">
-        <input type="text"  [(ngModel)]="nom" (keydown.enter)="rechercher()" class="form-control" placeholder="Tapez le nom et/ou prénom du stagiaire" name="search">
+        <input type="text" [(ngModel)]="nom" (keydown.enter)="rechercher()" class="form-control"
+               placeholder="Tapez le nom et/ou prénom du stagiaire" name="search">
         <div class="input-group-btn">
             <button class="btn btn-default" (click)="rechercher()">
                 <i class="glyphicon glyphicon-search"></i>
@@ -8,12 +9,14 @@
         </div>
 
     </div>
-    <button type="button" class="btn btn-primary" [routerLink]="'/stagiaire/ajout'"><span class="glyphicon glyphicon-plus"> Ajouter un étudiant</span></button>
+    <button type="button" class="btn btn-primary" [routerLink]="'/stagiaire/ajout'"><span
+        class="glyphicon glyphicon-plus"> Ajouter un étudiant</span></button>
 
 </div>
 <hr>
 <div class="boutons">
-    <h3>{{ nbStagiaires }}</h3>  <button class="btn btn-primary" (click)="downloadAsPDF()">Exporter en PDF</button>
+    <h3>{{ nbStagiaires }}</h3>
+    <button class="btn btn-primary" (click)="downloadAsPDF()">Exporter en PDF</button>
 </div>
 
 
@@ -44,27 +47,30 @@
             </a>
         </td>
         <td>{{ stagiaire.prenomEtudiant }} {{ stagiaire.nomEtudiant }}</td>
-        <td (click)="navigateToEntreprise(stagiaire)"> <a>{{getEntreprise(stagiaire)?.raisonSociale}}</a></td>
-        <td> {{getProfesseur(stagiaire)?.prenomProf }} {{getProfesseur(stagiaire)?.nomProf }}</td>
+        <td (click)="navigateToEntreprise(stagiaire)">
+            <a>{{getEntreprise(stagiaire)?.raisonSociale}}</a>
+        </td>
+        <td>{{ getProfesseur(stagiaire)?.prenomProf }} {{ getProfesseur(stagiaire)?.nomProf }}</td>
     </tr>
     </tbody>
 </table>
 
 
-<table class="table table-hover"  id="pdfTable" #pdfTable hidden>
+<table class="table table-hover" id="pdfTable" #pdfTable hidden>
     <thead>
     <tr>
         <th scope="col">Etudiant</th>
         <th scope="col">Entreprise</th>
         <th scope="col">Professeur</th>
-
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let stagiaire of stagiaires_find">
         <td>{{ stagiaire.prenomEtudiant }} {{ stagiaire.nomEtudiant }}</td>
-        <td (click)="navigateToEntreprise(stagiaire)"> <a>{{getEntreprise(stagiaire)?.raisonSociale}}</a></td>
-        <td> {{getProfesseur(stagiaire)?.prenomProf }} {{getProfesseur(stagiaire)?.nomProf }}</td>
+        <td (click)="navigateToEntreprise(stagiaire)">
+            <a>{{ getEntreprise(stagiaire)?.raisonSociale }}</a>
+        </td>
+        <td>{{ getProfesseur(stagiaire)?.prenomProf }} {{ getProfesseur(stagiaire)?.nomProf }}</td>
     </tr>
     </tbody>
 </table>

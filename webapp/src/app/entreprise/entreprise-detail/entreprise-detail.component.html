@@ -1,61 +1,72 @@
 <h1 style="text-align: center">{{entreprise?.raisonSociale}}</h1>
+
 <hr>
+
 <div class="card-deck">
-<div class="card">
-    <div class="card-body">
-        <h5 class="card-title"><b>Informations</b></h5>
-        <br>
-        <p class="card-text">Nom de l'entreprise : {{entreprise?.raisonSociale}} </p>
-        <p class="card-text">Nom du contact : {{entreprise?.nomContact}} </p>
-        <p class="card-text">Nom du responsable : {{entreprise?.nomResp}} </p>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title"><b>Informations</b></h5>
+            <br>
+            <p class="card-text">Nom de l'entreprise : {{entreprise?.raisonSociale}} </p>
+            <p class="card-text">Nom du contact : {{entreprise?.nomContact}} </p>
+            <p class="card-text">Nom du responsable : {{entreprise?.nomResp}} </p>
+        </div>
     </div>
-</div>
-<div class="card">
-    <div class="card-body">
-        <h5 class="card-title"><b>Contact</b></h5>
-        <br>
-        <p class="card-text">Rue : {{entreprise?.rueEntreprise}} </p>
-        <p class="card-text">Code postal : {{entreprise?.cpEntreprise}} </p>
-        <p class="card-text">Ville : {{entreprise?.villeEntreprise}} </p>
-        <p class="card-text">Téléphone : {{entreprise?.telEntreprise}} </p>
-        <p class="card-text">Fax : {{entreprise?.faxEntreprise}} </p>
-        <p class="card-text">Email : {{entreprise?.email}} </p>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title"><b>Contact</b></h5>
+            <br>
+            <p class="card-text">Rue : {{entreprise?.rueEntreprise}} </p>
+            <p class="card-text">Code postal : {{entreprise?.cpEntreprise}} </p>
+            <p class="card-text">Ville : {{entreprise?.villeEntreprise}} </p>
+            <p class="card-text">Téléphone : {{entreprise?.telEntreprise}} </p>
+            <p class="card-text">Fax : {{entreprise?.faxEntreprise}} </p>
+            <p class="card-text">Email : {{entreprise?.email}} </p>
+        </div>
     </div>
-</div>
-<div class="card">
-    <div class="card-body">
-        <h5 class="card-title"><b>Divers</b></h5>
-        <br>
-        <p class="card-text">Observation : {{entreprise?.observation}} </p>
-        <p class="card-text">Url du site : {{entreprise?.siteEntreprise}} </p>
-        <p class="card-text">Niveau : {{entreprise?.niveau}} </p>
-        <p class="card-text">Spécialités: {{ specialitesLibelle }}</p>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title"><b>Divers</b></h5>
+            <br>
+            <p class="card-text">Observation : {{entreprise?.observation}} </p>
+            <p class="card-text">Url du site : {{entreprise?.siteEntreprise}} </p>
+            <p class="card-text">Niveau : {{entreprise?.niveau}} </p>
+            <p class="card-text">Spécialités: {{ specialitesLibelle }}</p>
+        </div>
     </div>
-</div>
 </div>
 
 <hr>
 
-<h3>Stage</h3>
-
+<h3>Stages</h3>
 <table class="table table-hover">
     <thead>
     <tr>
-        <th scope="col">Opération</th>
-        <th scope="col">Etudiant</th>
-        <th scope="col">Projet</th>
+        <th scope="col">Début du stage</th>
+        <th scope="col">Fin du stage</th>
+        <th scope="col">Type de stage</th>
+        <th scope="col">Description du projet</th>
+        <th scope="col">Observation du stage</th>
+        <th scope="col">Stagiaire</th>
+        <th scope="col">Professeur</th>
+        <th scope="col">Email du professeur</th>
     </tr>
     </thead>
     <tbody>
-
     <tr *ngFor="let stage of stages">
-        <td>OPERATION</td>
-        <td>{{stage.etudiant?.nomEtudiant}} {{stage.etudiant?.prenomEtudiant}}</td>
+        <td>{{ stage.debutStage | date: 'dd/MM/yyyy' }}</td>
+        <td>{{ stage.finStage | date: 'dd/MM/yyyy' }}</td>
+        <td>{{ stage.typeStage | titlecase }}</td>
         <td [innerHTML]="stage.descProjet"></td>
-
+        <td>{{ stage.observationStage }}</td>
+        <td>
+            <a [routerLink]="'/stagiaire/' + stage.etudiant?.id">
+                {{ stage.etudiant?.prenomEtudiant }} {{ stage.etudiant?.nomEtudiant }}
+            </a>
+        </td>
+        <td>{{ stage.professeur?.prenomProf }} {{ stage.professeur?.nomProf }}</td>
+        <td>{{ stage.professeur?.email }}</td>
     </tr>
-
-
     </tbody>
 </table>
 
