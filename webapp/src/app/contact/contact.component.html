@@ -12,9 +12,9 @@
             </option>
         </select>
         <label>Sujet :</label>
-        <input type="text" id="stagiaire_sujet" class="form-control" name="name" >
+        <input type="text" id="stagiaire_sujet" [(ngModel)]="sujet" class="form-control" name="name" >
         <label>Message : </label>
-        <textarea class="form-control" id="stagiaire_message" name="stagiaire_message" rows="15" ></textarea>
+        <textarea class="form-control" id="stagiaire_message" [(ngModel)]="message" name="stagiaire_message" rows="15" ></textarea>
     </div>
 </ng-container>
 
@@ -31,12 +31,12 @@
             </option>
         </select>
         <label>Sujet :</label>
-        <input type="text" id="prof_sujet" class="form-control" name="name" >
+        <input type="text" id="prof_sujet" class="form-control" name="name" [(ngModel)]="sujet">
         <label>Message : </label>
-        <textarea class="form-control" id="prof_message" name="prof_message" rows="15"></textarea>
+        <textarea class="form-control" id="prof_message" name="prof_message" rows="15" [(ngModel)]="message"></textarea>
 
     </div>
 </ng-template>
 </form>
-<button  class="btn btn-primary" [disabled]="!f.valid">Envoyer ce message</button>
+<button  (click)="envoyer_message()" class="btn btn-primary" [disabled]="!f.valid">Envoyer ce message</button>
 
