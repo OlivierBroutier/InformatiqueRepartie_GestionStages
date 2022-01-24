@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthentificationService} from "../shared/service/authentification.service";
-import {Etudiant} from "../model/etudiant.model";
-import {Professeur} from "../model/professeur.model";
-import {Classe} from "../model/classe.model";
-import {EtudiantService} from "../shared/service/etudiant.service";
-import {ProfesseurService} from "../shared/service/professeur.service";
-import {Message} from "../model/message.model";
-import {MessageUtilisateur} from "../model/messageUtilisateur.model";
-import {MessageService} from "../shared/service/message.service";
+import { AuthentificationService } from '../shared/service/authentification.service';
+import { Etudiant } from '../model/etudiant.model';
+import { Professeur } from '../model/professeur.model';
+import { EtudiantService } from '../shared/service/etudiant.service';
+import { ProfesseurService } from '../shared/service/professeur.service';
+import { Message } from '../model/message.model';
+import { MessageUtilisateur } from '../model/messageUtilisateur.model';
+import { MessageService } from '../shared/service/message.service';
+import { MessageUtilisateurTypeEnum } from '../model/message-utilisateur-type.enum';
 
 @Component({
   selector: 'app-contact',
@@ -17,8 +17,8 @@ import {MessageService} from "../shared/service/message.service";
 export class ContactComponent implements OnInit {
     public stagiaires: Etudiant[] = [];
     public professeurs: Professeur[] = [];
-    public stagiaire: Etudiant = {};
-    public professeur: Professeur = {};
+    public stagiaire: Etudiant | undefined;
+    public professeur: Professeur | undefined;
     public sujet: string= '';
     public message: string= '';
     public destinataire: string='';
@@ -41,33 +41,46 @@ export class ContactComponent implements OnInit {
     }
 
     public async envoyer_message(): Promise<void> {
-        let message : Message = {destinataires:[]};
-        if(this.stagiaire.id) {
-           let message_utilisateur :  MessageUtilisateur = {id:this.stagiaire.id, messageUtilisateurType:'stagiaire'};
+        let message : Message = { destinataires:[] };
+        if (this.stagiaire?.id) {
+           let message_utilisateur :  MessageUtilisateur = { id: this.stagiaire.id, messageUtilisateurType: MessageUtilisateurTypeEnum.ETUDIANT };
            message.destinataires?.push(message_utilisateur);
+        } else if (this.stagiaire === 'tous') {
+            for (const etudiant of this.stagiaires) {
+                message.destinataires?.push({
+                   id: etudiant.id,
+                   messageUtilisateurType: MessageUtilisateurTypeEnum.ETUDIANT
+                });
+            }
         }
-        if(this.professeur.id){
-            let message_utilisateur :  MessageUtilisateur = {id:this.professeur.id, messageUtilisateurType:'professeur'};
+
+        if (this.professeur?.id){
+            let message_utilisateur :  MessageUtilisateur = { id: this.professeur.id, messageUtilisateurType: MessageUtilisateurTypeEnum.PROFESSEUR };
             message.destinataires?.push(message_utilisateur);
+        } else if (this.professeur === 'tous') {
+            for (const professeur of this.professeurs) {
+                message.destinataires?.push({
+                    id: professeur.id,
+                    messageUtilisateurType: MessageUtilisateurTypeEnum.PROFESSEUR
+                })
+            }
         }
-        if(this.userIsProfesseur==true) {
-            let message_exp: MessageUtilisateur = {
+
+        if (this.userIsProfesseur) {
+            message.expediteur = {
                 id: this.authentificationService.professeur?.id,
-                messageUtilisateurType: 'professeur'
-            }
-            message.expediteur = message_exp;
-        }
-        else {
-            let message_exp: MessageUtilisateur = {
+                messageUtilisateurType: MessageUtilisateurTypeEnum.PROFESSEUR
+            };
+        } else {
+            message.expediteur = {
                 id: this.authentificationService.etudiant?.id,
-                messageUtilisateurType: 'stagiaire'
-            }
-            message.expediteur = message_exp;
+                messageUtilisateurType: MessageUtilisateurTypeEnum.ETUDIANT
+            };
         }
+
         message.sujet = this.sujet;
         message.message = this.message;
+
         this.messageService.ajoutMessage(message);
-
-
     }
 }
