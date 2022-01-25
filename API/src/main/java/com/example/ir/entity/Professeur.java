@@ -43,6 +43,12 @@ public class Professeur implements Serializable {
     @OneToMany(mappedBy = "professeur", cascade = CascadeType.ALL)
     private List<ProfClasse> profClasseAssoc = new ArrayList<>();
 
+    @OneToMany(mappedBy = "expediteurProfesseur")
+    private List<Message> messagesEnvoyes = new ArrayList<>();
+
+    @OneToMany(mappedBy = "professeur")
+    private List<MessageProfesseurAssociation> destinatairesProfesseurs = new ArrayList<>();
+
     public String getEmail() {
         return email;
     }
@@ -105,5 +111,21 @@ public class Professeur implements Serializable {
 
     public void setProfClasseAssoc(List<ProfClasse> profClasseAssoc) {
         this.profClasseAssoc = profClasseAssoc;
+    }
+
+    public List<Message> getMessagesEnvoyes() {
+        return messagesEnvoyes;
+    }
+
+    public void setMessagesEnvoyes(List<Message> messagesEnvoyes) {
+        this.messagesEnvoyes = messagesEnvoyes;
+    }
+
+    public List<MessageProfesseurAssociation> getDestinatairesProfesseurs() {
+        return destinatairesProfesseurs;
+    }
+
+    public void setDestinatairesProfesseurs(List<MessageProfesseurAssociation> destinatairesProfesseurs) {
+        this.destinatairesProfesseurs = destinatairesProfesseurs;
     }
 }

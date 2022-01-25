@@ -16,7 +16,8 @@ import java.util.List;
         componentModel = "spring",
         unmappedTargetPolicy = ReportingPolicy.ERROR,
         uses = {
-                StageMapper.class
+                StageMapper.class,
+                MessageMapper.class
         }
 )
 @Named("Professeur")
@@ -25,6 +26,8 @@ public interface ProfesseurMapper {
     @Named("DTO")
     @Mapping(target = "mdp", ignore = true)
     @Mapping(target = "stages", qualifiedByName = { "Stage", "ListLightDTO" })
+    @Mapping(target = "messagesEnvoyes", source = "messagesEnvoyes", qualifiedByName = { "Message", "ListDTO" })
+    @Mapping(target = "messageRecus", ignore = true)
     ProfesseurDTO toDTO(Professeur professeur);
 
     @Named("ListDTO")
@@ -34,6 +37,8 @@ public interface ProfesseurMapper {
     @Named("LightDTO")
     @Mapping(target = "mdp", ignore = true)
     @Mapping(target = "stages", ignore = true)
+    @Mapping(target = "messagesEnvoyes", ignore = true)
+    @Mapping(target = "messageRecus", ignore = true)
     ProfesseurDTO toLightDTO(Professeur professeur);
 
     @Named("ListLightDTO")
@@ -45,6 +50,8 @@ public interface ProfesseurMapper {
     @Named("BO")
     @Mapping(target = "stages", qualifiedByName = { "Stage", "ListLightBO" })
     @Mapping(target = "profClasseAssoc", ignore = true)
+    @Mapping(target = "messagesEnvoyes", ignore = true)
+    @Mapping(target = "destinatairesProfesseurs", ignore = true)
     Professeur toBO(ProfesseurDTO professeur);
 
     @Named("ListBO")

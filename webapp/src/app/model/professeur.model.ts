@@ -1,4 +1,5 @@
 import { Stage } from './stage.model';
+import { Message } from './message.model';
 
 export interface Professeur {
     id?: number;
@@ -8,4 +9,5 @@ export interface Professeur {
     mdp?: string;
     email?: string;
     stages?: Stage[];
+    messagesEnvoyes?: Message[];
 }

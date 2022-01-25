@@ -7,11 +7,9 @@ import com.example.ir.entity.Etudiant;
 import com.example.ir.entity.Message;
 import com.example.ir.entity.MessageEtudiantAssociation;
 import com.example.ir.entity.MessageProfesseurAssociation;
-import com.example.ir.entity.MessageProfesseurAssociationId;
 import com.example.ir.entity.Professeur;
 import org.mapstruct.IterableMapping;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 import org.mapstruct.ReportingPolicy;
 

@@ -15,7 +15,8 @@ import java.util.List;
         unmappedTargetPolicy = ReportingPolicy.ERROR,
         uses = {
                 ClasseMapper.class,
-                StageMapper.class
+                StageMapper.class,
+                MessageMapper.class
         }
 )
 @Named("Etudiant")
@@ -24,6 +25,8 @@ public interface EtudiantMapper {
     @Named("DTO")
     @Mapping(target = "mdp", ignore = true)
     @Mapping(target = "stages", qualifiedByName = { "Stage", "ListLightDTO" })
+    @Mapping(target = "messagesEnvoyes", source = "messagesEnvoyes", qualifiedByName = { "Message", "ListDTO" })
+    @Mapping(target = "messageRecus", ignore = true)
     EtudiantDTO toDTO(Etudiant etudiant);
 
     @Named("ListDTO")
@@ -33,6 +36,8 @@ public interface EtudiantMapper {
     @Named("LightDTO")
     @Mapping(target = "mdp", ignore = true)
     @Mapping(target = "stages", ignore = true)
+    @Mapping(target = "messagesEnvoyes", ignore = true)
+    @Mapping(target = "messageRecus", ignore = true)
     EtudiantDTO toLightDTO(Etudiant etudiant);
 
     @Named("ListLightDTO")
@@ -43,6 +48,8 @@ public interface EtudiantMapper {
 
     @Named("BO")
     @Mapping(target = "stages", qualifiedByName = { "Stage", "ListLightBO" })
+    @Mapping(target = "messagesEnvoyes", ignore = true)
+    @Mapping(target = "destinatairesEtudiants", ignore = true)
     Etudiant toBO(EtudiantDTO etudiant);
 
     @Named("ListBO")

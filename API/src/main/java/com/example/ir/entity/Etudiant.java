@@ -51,6 +51,12 @@ public class Etudiant implements Serializable {
     @OneToMany(mappedBy = "etudiant", fetch = FetchType.LAZY)
     private List<Stage> stages = new ArrayList<>();
 
+    @OneToMany(mappedBy = "expediteurEtudiant")
+    private List<Message> messagesEnvoyes = new ArrayList<>();
+
+    @OneToMany(mappedBy = "etudiant")
+    private List<MessageEtudiantAssociation> destinatairesEtudiants = new ArrayList<>();
+
     public Boolean getEnActivite() {
         return enActivite;
     }
@@ -121,5 +127,21 @@ public class Etudiant implements Serializable {
 
     public void setStages(List<Stage> stages) {
         this.stages = stages;
+    }
+
+    public List<Message> getMessagesEnvoyes() {
+        return messagesEnvoyes;
+    }
+
+    public void setMessagesEnvoyes(List<Message> messagesEnvoyes) {
+        this.messagesEnvoyes = messagesEnvoyes;
+    }
+
+    public List<MessageEtudiantAssociation> getDestinatairesEtudiants() {
+        return destinatairesEtudiants;
+    }
+
+    public void setDestinatairesEtudiants(List<MessageEtudiantAssociation> destinatairesEtudiants) {
+        this.destinatairesEtudiants = destinatairesEtudiants;
     }
 }
