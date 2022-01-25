@@ -1,0 +1,35 @@
+<section>
+Messages reçues
+<table class='table table-condensed'>
+<thead>
+<tr><th>SUJET</th>
+</tr>
+</thead>
+<tbody>
+<tr *ngFor="let message of message_recue">
+    <td>   <a>
+        {{message.sujet}}
+    </a></td>
+</tbody>
+</table>
+</section>
+
+<section>
+Messages envoyés
+<table class='table table-condensed'>
+<thead>
+<tr><th>SUJET</th>
+</tr>
+</thead>
+<tbody>
+<tr *ngFor="let message of message_envoye">
+    <td>   <a  (click)="consult(message)">
+        {{message.sujet}}
+    </a></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+
+

@@ -31,6 +31,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { MissionsComponent } from './entreprise/entreprise-ajout/missions/missions.component';
 import { ConfirmationPopupComponent } from './confirmation-popup/confirmation-popup.component';
 import { ContactComponent } from './contact/contact.component';
+import { MessagerieComponent } from './messagerie/messagerie.component';
+import { MessagePopupComponent } from './message-popup/message-popup.component';
 
 
 @NgModule({
@@ -57,7 +59,9 @@ import { ContactComponent } from './contact/contact.component';
         TelFormatterDirective,
         MissionsComponent,
         ConfirmationPopupComponent,
-        ContactComponent
+        ContactComponent,
+        MessagerieComponent,
+        MessagePopupComponent
     ],
     imports: [
         BrowserModule,

@@ -15,6 +15,7 @@ import {StagiaireDetailComponent} from "./stagiaire/stagiaire-detail/stagiaire-d
 import {StageModifComponent} from "./stage/stage-modif/stage-modif.component";
 import {StatistiquesComponent} from "./statistiques/statistiques.component";
 import {ContactComponent} from "./contact/contact.component";
+import {MessagerieComponent} from "./messagerie/messagerie.component";
 
 
 
@@ -44,6 +45,7 @@ const routes: Routes = [
         ] },
     { path: 'statistiques', component : StatistiquesComponent, canActivate : [AuthGuard]},
     { path: 'contact', component : ContactComponent, canActivate : [AuthGuard]},
+    { path: 'messagerie', component : MessagerieComponent, canActivate : [AuthGuard]},
 
 
 ];
