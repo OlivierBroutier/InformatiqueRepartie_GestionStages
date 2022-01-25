@@ -13,4 +13,5 @@ export interface Etudiant {
     enActivite?: boolean;
     stages?: Stage[];
     messagesEnvoyes?: Message[];
+    messagesRecus?: Message[];
 }

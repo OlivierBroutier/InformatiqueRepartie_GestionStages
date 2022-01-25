@@ -84,6 +84,27 @@ public interface MessageMapper {
     @IterableMapping(qualifiedByName = "DTO")
     List<MessageDTO> toListDTO(List<Message> messages);
 
+    @Named("EtudiantDTO")
+    default MessageDTO toEtudiantDTO(MessageEtudiantAssociation etudiantAssociation) {
+        return toDTO(etudiantAssociation.getMessage());
+    }
+
+    @Named("ListEtudiantDTO")
+    @IterableMapping(qualifiedByName = "EtudiantDTO")
+    default List<MessageDTO> toListEtudiantDTO(List<MessageEtudiantAssociation> etudiantAssociations) {
+        return etudiantAssociations.stream().map(this::toEtudiantDTO).collect(Collectors.toList());
+    }
+
+    @Named("ProfesseurDTO")
+    default MessageDTO toProfesseurDTO(MessageProfesseurAssociation professeurAssociation) {
+        return toDTO(professeurAssociation.getMessage());
+    }
+
+    @Named("ListProfesseurDTO")
+    default List<MessageDTO> toListProfesseurDTO(List<MessageProfesseurAssociation> professeurAssociations) {
+        return professeurAssociations.stream().map(this::toProfesseurDTO).collect(Collectors.toList());
+    }
+
 
 
     @Named("BO")

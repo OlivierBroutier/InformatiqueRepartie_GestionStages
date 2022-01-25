@@ -10,4 +10,5 @@ export interface Professeur {
     email?: string;
     stages?: Stage[];
     messagesEnvoyes?: Message[];
+    messagesRecus?: Message[];
 }
