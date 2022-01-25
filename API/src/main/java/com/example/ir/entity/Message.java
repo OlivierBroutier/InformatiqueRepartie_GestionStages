@@ -26,6 +26,12 @@ public class Message implements Serializable {
     @Column(name = "num_message", nullable = false)
     private Integer id;
 
+    @Column(name = "sujet")
+    private String sujet;
+
+    @Column(name = "message")
+    private String message;
+
     @ManyToOne
     @JoinColumn(name = "num_expediteur_etudiant")
     private Etudiant expediteurEtudiant;
@@ -46,6 +52,22 @@ public class Message implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getSujet() {
+        return sujet;
+    }
+
+    public void setSujet(String sujet) {
+        this.sujet = sujet;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public Etudiant getExpediteurEtudiant() {

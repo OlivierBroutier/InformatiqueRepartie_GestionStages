@@ -8,6 +8,7 @@ import { Message } from '../model/message.model';
 import { MessageUtilisateur } from '../model/messageUtilisateur.model';
 import { MessageService } from '../shared/service/message.service';
 import { MessageUtilisateurTypeEnum } from '../model/message-utilisateur-type.enum';
+import { SuccessService } from '../shared/service/success.service';
 
 @Component({
   selector: 'app-contact',
@@ -21,10 +22,15 @@ export class ContactComponent implements OnInit {
     public professeur: Professeur | undefined;
     public sujet: string= '';
     public message: string= '';
-    public destinataire: string='';
 
 
-    constructor(private authentificationService: AuthentificationService, private stagiaireService: EtudiantService, private professeurService: ProfesseurService, private messageService : MessageService) {
+    constructor(
+        private authentificationService: AuthentificationService,
+        private stagiaireService: EtudiantService,
+        private professeurService: ProfesseurService,
+        private messageService : MessageService,
+        private successService: SuccessService
+    ) {
     }
 
     async ngOnInit(): Promise<void> {
@@ -81,6 +87,15 @@ export class ContactComponent implements OnInit {
         message.sujet = this.sujet;
         message.message = this.message;
 
-        this.messageService.ajoutMessage(message);
+        await this.messageService.ajoutMessage(message);
+        this.successService.createSuccessAlert('Succès', 'Le message a bien été envoyé');
+        this.clearFormulaire();
+    }
+
+    private clearFormulaire(): void {
+        this.sujet = '';
+        this.message = '';
+        this.stagiaire = undefined;
+        this.professeur = undefined;
     }
 }

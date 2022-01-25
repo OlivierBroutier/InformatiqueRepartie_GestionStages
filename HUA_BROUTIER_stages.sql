@@ -178,7 +178,9 @@ CREATE TABLE `stage` (
 CREATE TABLE `message` (
     `num_message` int(32) NOT NULL,
     `num_expediteur_etudiant` int(32),
-    `num_expediteur_prof` int(32)
+    `num_expediteur_prof` int(32),
+    `sujet` text NOT NULL,
+    `message` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 

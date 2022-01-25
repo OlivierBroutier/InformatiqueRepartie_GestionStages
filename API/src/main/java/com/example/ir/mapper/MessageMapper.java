@@ -31,6 +31,8 @@ public interface MessageMapper {
     default MessageDTO toDTO(Message message) {
         MessageDTO messageDTO = new MessageDTO();
         messageDTO.setId(message.getId());
+        messageDTO.setSujet(message.getSujet());
+        messageDTO.setMessage(message.getMessage());
 
         if (Objects.nonNull(message.getExpediteurEtudiant())) {
             Etudiant etudiant = message.getExpediteurEtudiant();
@@ -90,6 +92,8 @@ public interface MessageMapper {
     default Message toBO(MessageDTO messageDTO) {
         Message message = new Message();
         message.setId(messageDTO.getId());
+        message.setSujet(messageDTO.getSujet());
+        message.setMessage(messageDTO.getMessage());
 
         if (Objects.nonNull(messageDTO.getExpediteur())) {
             switch (messageDTO.getExpediteur().getMessageUtilisateurType()) {

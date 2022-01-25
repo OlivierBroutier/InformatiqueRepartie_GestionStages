@@ -6,6 +6,8 @@ import java.util.List;
 public class MessageDTO implements Serializable {
 
     private Integer id;
+    private String sujet;
+    private String message;
     private MessageUtilisateurDTO expediteur;
     private List<MessageUtilisateurDTO> destinataires;
 
@@ -19,6 +21,22 @@ public class MessageDTO implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getSujet() {
+        return sujet;
+    }
+
+    public void setSujet(String sujet) {
+        this.sujet = sujet;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public MessageUtilisateurDTO getExpediteur() {
