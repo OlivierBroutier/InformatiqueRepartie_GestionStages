@@ -10,6 +10,7 @@ public class MessageUtilisateurDTO implements Serializable {
     private String email;
     private MessageUtilisateurType messageUtilisateurType;
     private Boolean lu;
+    private Boolean supprime;
 
     public MessageUtilisateurDTO() {
         // no-op
@@ -61,5 +62,13 @@ public class MessageUtilisateurDTO implements Serializable {
 
     public void setLu(Boolean lu) {
         this.lu = lu;
+    }
+
+    public Boolean getSupprime() {
+        return supprime;
+    }
+
+    public void setSupprime(Boolean supprime) {
+        this.supprime = supprime;
     }
 }

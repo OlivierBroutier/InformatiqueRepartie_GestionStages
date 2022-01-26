@@ -28,6 +28,9 @@ public class MessageEtudiantAssociation implements Serializable {
     @Column(name = "lu")
     private Boolean lu;
 
+    @Column(name = "supprime")
+    private Boolean supprime;
+
     public Message getMessage() {
         return message;
     }
@@ -50,5 +53,13 @@ public class MessageEtudiantAssociation implements Serializable {
 
     public void setLu(Boolean lu) {
         this.lu = lu;
+    }
+
+    public Boolean getSupprime() {
+        return supprime;
+    }
+
+    public void setSupprime(Boolean supprime) {
+        this.supprime = supprime;
     }
 }

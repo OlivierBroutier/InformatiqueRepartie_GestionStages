@@ -39,6 +39,7 @@ public interface MessageMapper {
             expediteur.setMessageUtilisateurType(MessageUtilisateurType.ETUDIANT);
             expediteur.setNom(etudiant.getNomEtudiant());
             expediteur.setPrenom(etudiant.getPrenomEtudiant());
+            expediteur.setSupprime(message.getSupprime());
 
             messageDTO.setExpediteur(expediteur);
         } else if (Objects.nonNull(message.getExpediteurProfesseur())) {
@@ -50,6 +51,7 @@ public interface MessageMapper {
             expediteur.setNom(professeur.getNomProf());
             expediteur.setPrenom(professeur.getPrenomProf());
             expediteur.setEmail(professeur.getEmail());
+            expediteur.setSupprime(message.getSupprime());
 
             messageDTO.setExpediteur(expediteur);
         }
@@ -62,6 +64,7 @@ public interface MessageMapper {
             messageUtilisateurDTO.setPrenom(messageEtudiantAssociation.getEtudiant().getPrenomEtudiant());
             messageUtilisateurDTO.setMessageUtilisateurType(MessageUtilisateurType.ETUDIANT);
             messageUtilisateurDTO.setLu(messageEtudiantAssociation.getLu());
+            messageUtilisateurDTO.setSupprime(messageEtudiantAssociation.getSupprime());
             return messageUtilisateurDTO;
         }).collect(Collectors.toList()));
 
@@ -73,6 +76,7 @@ public interface MessageMapper {
             messageUtilisateurDTO.setEmail(messageProfesseurAssociation.getProfesseur().getEmail());
             messageUtilisateurDTO.setMessageUtilisateurType(MessageUtilisateurType.PROFESSEUR);
             messageUtilisateurDTO.setLu(messageProfesseurAssociation.getLu());
+            messageUtilisateurDTO.setSupprime(messageProfesseurAssociation.getSupprime());
             return messageUtilisateurDTO;
         }).collect(Collectors.toList()));
         messageDTO.setDestinataires(destinataires);
@@ -113,6 +117,7 @@ public interface MessageMapper {
         message.setId(messageDTO.getId());
         message.setSujet(messageDTO.getSujet());
         message.setMessage(messageDTO.getMessage());
+        message.setSupprime(messageDTO.getExpediteur().getSupprime());
 
         if (Objects.nonNull(messageDTO.getExpediteur())) {
             switch (messageDTO.getExpediteur().getMessageUtilisateurType()) {
@@ -139,7 +144,8 @@ public interface MessageMapper {
                         MessageEtudiantAssociation messageEtudiantAssociation = new MessageEtudiantAssociation();
                         messageEtudiantAssociation.setMessage(message);
                         messageEtudiantAssociation.setEtudiant(etudiant);
-                        messageEtudiantAssociation.setLu(messageUtilisateurDTO.getLu()); // Il faut changer cette ligne
+                        messageEtudiantAssociation.setLu(messageUtilisateurDTO.getLu());
+                        messageEtudiantAssociation.setSupprime(messageUtilisateurDTO.getSupprime());
 
                         message.getDestinatairesEtudiants().add(messageEtudiantAssociation);
                         break;
@@ -150,7 +156,8 @@ public interface MessageMapper {
                         MessageProfesseurAssociation messageProfesseurAssociation = new MessageProfesseurAssociation();
                         messageProfesseurAssociation.setMessage(message);
                         messageProfesseurAssociation.setProfesseur(professeur);
-                        messageProfesseurAssociation.setLu(messageUtilisateurDTO.getLu()); // Il faut changer cette ligne
+                        messageProfesseurAssociation.setLu(messageUtilisateurDTO.getLu());
+                        messageProfesseurAssociation.setSupprime(messageUtilisateurDTO.getSupprime());
 
                         message.getDestinatairesProfesseurs().add(messageProfesseurAssociation);
                         break;

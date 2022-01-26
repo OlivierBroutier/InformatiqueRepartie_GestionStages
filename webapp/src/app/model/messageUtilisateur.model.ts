@@ -5,7 +5,8 @@ export interface MessageUtilisateur {
     nom? : string;
     prenom? : string;
     email? : string;
-    lu? : string;
+    lu? : boolean;
+    supprime?: boolean;
     messageUtilisateurType? : MessageUtilisateurTypeEnum;
 
 }

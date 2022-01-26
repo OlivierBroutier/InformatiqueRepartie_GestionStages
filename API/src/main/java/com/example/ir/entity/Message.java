@@ -46,6 +46,9 @@ public class Message implements Serializable {
     @OneToMany(mappedBy = "message")
     private List<MessageProfesseurAssociation> destinatairesProfesseurs = new ArrayList<>();
 
+    @Column(name = "supprime")
+    private Boolean supprime;
+
     public Integer getId() {
         return id;
     }
@@ -100,5 +103,13 @@ public class Message implements Serializable {
 
     public void setDestinatairesProfesseurs(List<MessageProfesseurAssociation> destinatairesProfesseurs) {
         this.destinatairesProfesseurs = destinatairesProfesseurs;
+    }
+
+    public Boolean getSupprime() {
+        return supprime;
+    }
+
+    public void setSupprime(Boolean supprime) {
+        this.supprime = supprime;
     }
 }

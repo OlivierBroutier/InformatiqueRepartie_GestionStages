@@ -180,7 +180,8 @@ CREATE TABLE `message` (
     `num_expediteur_etudiant` int(32),
     `num_expediteur_prof` int(32),
     `sujet` text NOT NULL,
-    `message` text NOT NULL
+    `message` text NOT NULL,
+    `supprime` boolean DEFAULT FALSE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
@@ -193,7 +194,8 @@ CREATE TABLE `message` (
 CREATE TABLE `message_etudiant` (
     `num_message` int(32) NOT NULL,
     `num_etudiant` int(32) NOT NULL,
-    `lu` boolean DEFAULT FALSE
+    `lu` boolean DEFAULT FALSE,
+    `supprime` boolean DEFAULT FALSE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
@@ -206,7 +208,8 @@ CREATE TABLE `message_etudiant` (
 CREATE TABLE `message_professeur` (
     `num_message` int(32) NOT NULL,
     `num_prof` int(32) NOT NULL,
-    `lu` boolean DEFAULT FALSE
+    `lu` boolean DEFAULT FALSE,
+    `supprime` boolean DEFAULT FALSE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
@@ -646,8 +649,8 @@ INSERT INTO `mission` (`num_mission`, `libelle`, `num_stage`) VALUES
 --
 -- Contenu de la table `message`
 --
-INSERT INTO `message` (`num_message`, `num_expediteur_etudiant`, `num_expediteur_prof`) VALUES
-    (1, NULL, 1);
+INSERT INTO `message` (`num_message`, `num_expediteur_etudiant`, `num_expediteur_prof`, `sujet`, `message`) VALUES
+    (1, NULL, 1, 'Recherche de stage', 'Please need help need stage');
 
 
 -- --------------------------------------------------------
