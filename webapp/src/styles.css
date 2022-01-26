@@ -33,3 +33,8 @@ hr {
     cursor: pointer;
     text-decoration: underline !important;
 }
+
+.modal-dialog {
+    transform: none !important;
+    -webkit-transform: none !important;
+}
