@@ -1,1 +1,23 @@
-{{message.message}}
+<div class="modal-header">
+    <h5 class="modal-title">
+        <b> Expéditeur : {{message.expediteur?.prenom}} {{message.expediteur?.nom}}</b>
+        <br>
+        <b *ngFor="let destinataire of message.destinataires"> Destinataire : {{destinataire.prenom}} <br></b>
+       </h5>
+    <button type="button" class="close"  aria-label="Close" (click)="ferme()" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <p>Sujet : {{message.sujet}} </p>
+    <br>
+    <p>Message : {{message.message}}</p>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="ferme()" >Fermer</button>
+</div>
+
+
+
+
+

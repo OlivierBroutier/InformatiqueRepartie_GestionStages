@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Message} from "../model/message.model";
+import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-message-popup',
@@ -9,9 +10,13 @@ import {Message} from "../model/message.model";
 export class MessagePopupComponent implements OnInit {
 
     public message : Message={};
-  constructor() { }
+  constructor(private modal: NgbActiveModal) { }
 
   ngOnInit(): void {
   }
 
+    public ferme() {
+      this.modal.close();
+
+    }
 }
