@@ -157,9 +157,29 @@
     </ngb-panel>
 </ngb-accordion>
 
-<h4> Envoyer un message </h4>
+<h4> Contact </h4>
+
+<ngb-accordion [closeOthers]="true">
+    <ngb-panel title="Envoyer un message">
+        <ng-template ngbPanelContent>
+            Pour envoyer un message, dirigez-vous sur l'onglet Contact.
+            <p *ngIf="userIsProfesseur"> Vous avez deux choix : vous pouvez envoyer un message collectif (à tous les étudiants) ou vous pouvez envoyer votre message à un étudiant en particulier. Saisissez le sujet ainsi que votre message. Puis cliquez sur le bouton d'envoi. Le message a bien été envoyé si un message de pop up apparaît.</p>
+            <p *ngIf="!userIsProfesseur"> Vous avez deux choix : vous pouvez envoyer un message collectif (à tous les professeurs) ou vous pouvez envoyer votre message à un professeur en particulier. Saisissez le sujet ainsi que votre message. Puis cliquez sur le bouton d'envoi. Le message a bien été envoyé si un message de pop up apparaît.</p>
+        </ng-template>
+    </ngb-panel>
+</ngb-accordion>
 
 <h4> Consulter sa messagerie (messages envoyés/messages reçues) </h4>
+
+<ngb-accordion [closeOthers]="true">
+    <ngb-panel title="Envoyer un message">
+        <ng-template ngbPanelContent>
+            Pour consulter sa messagerie, dirigez-vous sur l'onglet Messagerie. Vous pouvez voir les sujets de vos messages envoyés et reçus. Pour plus d'informations concernant le message, cliquez sur le sujet correspondant. Vous trouverez le destinataire/l'expéditeur ainsi que le corps du message.
+        </ng-template>
+    </ngb-panel>
+</ngb-accordion>
+
+
 
 
 
