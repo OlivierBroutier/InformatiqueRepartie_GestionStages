@@ -1,4 +1,4 @@
 export enum MessageUtilisateurTypeEnum {
-    ETUDIANT,
-    PROFESSEUR
+    ETUDIANT= 'ETUDIANT',
+    PROFESSEUR = 'PROFESSEUR'
 }
