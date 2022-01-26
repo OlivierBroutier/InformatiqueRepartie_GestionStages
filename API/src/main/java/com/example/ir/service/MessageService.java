@@ -40,16 +40,19 @@ public class MessageService {
     @Transactional(rollbackFor = Exception.class)
     public MessageDTO ajoutMessage(MessageDTO messageDTO) {
         Message message = messageMapper.toBO(messageDTO);
+        message.setSupprime(false);
 
         message = messageRepository.save(message);
 
         for (MessageEtudiantAssociation messageEtudiantAssociation : message.getDestinatairesEtudiants()) {
             messageEtudiantAssociation.getMessage().setId(message.getId());
             messageEtudiantAssociation.setLu(false);
+            messageEtudiantAssociation.setSupprime(false);
         }
         for (MessageProfesseurAssociation messageProfesseurAssociation : message.getDestinatairesProfesseurs()) {
             messageProfesseurAssociation.getMessage().setId(message.getId());
             messageProfesseurAssociation.setLu(false);
+            messageProfesseurAssociation.setSupprime(false);
         }
 
         messageEtudiantRepository.saveAll(message.getDestinatairesEtudiants());
