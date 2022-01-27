@@ -2,7 +2,7 @@
     <h5 class="modal-title">
         <b> Expéditeur : {{message.expediteur?.prenom}} {{message.expediteur?.nom}}</b>
         <br>
-        <b *ngFor="let destinataire of message.destinataires"> Destinataire : {{destinataire.prenom}} <br></b>
+        <b *ngFor="let destinataire of message.destinataires"> Destinataire : {{destinataire.prenom}} {{destinataire.nom}}<br></b>
        </h5>
     <button type="button" class="close"  aria-label="Close" (click)="ferme()" aria-label="Close">
         <span aria-hidden="true">&times;</span>

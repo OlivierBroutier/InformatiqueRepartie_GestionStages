@@ -5,6 +5,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MessagePopupComponent } from '../message-popup/message-popup.component';
 import { MessageUtilisateurTypeEnum } from '../model/message-utilisateur-type.enum';
 import { MessageUtilisateur } from '../model/messageUtilisateur.model';
+import {MessageService} from "../shared/service/message.service";
 
 @Component({
   selector: 'app-messagerie',
@@ -14,7 +15,7 @@ import { MessageUtilisateur } from '../model/messageUtilisateur.model';
 export class MessagerieComponent implements OnInit {
 
 
-  constructor(private authentificationService : AuthentificationService, private modalService : NgbModal) { }
+  constructor(private authentificationService : AuthentificationService, private modalService : NgbModal, private messageService : MessageService) { }
 
   ngOnInit(): void {
   }
@@ -84,4 +85,14 @@ export class MessagerieComponent implements OnInit {
       return undefined;
   }
 
+    async delete(message: Message) : Promise<void> {
+        if(this.userIsProfesseur==true) {
+            await this.messageService.markAsSupprimeForProfesseur(message, this.authentificationService.professeur);
+
+        }
+        else {
+            await this.messageService.markAsSupprimeForEtudiant(message, this.authentificationService.etudiant);
+        }
+
+  }
 }

@@ -26,30 +26,30 @@ export class MessageService {
 
     /** Méthodes pour lu & supprimé **/
 
-    public markAsLuForEtudiant(message: Message, etudiant: Etudiant) {
+    public markAsLuForEtudiant(message?: Message, etudiant?: Etudiant) {
         return this.markAsLu(message, { etudiant })
     }
 
-    public markAsLuForProfesseur(message: Message, professeur: Professeur) {
+    public markAsLuForProfesseur(message?: Message, professeur?: Professeur) {
         return this.markAsLu(message, { professeur })
     }
 
-    public markAsSupprimeForEtudiant(message: Message, etudiant: Etudiant) {
+    public markAsSupprimeForEtudiant(message?: Message, etudiant?: Etudiant) {
         return this.markAsSupprime(message, { etudiant })
     }
 
-    public markAsSupprimeForProfesseur(message: Message, professeur: Professeur) {
+    public markAsSupprimeForProfesseur(message?: Message, professeur?: Professeur) {
         return this.markAsSupprime(message, { professeur })
     }
 
     /** ------------------------------ */
 
-    private markAsLu(message: Message, utilisateur: Utilisateur) {
-        return this.httpClient.put<Message>(this.apiUrl + 'message/' + message.id + '/lu', utilisateur).toPromise();
+    private markAsLu(message?: Message, utilisateur?: Utilisateur) {
+        return this.httpClient.put<Message>(this.apiUrl + 'message/' + message?.id + '/lu', utilisateur).toPromise();
     }
 
-    private markAsSupprime(message: Message, utilisateur: Utilisateur) {
-        return this.httpClient.put<Message>(this.apiUrl + 'message/' + message.id + '/supprime', utilisateur).toPromise();
+    private markAsSupprime(message?: Message, utilisateur?: Utilisateur) {
+        return this.httpClient.put<Message>(this.apiUrl + 'message/' + message?.id + '/supprime', utilisateur).toPromise();
     }
 
 }

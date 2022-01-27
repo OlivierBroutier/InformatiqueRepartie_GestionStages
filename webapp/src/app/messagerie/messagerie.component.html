@@ -1,15 +1,26 @@
 <section>
-    <h3>Messages reçues</h3>
+    <h3>Messages reçus</h3>
 <table class='table table-condensed'>
 <thead>
-<tr><th>SUJET</th>
+
+<tr>
+    <th>SUPPRESSION</th>
+    <th>SUJET</th>
+
 </tr>
 </thead>
 <tbody>
+
 <tr *ngFor="let message of message_recue">
-    <td>   <a>
+    <td>
+        <a class="icone" [routerLink]="" (click)="delete(message)">
+            <span class="glyphicon glyphicon-remove"></span>
+        </a>
+    </td>
+    <td>   <a (click)="consult(message)">
         {{message.sujet}}
     </a></td>
+
 </tbody>
 </table>
 </section>
@@ -18,11 +29,18 @@
     <h3>Messages envoyés</h3>
 <table class='table table-condensed'>
 <thead>
-<tr><th>SUJET</th>
+<tr><th>SUPPRESSION</th>
+    <th>SUJET</th>
 </tr>
 </thead>
 <tbody>
+
 <tr *ngFor="let message of message_envoye">
+    <td>
+        <a class="icone" [routerLink]="">
+            <span class="glyphicon glyphicon-remove"></span>
+        </a>
+    </td>
     <td>   <a  (click)="consult(message)">
         {{message.sujet}}
     </a></td>
