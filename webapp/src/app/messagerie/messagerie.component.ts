@@ -71,6 +71,15 @@ export class MessagerieComponent implements OnInit {
     }
 
     public consult(message?: Message) {
+        if (!message) {
+            return;
+        }
+
+        const utilisateur = this.getMessageUtilisateurFromAuthentification(message);
+        if (utilisateur) {
+            utilisateur.lu = true;
+        }
+
         let popup =this.modalService.open(MessagePopupComponent);
         popup.componentInstance.message = message ?? { };
         popup.result.then(r => {
@@ -88,33 +97,8 @@ export class MessagerieComponent implements OnInit {
         return this.getMessageUtilisateurFromAuthentification(message)?.supprime;
     }
 
-    private getMessageUtilisateurFromAuthentification(message?: Message): MessageUtilisateur | undefined {
-        if (!message) {
-            return undefined;
-        }
-
-        if (this.userIsProfesseur) {
-            if (message.expediteur?.messageUtilisateurType === MessageUtilisateurTypeEnum.PROFESSEUR
-                && message.expediteur?.id === this.authentificationService.professeur?.id) {
-                return message.expediteur;
-            }
-            const destinataire = message?.destinataires?.filter(d => d.messageUtilisateurType === MessageUtilisateurTypeEnum.PROFESSEUR)
-                .find(d => d.id === this.authentificationService.professeur?.id);
-            if (destinataire) {
-                return destinataire;
-            }
-        } else {
-            if (message?.expediteur?.messageUtilisateurType === MessageUtilisateurTypeEnum.ETUDIANT
-                && message?.expediteur?.id === this.authentificationService.etudiant?.id) {
-                return message.expediteur
-            }
-            const destinataire = message?.destinataires?.filter(d => d.messageUtilisateurType === MessageUtilisateurTypeEnum.ETUDIANT)
-                .find(d => d.id === this.authentificationService.etudiant?.id);
-            if (destinataire) {
-                return destinataire;
-            }
-        }
-        return undefined;
+    public getMessageUtilisateurFromAuthentification(message?: Message): MessageUtilisateur | undefined {
+        return this.messageService.getMessageUtilisateurFromAuthentification(message);
     }
 
     async delete(message: Message) : Promise<void> {
