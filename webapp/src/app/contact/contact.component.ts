@@ -87,9 +87,15 @@ export class ContactComponent implements OnInit {
         message.sujet = this.sujet;
         message.message = this.message;
 
-        await this.messageService.ajoutMessage(message);
+        message = await this.messageService.ajoutMessage(message);
         this.successService.createSuccessAlert('Succès', 'Le message a bien été envoyé');
         this.clearFormulaire();
+
+        if (this.userIsProfesseur) {
+            this.authentificationService.professeur?.messagesEnvoyes?.push(message)
+        } else {
+            this.authentificationService.etudiant?.messagesEnvoyes?.push(message);
+        }
     }
 
     private clearFormulaire(): void {

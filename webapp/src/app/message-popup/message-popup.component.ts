@@ -17,6 +17,9 @@ export class MessagePopupComponent implements OnInit {
 
     public ferme() {
       this.modal.close();
+    }
 
+    public delete() {
+      this.modal.close({ delete: true })
     }
 }

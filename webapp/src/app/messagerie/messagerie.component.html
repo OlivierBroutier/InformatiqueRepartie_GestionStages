@@ -37,7 +37,7 @@
 
 <tr *ngFor="let message of message_envoye">
     <td>
-        <a class="icone" [routerLink]="">
+        <a class="icone" [routerLink]="" (click)="delete(message)">
             <span class="glyphicon glyphicon-remove"></span>
         </a>
     </td>

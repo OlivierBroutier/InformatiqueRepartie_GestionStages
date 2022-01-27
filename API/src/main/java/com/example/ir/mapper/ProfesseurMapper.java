@@ -27,7 +27,7 @@ public interface ProfesseurMapper {
     @Mapping(target = "mdp", ignore = true)
     @Mapping(target = "stages", qualifiedByName = { "Stage", "ListLightDTO" })
     @Mapping(target = "messagesEnvoyes", source = "messagesEnvoyes", qualifiedByName = { "Message", "ListDTO" })
-    @Mapping(target = "messageRecus", source = "destinatairesProfesseurs", qualifiedByName = { "Message", "ListProfesseurDTO" })
+    @Mapping(target = "messagesRecus", source = "destinatairesProfesseurs", qualifiedByName = { "Message", "ListProfesseurDTO" })
     ProfesseurDTO toDTO(Professeur professeur);
 
     @Named("ListDTO")
@@ -38,7 +38,7 @@ public interface ProfesseurMapper {
     @Mapping(target = "mdp", ignore = true)
     @Mapping(target = "stages", ignore = true)
     @Mapping(target = "messagesEnvoyes", ignore = true)
-    @Mapping(target = "messageRecus", ignore = true)
+    @Mapping(target = "messagesRecus", ignore = true)
     ProfesseurDTO toLightDTO(Professeur professeur);
 
     @Named("ListLightDTO")
