@@ -17,7 +17,7 @@ public class EtudiantDTO implements Serializable {
     private Boolean enActivite;
     private List<StageDTO> stages = new ArrayList<>();
     private List<MessageDTO> messagesEnvoyes = new ArrayList<>();
-    private List<MessageDTO> messageRecus = new ArrayList<>();
+    private List<MessageDTO> messagesRecus = new ArrayList<>();
 
     public EtudiantDTO() {
         // no-op
@@ -103,11 +103,11 @@ public class EtudiantDTO implements Serializable {
         this.messagesEnvoyes = messagesEnvoyes;
     }
 
-    public List<MessageDTO> getMessageRecus() {
-        return messageRecus;
+    public List<MessageDTO> getMessagesRecus() {
+        return messagesRecus;
     }
 
-    public void setMessageRecus(List<MessageDTO> messageRecus) {
-        this.messageRecus = messageRecus;
+    public void setMessagesRecus(List<MessageDTO> messagesRecus) {
+        this.messagesRecus = messagesRecus;
     }
 }
