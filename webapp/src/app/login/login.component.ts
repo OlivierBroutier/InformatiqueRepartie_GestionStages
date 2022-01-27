@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Login } from '../model/login.model';
 import { AuthentificationService } from '../shared/service/authentification.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MessageService } from '../shared/service/message.service';
 
 @Component({
     selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
     constructor(
         private authentificationService: AuthentificationService,
         private activatedRoute: ActivatedRoute,
-        private router: Router
+        private router: Router,
+        private messageService: MessageService
     ) { }
 
     ngOnInit(): void {
@@ -30,6 +32,7 @@ export class LoginComponent implements OnInit {
             } else {
                 this.router.navigate(['/home']);
             }
+            this.messageService.sendMessagesNonLusAlert();
         }
     }
 

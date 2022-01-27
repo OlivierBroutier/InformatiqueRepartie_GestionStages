@@ -43,10 +43,10 @@ public class Professeur implements Serializable {
     @OneToMany(mappedBy = "professeur", cascade = CascadeType.ALL)
     private List<ProfClasse> profClasseAssoc = new ArrayList<>();
 
-    @OneToMany(mappedBy = "expediteurProfesseur")
+    @OneToMany(mappedBy = "expediteurProfesseur", cascade = CascadeType.REMOVE)
     private List<Message> messagesEnvoyes = new ArrayList<>();
 
-    @OneToMany(mappedBy = "professeur")
+    @OneToMany(mappedBy = "professeur", cascade = CascadeType.REMOVE)
     private List<MessageProfesseurAssociation> destinatairesProfesseurs = new ArrayList<>();
 
     public String getEmail() {

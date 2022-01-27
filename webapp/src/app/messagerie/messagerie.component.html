@@ -32,7 +32,6 @@
 <thead>
 <tr><th>SUPPRESSION</th>
     <th>SUJET</th>
-    <th></th>
 </tr>
 </thead>
 <tbody>
@@ -46,7 +45,6 @@
     <td>   <a  (click)="consult(message)">
         {{message.sujet}}
     </a></td>
-    <td>{{ getMessageUtilisateurFromAuthentification(message)?.lu ? '' : 'Non lu' }}</td>
 </tr>
 </tbody>
 </table>

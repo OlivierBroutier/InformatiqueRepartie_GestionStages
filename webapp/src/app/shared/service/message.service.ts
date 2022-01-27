@@ -8,6 +8,7 @@ import { Utilisateur } from '../../model/utilisateur.model';
 import { MessageUtilisateur } from '../../model/messageUtilisateur.model';
 import { MessageUtilisateurTypeEnum } from '../../model/message-utilisateur-type.enum';
 import { AuthentificationService } from './authentification.service';
+import { SuccessService } from './success.service';
 @Injectable({
     providedIn: 'root'
 })
@@ -17,7 +18,8 @@ export class MessageService {
 
     constructor(
         private readonly httpClient: HttpClient,
-        private authentificationService: AuthentificationService
+        private readonly authentificationService: AuthentificationService,
+        private readonly successService: SuccessService
     ) { }
 
     public get userIsProfesseur(): boolean {
@@ -87,6 +89,39 @@ export class MessageService {
             }
         }
         return undefined;
+    }
+
+    public sendMessagesNonLusAlert(): void {
+        if (!this.authentificationService.isLoggedIn) {
+            return;
+        }
+
+        let countNonLus = 0;
+
+        let messagesRecus: Message[] = [];
+        if (this.authentificationService.userIsProfesseur && this.authentificationService.professeur) {
+            messagesRecus = this.authentificationService.professeur.messagesRecus ?? [];
+        } else if (this.authentificationService.etudiant) {
+            messagesRecus = this.authentificationService.etudiant.messagesRecus ?? [];
+        }
+
+        for (let message of messagesRecus) {
+            const messageUtilisateur = this.getMessageUtilisateurFromAuthentification(message);
+            if (messageUtilisateur && !messageUtilisateur.supprime && !messageUtilisateur.lu) {
+                countNonLus++;
+            }
+        }
+
+        let text = '';
+        if (countNonLus === 1) {
+            text = 'Vous avez 1 message non lu';
+        } else if (countNonLus > 1) {
+            text = 'Vous avez ' + countNonLus + ' messages non lus';
+        }
+
+        if (text) {
+            this.successService.createSuccessAlert('Messages non lus', text);
+        }
     }
 
 }

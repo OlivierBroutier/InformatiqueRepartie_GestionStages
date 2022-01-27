@@ -1,5 +1,6 @@
 package com.example.ir.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -48,13 +49,13 @@ public class Etudiant implements Serializable {
     @Column(name = "en_activite", nullable = false)
     private Boolean enActivite = false;
 
-    @OneToMany(mappedBy = "etudiant", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "etudiant", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<Stage> stages = new ArrayList<>();
 
-    @OneToMany(mappedBy = "expediteurEtudiant")
+    @OneToMany(mappedBy = "expediteurEtudiant", cascade = CascadeType.REMOVE)
     private List<Message> messagesEnvoyes = new ArrayList<>();
 
-    @OneToMany(mappedBy = "etudiant")
+    @OneToMany(mappedBy = "etudiant", cascade = CascadeType.REMOVE)
     private List<MessageEtudiantAssociation> destinatairesEtudiants = new ArrayList<>();
 
     public Boolean getEnActivite() {
