@@ -1,45 +1,48 @@
 <form #f="ngForm">
-<ng-container *ngIf="userIsProfesseur; else etudiant">
-    <p>Contacter un/les étudiant(s)</p>
+    <ng-container *ngIf="userIsProfesseur; else etudiant">
+        <p>Contacter un/les étudiant(s)</p>
 
-    <div class="form-group col-md-12">
-        <label>Destinataire* :</label>
-        <select *ngIf="userIsProfesseur;else etudiant" class="custom-select custom-select-lg mb-3" name="stagiaire_id" [compareWith]="compare" [(ngModel)]="stagiaire" required>
-            <option [ngValue]="undefined">Choisissez un/les étudiant(s)</option>
-            <option [ngValue]="'tous'">Tous les étudiants</option>
-            <option *ngFor="let etudiant of stagiaires" [ngValue]="etudiant">
-                {{etudiant.prenomEtudiant}} {{etudiant.nomEtudiant}}
-            </option>
-        </select>
+        <div class="form-group col-md-12">
+            <label>Destinataire* :</label>
+            <select *ngIf="userIsProfesseur;else etudiant" class="custom-select custom-select-lg mb-3" name="stagiaire_id" [compareWith]="compare" [(ngModel)]="stagiaire" required>
+                <option [ngValue]="undefined">Choisissez un/les étudiant(s)</option>
+                <option [ngValue]="'tous'">Tous les étudiants</option>
+                <option *ngFor="let etudiant of stagiaires" [ngValue]="etudiant">
+                    {{etudiant.prenomEtudiant}} {{etudiant.nomEtudiant}}
+                </option>
+            </select>
 
-        <label>Sujet :</label>
-        <input type="text" id="stagiaire_sujet" [(ngModel)]="sujet" class="form-control" name="name" required>
+            <label>Sujet :</label>
+            <input type="text" id="stagiaire_sujet" [(ngModel)]="sujet" class="form-control" name="name" required>
 
-        <label>Message : </label>
-        <textarea class="form-control" id="stagiaire_message" [(ngModel)]="message" name="stagiaire_message" rows="15" required></textarea>
-    </div>
-</ng-container>
+            <label>Message : </label>
+            <textarea class="form-control" id="stagiaire_message" [(ngModel)]="message" name="stagiaire_message" rows="15" required></textarea>
+        </div>
+    </ng-container>
 
-<ng-template #etudiant>
-    <p>Contacter un/les professeur(s)</p>
+    <ng-template #etudiant>
+        <p>Contacter un/les professeur(s)</p>
 
-    <div class="form-group col-md-12">
-        <label>Destinataire* :</label>
-        <select class="custom-select custom-select-lg mb-3" name="prof_id" [compareWith]="compare" [(ngModel)]="professeur"  required>
-            <option [ngValue]="undefined">Choisissez un/les professeur(s)</option>
-            <option [ngValue]="'tous'">Tous les professeurs</option>
-            <option *ngFor="let professeur of professeurs" [ngValue]="professeur">
-                {{professeur.prenomProf}} {{professeur.nomProf}}
-            </option>
-        </select>
-        <label>Sujet :</label>
-        <input type="text" id="prof_sujet" class="form-control" name="name" [(ngModel)]="sujet">
-        <label>Message : </label>
-        <textarea class="form-control" id="prof_message" name="prof_message" rows="15" [(ngModel)]="message"></textarea>
+        <div class="form-group col-md-12">
+            <label>Destinataire* :</label>
+            <select class="custom-select custom-select-lg mb-3" name="prof_id" [compareWith]="compare" [(ngModel)]="professeur"  required>
+                <option [ngValue]="undefined">Choisissez un/les professeur(s)</option>
+                <option [ngValue]="'tous'">Tous les professeurs</option>
+                <option *ngFor="let professeur of professeurs" [ngValue]="professeur">
+                    {{professeur.prenomProf}} {{professeur.nomProf}}
+                </option>
+            </select>
 
-    </div>
-</ng-template>
+            <label>Sujet :</label>
+            <input type="text" id="prof_sujet" class="form-control" name="name" [(ngModel)]="sujet" required>
+
+            <label>Message : </label>
+            <textarea class="form-control" id="prof_message" name="prof_message" rows="15" [(ngModel)]="message" required></textarea>
+
+        </div>
+    </ng-template>
 </form>
 
-<button  (click)="envoyer_message()" class="btn btn-primary" [disabled]="!f.valid">Envoyer ce message</button>
+
+<button (click)="envoyer_message()" class="btn btn-primary" [disabled]="!f.valid">Envoyer ce message</button>
 
