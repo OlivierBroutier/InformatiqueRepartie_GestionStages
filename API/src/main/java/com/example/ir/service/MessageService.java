@@ -25,17 +25,23 @@ public class MessageService {
     private final MessageMapper messageMapper;
     private final MessageEtudiantRepository messageEtudiantRepository;
     private final MessageProfesseurRepository messageProfesseurRepository;
+    private final EtudiantService etudiantService;
+    private final ProfesseurService professeurService;
 
     public MessageService(
             MessageRepository messageRepository,
             MessageMapper messageMapper,
             MessageEtudiantRepository messageEtudiantRepository,
-            MessageProfesseurRepository messageProfesseurRepository
+            MessageProfesseurRepository messageProfesseurRepository,
+            EtudiantService etudiantService,
+            ProfesseurService professeurService
     ) {
         this.messageRepository = messageRepository;
         this.messageMapper = messageMapper;
         this.messageEtudiantRepository = messageEtudiantRepository;
         this.messageProfesseurRepository = messageProfesseurRepository;
+        this.etudiantService = etudiantService;
+        this.professeurService = professeurService;
     }
 
     public List<MessageDTO> findAll() {
@@ -55,7 +61,7 @@ public class MessageService {
     }
 
     @Transactional(rollbackFor = Exception.class)
-    public MessageDTO ajoutMessage(MessageDTO messageDTO) {
+    public MessageDTO ajoutMessage(MessageDTO messageDTO) throws FonctionnelException {
         Message message = messageMapper.toBO(messageDTO);
         message.setSupprime(false);
 
@@ -72,8 +78,14 @@ public class MessageService {
             messageProfesseurAssociation.setSupprime(false);
         }
 
-        messageEtudiantRepository.saveAll(message.getDestinatairesEtudiants());
-        messageProfesseurRepository.saveAll(message.getDestinatairesProfesseurs());
+        message.setDestinatairesEtudiants(messageEtudiantRepository.saveAll(message.getDestinatairesEtudiants()));
+        message.setDestinatairesProfesseurs(messageProfesseurRepository.saveAll(message.getDestinatairesProfesseurs()));
+
+        if (Objects.nonNull(message.getExpediteurEtudiant())) {
+            message.setExpediteurEtudiant(etudiantService.findById(message.getExpediteurEtudiant().getId()));
+        } else if (Objects.nonNull(message.getExpediteurProfesseur())) {
+            message.setExpediteurProfesseur(professeurService.findById(message.getExpediteurProfesseur().getId()));
+        }
 
         return messageMapper.toDTO(message);
     }

@@ -30,6 +30,14 @@ public class ProfesseurService {
         return professeurMapper.toListDTO(findAll());
     }
 
+    public Professeur findById(Integer id) throws FonctionnelException {
+        Optional<Professeur> oProfesseur = professeurRepository.findById(id);
+        if (oProfesseur.isEmpty()) {
+            throw new FonctionnelException(ErrorEnum.PROFESSEUR_NOT_FOUND);
+        }
+        return oProfesseur.get();
+    }
+
     public ProfesseurDTO findByLoginAndPassword(String login, String password) throws FonctionnelException {
         Optional<Professeur> oProfesseur = professeurRepository.findByLoginAndMdp(login, password);
         if (oProfesseur.isEmpty()) {

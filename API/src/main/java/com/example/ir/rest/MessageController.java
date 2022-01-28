@@ -36,7 +36,7 @@ public class MessageController {
     }
 
     @PostMapping
-    public ResponseEntity<MessageDTO> ajoutMessage(@RequestBody MessageDTO messageDTO) {
+    public ResponseEntity<MessageDTO> ajoutMessage(@RequestBody MessageDTO messageDTO) throws FonctionnelException {
         return ResponseEntity.ok().body(messageService.ajoutMessage(messageDTO));
     }
 
