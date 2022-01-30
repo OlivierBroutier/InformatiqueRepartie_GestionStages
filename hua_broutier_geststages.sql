@@ -21,6 +21,15 @@ SET time_zone = "+00:00";
 -- Base de données : `hua_broutier_geststages`
 --
 
+DROP DATABASE IF EXISTS hua_broutier_geststages;
+DROP USER IF EXISTS 'hua_broutier_usergs'@'%';
+
+CREATE DATABASE hua_broutier_geststages ;
+USE hua_broutier_geststages ;
+
+CREATE USER 'hua_broutier_usergs'@'%' IDENTIFIED BY 'mdpGS';
+GRANT ALL PRIVILEGES ON hua_broutier_geststages.* TO 'hua_broutier_usergs'@'%';
+
 -- --------------------------------------------------------
 
 --
